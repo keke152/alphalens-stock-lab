@@ -1,0 +1,10 @@
+services:
+  alphalens:
+    build: .
+    ports:
+      - "127.0.0.1:8010:8010"
+    volumes:
+      - alphalens-data:/app/runtime
+    restart: unless-stopped
+volumes:
+  alphalens-data:

@@ -1,0 +1,43 @@
+# Dependencies and build output
+**/node_modules/
+**/.venv/
+**/venv/
+**/target/
+**/dist/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+*.py[cod]
+*.class
+*.jar
+
+# Runtime data and local uploads
+**/runtime/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.log
+python-service/skills/proposals/
+
+# Local configuration and credentials
+.env
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.template
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.zip

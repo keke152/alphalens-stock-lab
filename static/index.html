@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="AlphaLens 本地 AI 股票趋势研究平台：时序训练、样本外回测与模型解释。">
+  <title>AlphaLens · AI 股票研究室</title>
+  <link rel="stylesheet" href="/static/styles.css?v=1.1">
+  <link rel="stylesheet" href="/static/enhancements.css?v=1.1">
+  <script defer src="/static/research.js?v=1.1"></script>
+  <script defer src="/static/app.js?v=1.1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到研究内容</a>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="AlphaLens 首页"><span class="brand-mark">A<span>↗</span></span><span>AlphaLens<small>AI 股票研究室</small></span></a>
+    <div class="sidebar-label">WORKSPACE</div>
+    <nav class="main-nav" aria-label="研究导航">
+      <button class="nav-item active" data-view="overview" aria-current="page"><span class="nav-icon">◈</span>研究概览</button>
+      <button class="nav-item" data-view="backtest"><span class="nav-icon">↗</span>策略回测</button>
+      <button class="nav-item" data-view="model"><span class="nav-icon">⌘</span>模型解释</button>
+      <button class="nav-item" data-view="compare"><span class="nav-icon">⇄</span>实验对比<span class="nav-new">NEW</span></button>
+      <button class="nav-item" id="docs-button"><span class="nav-icon">▤</span>项目文档<span class="nav-external">↗</span></button>
+    </nav>
+    <div class="sidebar-section-heading"><span class="sidebar-label">RECENT EXPERIMENTS</span><button class="icon-button" id="refresh-history" title="刷新实验记录" aria-label="刷新实验记录">↻</button></div>
+    <div class="history-list" id="history-list"><p class="muted small">正在读取实验记录…</p></div>
+    <div class="sidebar-footer"><span class="local-dot"></span><div>本地研究环境<small>数据留在本机 · 无需 API Key</small></div></div>
+  </aside>
+
+  <main id="main" class="workspace">
+    <header class="topbar"><div class="breadcrumb">工作空间<span>/</span><strong id="view-name">研究概览</strong></div><div class="topbar-right"><span class="version-pill">v1.1</span><span class="research-badge">RESEARCH ONLY</span></div></header>
+    <div class="page-content">
+      <section class="page-heading"><div><p class="eyebrow">FROM DATA TO DECISION</p><h1 id="page-title">让每一次预测，都有据可循<span>.</span></h1><p class="page-description" id="page-description">用机器学习观察趋势，用样本外回测检验想法。</p></div><button class="secondary-button" id="upload-button"><span>＋</span>导入行情 CSV</button></section>
+      <div class="notice"><span class="notice-icon">i</span><p><strong id="source-notice">默认数据为合成行情。</strong> 模型结果用于技术研究与项目演示，不构成投资建议。</p><span class="notice-tag">时序切分 · 成本计入</span></div>
+
+      <div class="dashboard-layout">
+        <div class="report-column">
+          <section class="dataset-strip"><div class="instrument-icon">↗</div><div class="instrument-title"><h2 id="dataset-name">选择一个数据集</h2><span id="dataset-symbol">—</span><span class="source-pill" id="dataset-source">等待加载</span></div><div class="dataset-range"><span id="dataset-range">—</span><small id="dataset-rows">— 个交易日</small></div></section>
+
+          <div id="run-status" class="run-status" hidden role="status" aria-live="polite"><span class="spinner"></span><div><strong id="run-status-title">正在运行实验</strong><p id="run-status-detail">构建特征、训练模型并计算样本外回测，请稍候。</p></div><span id="run-elapsed">0s</span></div>
+          <div id="error-banner" class="error-banner" hidden role="alert"></div>
+
+          <div id="empty-state" class="empty-state"><div class="empty-graphic"><span></span><span></span><span></span><span></span><span></span><svg viewBox="0 0 160 70" aria-hidden="true"><path d="M4 58 29 43 50 49 76 25 102 34 129 12 154 19"/></svg></div><span class="eyebrow">YOUR FIRST EXPERIMENT</span><h2>从一个可复现的实验开始</h2><p>选择右侧数据与模型，点击“训练并回测”。<br>这里将展示真实计算的预测、回测曲线与模型依据。</p><div class="empty-steps"><span>01 <strong>选择行情</strong></span><i>→</i><span>02 <strong>训练模型</strong></span><i>→</i><span>03 <strong>解释结果</strong></span></div></div>
+
+          <section id="comparison-workspace" hidden>
+            <section class="panel comparison-panel">
+              <div class="panel-heading"><div><h3>让两次实验并排说话</h3><p>选择已完成的实验，比较方向判断、收益和风险。</p></div><span class="tiny-pill">COMPARE</span></div>
+              <div class="compare-controls"><label for="compare-a">实验 A<select id="compare-a"></select></label><span class="versus">VS</span><label for="compare-b">实验 B<select id="compare-b"></select></label></div>
+              <p class="comparison-note" id="compare-message" role="status">至少需要两个已完成的实验；可点击右侧“一键双模型对比”生成。</p>
+              <div id="comparison-result" hidden><div class="table-scroll"><table class="comparison-table"><thead><tr><th>指标 / 配置</th><th id="compare-a-title">实验 A</th><th id="compare-b-title">实验 B</th></tr></thead><tbody id="compare-metrics"></tbody></table></div>
+              <div class="comparison-chart-heading"><h3>同起点的样本外净值</h3><div class="chart-legend"><span><i class="legend-dot teal"></i>实验 A</span><span><i class="legend-dot blue"></i>实验 B</span></div></div><div class="chart-container" id="compare-chart" aria-label="两次实验归一化净值"></div><p class="panel-footnote">净值从 1 起算。仅在数据指纹和完整测试日期一致时叠加；不同成本或阈值会影响比较结果。</p></div>
+            </section>
+          </section>
+          <div id="report-content" hidden>
+            <section class="metric-grid section-overview section-backtest">
+              <article class="metric-card"><div class="metric-label">策略累计收益<span class="metric-symbol">↗</span></div><strong id="metric-return">—</strong><small id="metric-return-detail">样本外 · 已扣交易成本</small><div class="metric-bottom-line teal"></div></article>
+              <article class="metric-card"><div class="metric-label">基准累计收益<span class="metric-symbol">⌁</span></div><strong id="metric-benchmark">—</strong><small>同期开盘买入、收盘卖出基准</small><div class="metric-bottom-line blue"></div></article>
+              <article class="metric-card"><div class="metric-label">最大回撤<span class="metric-symbol">↘</span></div><strong id="metric-drawdown">—</strong><small>策略资金曲线的最大跌幅</small><div class="metric-bottom-line amber"></div></article>
+              <article class="metric-card"><div class="metric-label">方向准确率<span class="metric-symbol">◎</span></div><strong id="metric-accuracy">—</strong><small id="metric-auc">样本外 AUC —</small><div class="metric-bottom-line violet"></div></article>
+            </section>
+
+            <section class="panel price-panel section-overview"><div class="panel-heading"><div><h3>行情走势<span class="tiny-pill">DAILY</span></h3><p>历史收盘价 · 仅展示已有行情</p></div><div class="chart-legend"><span><i class="legend-dot teal"></i>收盘价</span><span class="muted" id="price-window"></span></div></div><div class="chart-controls"><div class="segmented-control" aria-label="行情展示区间"><button type="button" data-window="30">30 日</button><button type="button" data-window="90" class="active" aria-pressed="true">90 日</button><button type="button" data-window="250">250 日</button></div><label class="check-control"><input id="show-ma" type="checkbox" checked>显示 MA5 / MA20</label><span class="moving-average-legend">MA5 <i class="legend-dot blue"></i> MA20 <i class="legend-dot amber"></i></span></div><div class="chart-container price-chart" id="price-chart" aria-label="历史收盘价曲线"></div></section>
+
+            <section class="panel equity-panel section-overview section-backtest"><div class="panel-heading"><div><h3>把预测放进市场里验证</h3><p>样本外资金曲线 · 信号在前一日收盘后生成</p></div><div class="chart-legend"><span><i class="legend-dot teal"></i>模型策略</span><span><i class="legend-dot blue"></i>日内基准</span></div></div><div class="chart-container equity-chart" id="equity-chart" aria-label="策略与基准的资金曲线"></div><div class="equity-footer"><span>初始资金 <strong id="initial-capital">—</strong></span><span>交易次数 <strong id="trade-count">—</strong></span><span>持仓交易胜率 <strong id="win-rate">—</strong></span><span>年化收益 <strong id="annualized-return">—</strong></span></div></section>
+
+            <section class="panel risk-panel section-backtest" hidden><div class="panel-heading"><div><h3>回撤与月度表现</h3><p>回撤相对此前资金峰值计算；月度收益按每日净收益复利计算。</p></div><span class="tiny-pill">RISK VIEW</span></div><div class="chart-container" id="drawdown-chart" aria-label="历史策略回撤"></div><div class="monthly-summary" id="monthly-summary"></div><div class="table-scroll"><table><thead><tr><th>月份</th><th>记录日数</th><th>策略收益</th><th>日内基准</th><th>入场次数</th></tr></thead><tbody id="monthly-body"></tbody></table></div><p class="panel-footnote">首尾月份可能不完整。更改日期筛选不会改变这里的全测试期收益。</p></section>
+
+            <section class="analysis-grid section-overview section-model">
+              <article class="panel prediction-panel"><div class="panel-heading"><div><h3>下一交易日 · 趋势观察</h3><p id="prediction-date">截至 —</p></div><span class="tiny-pill">INFERENCE</span></div><div class="prediction-main"><div class="probability-ring" id="probability-ring"><div><strong id="probability-up">—</strong><span>模型估计上涨概率</span></div></div><div class="prediction-summary"><span class="signal-pill" id="latest-signal">—</span><div class="prediction-return">预测日内收益<strong id="predicted-return">—</strong></div><small id="reference-close">参考收盘价 —</small></div></div><p class="prediction-context" id="prediction-context">—</p><div class="prediction-footnote">概率是模型输出，不代表未来必然发生；预测目标为下一交易日开盘到收盘的涨跌。</div></article>
+              <article class="panel feature-panel"><div class="panel-heading"><div><h3>模型在关注什么</h3><p id="feature-subtitle">特征相对重要性</p></div><span class="tiny-pill">TOP 6</span></div><div id="feature-list" class="feature-list"></div><p class="panel-footnote">重要性描述模型如何使用历史特征，不代表因果关系。</p></article>
+            </section>
+
+            <section class="panel split-panel section-overview section-model"><div class="panel-heading"><div><h3>遵循时间的训练方式</h3><p>按日期顺序切分，保留间隔避免相邻标签跨区间</p></div><span class="tiny-pill" id="gap-label">GAP 1</span></div><div class="split-timeline"><div class="split-train" id="split-train-bar">训练集</div><span class="split-gap"></span><div class="split-validation" id="split-validation-bar">验证集</div><span class="split-gap"></span><div class="split-test" id="split-test-bar">测试集</div></div><div class="split-details"><div><span><i class="legend-dot teal"></i>训练集</span><strong id="train-dates">—</strong><small id="train-rows">—</small></div><div><span><i class="legend-dot blue"></i>验证集</span><strong id="validation-dates">—</strong><small id="validation-rows">—</small></div><div><span><i class="legend-dot violet"></i>测试集</span><strong id="test-dates">—</strong><small id="test-rows">—</small></div></div></section>
+
+            <section class="panel model-details section-model" hidden><div class="panel-heading"><div><h3>实验参数与评估</h3><p>保留配置，方便复现与比较</p></div></div><div id="model-details-grid" class="details-grid"></div><div class="method-callout"><span>⌘</span><p>随机森林识别非线性特征组合，逻辑回归提供可解释的线性基线。价格方向分类和收益回归分别训练；验证集和测试集只用于评估，不参与模型拟合。</p></div></section>
+
+            <section class="panel audit-panel section-overview section-backtest"><div class="panel-heading"><div><h3>每一次预测，都可以追溯</h3><p id="audit-description">最近的样本外预测与实际结果</p></div><a id="export-csv" class="text-button" aria-disabled="true">导出全部 CSV <span>↓</span></a></div><div class="audit-controls"><label>交易日从<input id="filter-start" type="date" aria-label="起始交易日"></label><label>至<input id="filter-end" type="date" aria-label="结束交易日"></label><label>策略信号<select id="filter-signal"><option value="ALL">全部信号</option><option value="BUY">仅入场</option><option value="WAIT">仅空仓</option></select></label><label>方向判断<select id="filter-correct"><option value="ALL">全部判断</option><option value="correct">判断正确</option><option value="incorrect">判断有偏差</option></select></label><button type="button" class="secondary-button" id="reset-filters">重置</button><button type="button" class="secondary-button" id="export-filtered">导出筛选结果 ↓</button></div><p class="filter-summary" id="filter-summary" role="status"></p><div class="table-scroll"><table><thead><tr><th>信号生成日</th><th>交易日</th><th>上涨概率</th><th>预测日内收益</th><th>实际日内收益</th><th>策略信号</th><th>方向判断</th></tr></thead><tbody id="predictions-body"></tbody></table></div><div class="table-footer"><span>模型信号受概率阈值约束，方向判断以 50% 为界。</span><div class="pagination"><button class="icon-button" id="table-prev" aria-label="上一页">←</button><span id="table-page">1 / 1</span><button class="icon-button" id="table-next" aria-label="下一页">→</button></div></div></section>
+
+            <section class="panel notes-panel section-backtest section-model" hidden><div class="panel-heading"><div><h3>研究边界与实验说明</h3><p>读懂结果，也了解结果的适用范围</p></div></div><ul id="report-notes"></ul></section>
+            <footer class="report-footer"><span id="report-id">—</span><a id="export-model" hidden>下载训练模型 ↓</a><a id="export-json" aria-disabled="true">保存完整研究报告 JSON ↗</a></footer>
+          </div>
+        </div>
+
+        <aside class="config-column"><section class="panel config-panel"><div class="config-heading"><span class="config-icon">⚙</span><div><h2>实验配置</h2><p>调整参数，探索你的假设</p></div><span class="tiny-pill">LOCAL</span></div><form id="run-form"><label class="field-label" for="dataset-select">行情数据<span>01</span></label><select id="dataset-select" required aria-label="选择行情数据集"><option value="">正在加载…</option></select><div class="data-meta"><span id="data-config-source">—</span><a id="download-dataset" aria-disabled="true">下载 CSV ↓</a></div><div class="form-divider"></div><label class="field-label" for="model-select">预测模型<span>02</span></label><select id="model-select"><option value="random_forest">Random Forest · 随机森林</option><option value="logistic">Logistic · 逻辑回归</option></select><p id="model-help" class="field-help">以多棵决策树学习历史特征与涨跌的非线性关系。</p><div class="form-divider"></div><label class="field-label" for="threshold">入场概率阈值<span id="threshold-value">55%</span></label><input id="threshold" type="range" min="0.50" max="0.90" step="0.01" value="0.55"><div class="range-labels"><span>更频繁 50%</span><span>更谨慎 90%</span></div><p class="field-help">仅当模型上涨概率达到阈值时，下一交易日开盘入场、收盘离场。</p><div class="two-fields"><div><label class="field-label" for="cost-bps">单边手续费</label><div class="input-unit"><input id="cost-bps" type="number" min="0" max="100" step="0.1" value="5" required><span>bps</span></div></div><div><label class="field-label" for="slippage-bps">单边滑点</label><div class="input-unit"><input id="slippage-bps" type="number" min="0" max="100" step="0.1" value="2" required><span>bps</span></div></div></div><p class="field-help compact-help">1 bps = 0.01%，买卖两侧均扣费。</p><label class="field-label" for="initial-capital-input">初始资金</label><div class="input-unit"><input id="initial-capital-input" type="number" min="1000" max="1000000000" step="1000" value="100000" required><span>元</span></div><label class="field-label seed-label" for="seed-input">随机种子<span>可复现</span></label><input id="seed-input" type="number" min="0" max="2147483647" step="1" value="42" required><button type="submit" id="run-button" class="primary-button"><span class="play-icon">▶</span><span id="run-button-label">训练并回测</span><span>↗</span></button><button type="button" id="compare-run-button" class="secondary-button compare-run-button">⇄ 一键双模型对比</button><p id="config-dirty" class="config-dirty" hidden role="status">参数已修改，当前图表仍是上一次实验。点击训练应用新参数。</p><p class="local-hint"><span class="local-dot"></span>本机训练 · 无外部数据请求</p></form></section><section class="workflow-card"><span class="eyebrow">HOW IT WORKS</span><h3>一条完整的研究链路</h3><ol><li><span>01</span><div><strong>构建历史特征</strong><small>收益、波动、动量与成交量</small></div></li><li><span>02</span><div><strong>沿时间训练与预测</strong><small>冻结模型，评估未见过的数据</small></div></li><li><span>03</span><div><strong>回测并解释结果</strong><small>计入成本，保留逐日预测记录</small></div></li></ol></section></aside>
+      </div>
+      <footer class="page-footer"><span>AlphaLens <span class="muted">/</span> 把想法变成可检验的实验</span><span>Python · scikit-learn · FastAPI</span></footer>
+    </div>
+  </main>
+
+  <dialog id="upload-dialog"><form id="upload-form"><div class="dialog-heading"><div><span class="eyebrow">IMPORT DATA</span><h2>导入你的行情数据</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭导入窗口">×</button></div><p>上传按交易日记录的 OHLCV CSV。字段名为 <code>date, open, high, low, close, volume</code>，至少 <span id="min-rows">300</span> 行。</p><label class="field-label" for="dataset-upload-name">数据集名称 <span>可选</span></label><input id="dataset-upload-name" type="text" maxlength="80" placeholder="例如：我的研究样本"><label class="upload-zone" for="csv-file"><span class="upload-icon">↥</span><strong id="upload-file-label">点击选择 CSV 文件</strong><small>UTF-8 编码 · 最大 <span id="max-upload">8</span> MB</small><input id="csv-file" name="file" type="file" accept=".csv,text/csv" required></label><p class="field-help">请使用已获授权的数据；真实股票宜使用复权行情，避免拆股、分红造成的价格跳变。</p><div id="upload-error" class="error-banner" hidden role="alert"></div><button class="primary-button" type="submit" id="upload-submit">导入数据集 <span>↗</span></button></form></dialog>
+  <dialog id="docs-dialog" class="docs-dialog"><div class="dialog-heading"><div><span class="eyebrow">PROJECT HANDBOOK</span><h2>项目说明与演示指南</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭文档窗口">×</button></div><p class="muted">从第一次运行，到解释每一个研究结果。</p><div id="docs-list" class="docs-list"></div><div class="method-callout"><span>i</span><p>默认演示数据由程序生成，不对应任何真实证券。真实行情的预测效果需独立评估；回测结果不代表未来收益。</p></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,5721 @@
+{
+  "data_summary": {
+    "rows": 1000,
+    "start": "2022-12-22",
+    "end": "2026-10-21"
+  },
+  "split": {
+    "gap": 1,
+    "train": {
+      "start": "2023-01-19",
+      "end": "2025-04-18",
+      "rows": 587,
+      "target_start": "2023-01-20",
+      "target_end": "2025-04-21"
+    },
+    "validation": {
+      "start": "2025-04-22",
+      "end": "2026-01-19",
+      "rows": 195,
+      "target_start": "2025-04-23",
+      "target_end": "2026-01-20"
+    },
+    "test": {
+      "start": "2026-01-21",
+      "end": "2026-10-20",
+      "rows": 195,
+      "target_start": "2026-01-22",
+      "target_end": "2026-10-21"
+    }
+  },
+  "metrics": {
+    "accuracy": 0.5846153846153846,
+    "auc": 0.611969111969112,
+    "precision": 0.5205479452054794,
+    "recall": 0.4523809523809524,
+    "total_return": 0.027099492129667002,
+    "benchmark_return": -0.2951441389549644,
+    "annualized_return": 0.035158712567808593,
+    "max_drawdown": -0.03979135036518111,
+    "sharpe": 0.65417158204399,
+    "win_rate": 0.5217391304347826,
+    "trades": 23,
+    "test_sessions": 195,
+    "return_mae": 0.0072100754373645515,
+    "exposure": 0.11794871794871795
+  },
+  "validation_metrics": {
+    "accuracy": 0.558974358974359,
+    "auc": 0.6467242468927744,
+    "precision": 0.5824175824175825,
+    "recall": 0.5247524752475248,
+    "return_mae": 0.0079587014395903
+  },
+  "latest": {
+    "as_of": "2026-10-21",
+    "probability_up": 0.3452761334002671,
+    "predicted_return": -0.004311463903847597,
+    "signal": "WAIT",
+    "reference_close": 76.075671,
+    "model_train_end": "2025-04-21"
+  },
+  "features": [
+    {
+      "name": "ma_gap_5",
+      "label": "5 日均线偏离",
+      "importance": 0.15569027900648613,
+      "value": -0.017772222934360538
+    },
+    {
+      "name": "return_2",
+      "label": "2 日动量",
+      "importance": 0.11003678516487216,
+      "value": -0.0253838288396675
+    },
+    {
+      "name": "intraday_return",
+      "label": "当日日内收益",
+      "importance": 0.10490825808010897,
+      "value": -0.015369917373342035
+    },
+    {
+      "name": "return_1",
+      "label": "1 日收盘收益",
+      "importance": 0.09672845767516268,
+      "value": -0.014038043345136142
+    },
+    {
+      "name": "close_position",
+      "label": "收盘区间位置",
+      "importance": 0.07793990630746776,
+      "value": 0.19632331408163042
+    },
+    {
+      "name": "ma_gap_20",
+      "label": "20 日均线偏离",
+      "importance": 0.06662066139087204,
+      "value": -0.017779159793742116
+    },
+    {
+      "name": "return_20",
+      "label": "20 日动量",
+      "importance": 0.06658856058203438,
+      "value": -0.030722333619334075
+    },
+    {
+      "name": "return_5",
+      "label": "5 日动量",
+      "importance": 0.06523203957962424,
+      "value": -0.024348719559243115
+    },
+    {
+      "name": "range_ratio",
+      "label": "当日振幅",
+      "importance": 0.045715162057202614,
+      "value": 0.029849161632764205
+    },
+    {
+      "name": "overnight_gap",
+      "label": "当日开盘缺口",
+      "importance": 0.04062611017153147,
+      "value": 0.0013526643677723715
+    },
+    {
+      "name": "rsi_14",
+      "label": "14 日 RSI（0–1）",
+      "importance": 0.03380714577688681,
+      "value": 0.43180506473161634
+    },
+    {
+      "name": "volume_ratio_5",
+      "label": "5 日相对成交量",
+      "importance": 0.03274577887506053,
+      "value": 0.05423140108163693
+    },
+    {
+      "name": "volatility_20",
+      "label": "20 日收益波动",
+      "importance": 0.02931572931471991,
+      "value": 0.008420115118607147
+    },
+    {
+      "name": "return_10",
+      "label": "10 日动量",
+      "importance": 0.023664945472852646,
+      "value": -0.01343846413817873
+    },
+    {
+      "name": "volume_log_change",
+      "label": "成交量对数变化",
+      "importance": 0.019537370159097428,
+      "value": 0.10555105026548972
+    },
+    {
+      "name": "trend_strength",
+      "label": "动量波动比",
+      "importance": 0.016050147588478968,
+      "value": -1.293221349478276
+    },
+    {
+      "name": "volume_ratio_20",
+      "label": "20 日相对成交量",
+      "importance": 0.009882466288266417,
+      "value": -0.06322011581017573
+    },
+    {
+      "name": "volatility_5",
+      "label": "5 日收益波动",
+      "importance": 0.004910196509274875,
+      "value": 0.007304643882316596
+    }
+  ],
+  "equity": [
+    {
+      "date": "2026-01-22",
+      "strategy": 100000.0,
+      "benchmark": 99837.38443643968,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0016261556356031992
+    },
+    {
+      "date": "2026-01-23",
+      "strategy": 100000.0,
+      "benchmark": 99527.63438607944,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.003102545725819139
+    },
+    {
+      "date": "2026-01-26",
+      "strategy": 100000.0,
+      "benchmark": 99879.98017826615,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.003540180517301428
+    },
+    {
+      "date": "2026-01-27",
+      "strategy": 100000.0,
+      "benchmark": 99951.53964402669,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0007164545450732973
+    },
+    {
+      "date": "2026-01-28",
+      "strategy": 100000.0,
+      "benchmark": 99516.2229534301,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004355277488940712
+    },
+    {
+      "date": "2026-01-29",
+      "strategy": 100000.0,
+      "benchmark": 99274.15444428392,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0024324527394840034
+    },
+    {
+      "date": "2026-01-30",
+      "strategy": 100000.0,
+      "benchmark": 97536.04667410122,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.017508159902366094
+    },
+    {
+      "date": "2026-02-02",
+      "strategy": 100000.0,
+      "benchmark": 96646.7769254178,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.009117344602398658
+    },
+    {
+      "date": "2026-02-03",
+      "strategy": 100000.0,
+      "benchmark": 95460.54579494309,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.012273881946318066
+    },
+    {
+      "date": "2026-02-04",
+      "strategy": 100000.0,
+      "benchmark": 95203.05382377554,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0026973653777411233
+    },
+    {
+      "date": "2026-02-05",
+      "strategy": 100000.0,
+      "benchmark": 93955.25402014314,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013106720357333512
+    },
+    {
+      "date": "2026-02-06",
+      "strategy": 100000.0,
+      "benchmark": 93764.25101348296,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.002032914589526036
+    },
+    {
+      "date": "2026-02-09",
+      "strategy": 100000.0,
+      "benchmark": 93150.24965589304,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006548352393937695
+    },
+    {
+      "date": "2026-02-10",
+      "strategy": 100000.0,
+      "benchmark": 93365.8120202229,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.002314136195299188
+    },
+    {
+      "date": "2026-02-11",
+      "strategy": 100000.0,
+      "benchmark": 91343.55642124833,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.02165948707795262
+    },
+    {
+      "date": "2026-02-12",
+      "strategy": 100000.0,
+      "benchmark": 91966.32259696869,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.006817844630970571
+    },
+    {
+      "date": "2026-02-13",
+      "strategy": 100000.0,
+      "benchmark": 92613.70706376349,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.007039364503372392
+    },
+    {
+      "date": "2026-02-16",
+      "strategy": 100000.0,
+      "benchmark": 94195.50253217336,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.017079496313875175
+    },
+    {
+      "date": "2026-02-17",
+      "strategy": 100000.0,
+      "benchmark": 93804.42472941146,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004151767252670302
+    },
+    {
+      "date": "2026-02-18",
+      "strategy": 100000.0,
+      "benchmark": 93150.2665104839,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006973639258644249
+    },
+    {
+      "date": "2026-02-19",
+      "strategy": 100000.0,
+      "benchmark": 91673.70560654128,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.015851386788855226
+    },
+    {
+      "date": "2026-02-20",
+      "strategy": 100000.0,
+      "benchmark": 91265.74814692703,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004450103297505836
+    },
+    {
+      "date": "2026-02-23",
+      "strategy": 100000.0,
+      "benchmark": 93347.46887314049,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.022809441312661383
+    },
+    {
+      "date": "2026-02-24",
+      "strategy": 100568.36767189094,
+      "benchmark": 93878.02570874388,
+      "drawdown": 0.0,
+      "signal": "BUY",
+      "return": 0.005683676718909458,
+      "benchmark_return": 0.005683676718909458
+    },
+    {
+      "date": "2026-02-25",
+      "strategy": 101761.83972597258,
+      "benchmark": 94992.10166293736,
+      "drawdown": 0.0,
+      "signal": "BUY",
+      "return": 0.0118672708099965,
+      "benchmark_return": 0.0118672708099965
+    },
+    {
+      "date": "2026-02-26",
+      "strategy": 101761.83972597258,
+      "benchmark": 96786.78467701148,
+      "drawdown": 0.0,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0188929709171215
+    },
+    {
+      "date": "2026-02-27",
+      "strategy": 100562.20615243187,
+      "benchmark": 95645.80023052095,
+      "drawdown": -0.011788638813637009,
+      "signal": "BUY",
+      "return": -0.011788638813636898,
+      "benchmark_return": -0.011788638813636898
+    },
+    {
+      "date": "2026-03-02",
+      "strategy": 100562.20615243187,
+      "benchmark": 95577.90371381462,
+      "drawdown": -0.011788638813637009,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0007098745218575564
+    },
+    {
+      "date": "2026-03-03",
+      "strategy": 100562.20615243187,
+      "benchmark": 95089.42031587397,
+      "drawdown": -0.011788638813637009,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005110840256586036
+    },
+    {
+      "date": "2026-03-04",
+      "strategy": 101497.47640736091,
+      "benchmark": 95973.79139107764,
+      "drawdown": -0.0025978630036912476,
+      "signal": "BUY",
+      "return": 0.009300415043712817,
+      "benchmark_return": 0.009300415043712817
+    },
+    {
+      "date": "2026-03-05",
+      "strategy": 101244.51743986853,
+      "benchmark": 95734.59892998452,
+      "drawdown": -0.00508365697295865,
+      "signal": "BUY",
+      "return": -0.002492268541506748,
+      "benchmark_return": -0.002492268541506748
+    },
+    {
+      "date": "2026-03-06",
+      "strategy": 101244.51743986853,
+      "benchmark": 96569.56332167725,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.008721657593232068
+    },
+    {
+      "date": "2026-03-09",
+      "strategy": 101244.51743986853,
+      "benchmark": 94821.36699342374,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.018102974354664902
+    },
+    {
+      "date": "2026-03-10",
+      "strategy": 101244.51743986853,
+      "benchmark": 95688.70012562198,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.00914702202361628
+    },
+    {
+      "date": "2026-03-11",
+      "strategy": 101244.51743986853,
+      "benchmark": 96849.48605751827,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.012130856938932011
+    },
+    {
+      "date": "2026-03-12",
+      "strategy": 101244.51743986853,
+      "benchmark": 97792.88431254974,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.009740870018362102
+    },
+    {
+      "date": "2026-03-13",
+      "strategy": 101244.51743986853,
+      "benchmark": 97477.92599164309,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0032206670569202567
+    },
+    {
+      "date": "2026-03-16",
+      "strategy": 101244.51743986853,
+      "benchmark": 96715.28724394854,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.007823707161762283
+    },
+    {
+      "date": "2026-03-17",
+      "strategy": 101244.51743986853,
+      "benchmark": 96902.08573925021,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0019314267746577407
+    },
+    {
+      "date": "2026-03-18",
+      "strategy": 101244.51743986853,
+      "benchmark": 95941.15127608189,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.009916550875427643
+    },
+    {
+      "date": "2026-03-19",
+      "strategy": 101244.51743986853,
+      "benchmark": 97034.78333622585,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.011398988292280476
+    },
+    {
+      "date": "2026-03-20",
+      "strategy": 101244.51743986853,
+      "benchmark": 96364.87801606319,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006903764785473276
+    },
+    {
+      "date": "2026-03-23",
+      "strategy": 101244.51743986853,
+      "benchmark": 96697.23250186146,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0034489172055287565
+    },
+    {
+      "date": "2026-03-24",
+      "strategy": 101244.51743986853,
+      "benchmark": 96850.22194019686,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.001582149089245588
+    },
+    {
+      "date": "2026-03-25",
+      "strategy": 101244.51743986853,
+      "benchmark": 97898.90335100557,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.010827867916051392
+    },
+    {
+      "date": "2026-03-26",
+      "strategy": 101244.51743986853,
+      "benchmark": 98982.9540116379,
+      "drawdown": -0.00508365697295865,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.011073164494453946
+    },
+    {
+      "date": "2026-03-27",
+      "strategy": 101334.34869722373,
+      "benchmark": 99070.77865084248,
+      "drawdown": -0.0042008972115678,
+      "signal": "BUY",
+      "return": 0.000887270339438917,
+      "benchmark_return": 0.000887270339438917
+    },
+    {
+      "date": "2026-03-30",
+      "strategy": 101334.34869722373,
+      "benchmark": 99316.27836706037,
+      "drawdown": -0.0042008972115678,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.002478023485442904
+    },
+    {
+      "date": "2026-03-31",
+      "strategy": 101334.34869722373,
+      "benchmark": 101452.47165062554,
+      "drawdown": -0.0042008972115678,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.02150899448396637
+    },
+    {
+      "date": "2026-04-01",
+      "strategy": 103030.92408601924,
+      "benchmark": 103151.02469554821,
+      "drawdown": 0.0,
+      "signal": "BUY",
+      "return": 0.016742352525151105,
+      "benchmark_return": 0.016742352525151105
+    },
+    {
+      "date": "2026-04-02",
+      "strategy": 105042.95280973337,
+      "benchmark": 105165.39879156927,
+      "drawdown": 0.0,
+      "signal": "BUY",
+      "return": 0.01952839636800996,
+      "benchmark_return": 0.01952839636800996
+    },
+    {
+      "date": "2026-04-03",
+      "strategy": 104826.37386917786,
+      "benchmark": 104948.56739027925,
+      "drawdown": -0.00206181314178977,
+      "signal": "BUY",
+      "return": -0.002061813141789881,
+      "benchmark_return": -0.002061813141789881
+    },
+    {
+      "date": "2026-04-06",
+      "strategy": 104826.37386917786,
+      "benchmark": 106281.48300133599,
+      "drawdown": -0.00206181314178977,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.01270065560876077
+    },
+    {
+      "date": "2026-04-07",
+      "strategy": 104826.37386917786,
+      "benchmark": 107294.85613184745,
+      "drawdown": -0.00206181314178977,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.009534804200076241
+    },
+    {
+      "date": "2026-04-08",
+      "strategy": 103478.3999614862,
+      "benchmark": 105915.139738378,
+      "drawdown": -0.01489441039496553,
+      "signal": "BUY",
+      "return": -0.01285911033585807,
+      "benchmark_return": -0.01285911033585807
+    },
+    {
+      "date": "2026-04-09",
+      "strategy": 103478.3999614862,
+      "benchmark": 106109.9252289156,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0018390712698745926
+    },
+    {
+      "date": "2026-04-10",
+      "strategy": 103478.3999614862,
+      "benchmark": 105247.95418625414,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008123378098720546
+    },
+    {
+      "date": "2026-04-13",
+      "strategy": 103478.3999614862,
+      "benchmark": 105766.24861673523,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.004924508362071034
+    },
+    {
+      "date": "2026-04-14",
+      "strategy": 103478.3999614862,
+      "benchmark": 106086.91324765625,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0030318238106659123
+    },
+    {
+      "date": "2026-04-15",
+      "strategy": 103478.3999614862,
+      "benchmark": 106679.50461283152,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0055859044912720535
+    },
+    {
+      "date": "2026-04-16",
+      "strategy": 103478.3999614862,
+      "benchmark": 107587.6552040182,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.008512887217489551
+    },
+    {
+      "date": "2026-04-17",
+      "strategy": 103478.3999614862,
+      "benchmark": 107290.99885026467,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0027573456563485532
+    },
+    {
+      "date": "2026-04-20",
+      "strategy": 103478.3999614862,
+      "benchmark": 106586.43777073114,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006566823751140816
+    },
+    {
+      "date": "2026-04-21",
+      "strategy": 103478.3999614862,
+      "benchmark": 106861.45735884365,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0025802493625322054
+    },
+    {
+      "date": "2026-04-22",
+      "strategy": 103478.3999614862,
+      "benchmark": 106850.41256050872,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00010335623907742342
+    },
+    {
+      "date": "2026-04-23",
+      "strategy": 103478.3999614862,
+      "benchmark": 105154.37752070637,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.015872985411655494
+    },
+    {
+      "date": "2026-04-24",
+      "strategy": 103478.3999614862,
+      "benchmark": 104862.73973724809,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.002773425037876809
+    },
+    {
+      "date": "2026-04-27",
+      "strategy": 103478.3999614862,
+      "benchmark": 105157.97817336918,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0028154751331204153
+    },
+    {
+      "date": "2026-04-28",
+      "strategy": 103478.3999614862,
+      "benchmark": 105773.71406809597,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.005855341700385708
+    },
+    {
+      "date": "2026-04-29",
+      "strategy": 103478.3999614862,
+      "benchmark": 104949.647225203,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00779084718876788
+    },
+    {
+      "date": "2026-04-30",
+      "strategy": 103478.3999614862,
+      "benchmark": 105554.80003773137,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.005766125266050803
+    },
+    {
+      "date": "2026-05-01",
+      "strategy": 103478.3999614862,
+      "benchmark": 105118.7090115943,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00413141823944696
+    },
+    {
+      "date": "2026-05-04",
+      "strategy": 103478.3999614862,
+      "benchmark": 104192.25066708356,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008813448654592548
+    },
+    {
+      "date": "2026-05-05",
+      "strategy": 103478.3999614862,
+      "benchmark": 102594.02909761226,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01533915967107724
+    },
+    {
+      "date": "2026-05-06",
+      "strategy": 103478.3999614862,
+      "benchmark": 101178.77009171808,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013794750224183527
+    },
+    {
+      "date": "2026-05-07",
+      "strategy": 103478.3999614862,
+      "benchmark": 100898.29489116857,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0027720756073160713
+    },
+    {
+      "date": "2026-05-08",
+      "strategy": 103478.3999614862,
+      "benchmark": 100859.34826783177,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0003859988256375013
+    },
+    {
+      "date": "2026-05-11",
+      "strategy": 103478.3999614862,
+      "benchmark": 101040.99345403786,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0018009752127658984
+    },
+    {
+      "date": "2026-05-12",
+      "strategy": 103478.3999614862,
+      "benchmark": 101537.26235602696,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.004911560001781279
+    },
+    {
+      "date": "2026-05-13",
+      "strategy": 103478.3999614862,
+      "benchmark": 101826.26952228865,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.002846316313397601
+    },
+    {
+      "date": "2026-05-14",
+      "strategy": 103478.3999614862,
+      "benchmark": 101908.0785421334,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0008034176271853877
+    },
+    {
+      "date": "2026-05-15",
+      "strategy": 103478.3999614862,
+      "benchmark": 101277.28922076678,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006189787212068976
+    },
+    {
+      "date": "2026-05-18",
+      "strategy": 103478.3999614862,
+      "benchmark": 100193.80081551359,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.010698236629254287
+    },
+    {
+      "date": "2026-05-19",
+      "strategy": 103478.3999614862,
+      "benchmark": 98680.54076013104,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.015103330176773233
+    },
+    {
+      "date": "2026-05-20",
+      "strategy": 103478.3999614862,
+      "benchmark": 97976.85776698063,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.007130919507838063
+    },
+    {
+      "date": "2026-05-21",
+      "strategy": 103478.3999614862,
+      "benchmark": 98293.18768771859,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0032286187569956493
+    },
+    {
+      "date": "2026-05-22",
+      "strategy": 103478.3999614862,
+      "benchmark": 98506.87433907473,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.002173972137672786
+    },
+    {
+      "date": "2026-05-25",
+      "strategy": 103478.3999614862,
+      "benchmark": 98087.98590507734,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00425237768234854
+    },
+    {
+      "date": "2026-05-26",
+      "strategy": 103478.3999614862,
+      "benchmark": 96512.84461350646,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01605845279660645
+    },
+    {
+      "date": "2026-05-27",
+      "strategy": 103478.3999614862,
+      "benchmark": 95512.57352869186,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01036412395490216
+    },
+    {
+      "date": "2026-05-28",
+      "strategy": 103478.3999614862,
+      "benchmark": 95125.82111230062,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004049230400802184
+    },
+    {
+      "date": "2026-05-29",
+      "strategy": 103478.3999614862,
+      "benchmark": 94963.6388574184,
+      "drawdown": -0.01489441039496553,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0017049235737031099
+    },
+    {
+      "date": "2026-06-01",
+      "strategy": 102960.080356403,
+      "benchmark": 94487.96938622287,
+      "drawdown": -0.01982876906652764,
+      "signal": "BUY",
+      "return": -0.005008964240615477,
+      "benchmark_return": -0.005008964240615477
+    },
+    {
+      "date": "2026-06-02",
+      "strategy": 102960.080356403,
+      "benchmark": 93117.06572317619,
+      "drawdown": -0.01982876906652764,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.014508764152217801
+    },
+    {
+      "date": "2026-06-03",
+      "strategy": 102960.080356403,
+      "benchmark": 91735.33073305948,
+      "drawdown": -0.01982876906652764,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.014838686973066784
+    },
+    {
+      "date": "2026-06-04",
+      "strategy": 102960.080356403,
+      "benchmark": 91643.39755879092,
+      "drawdown": -0.01982876906652764,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.001002156677628152
+    },
+    {
+      "date": "2026-06-05",
+      "strategy": 102960.080356403,
+      "benchmark": 92896.03677294923,
+      "drawdown": -0.01982876906652764,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.013668624773047311
+    },
+    {
+      "date": "2026-06-08",
+      "strategy": 102536.36873175114,
+      "benchmark": 92513.74170743904,
+      "drawdown": -0.023862467789937947,
+      "signal": "BUY",
+      "return": -0.004115300057897842,
+      "benchmark_return": -0.004115300057897842
+    },
+    {
+      "date": "2026-06-09",
+      "strategy": 102536.36873175114,
+      "benchmark": 91509.41719963653,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.010855949497519224
+    },
+    {
+      "date": "2026-06-10",
+      "strategy": 102536.36873175114,
+      "benchmark": 91123.69147181184,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004215147900933469
+    },
+    {
+      "date": "2026-06-11",
+      "strategy": 102536.36873175114,
+      "benchmark": 90628.2550647876,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005436965941809868
+    },
+    {
+      "date": "2026-06-12",
+      "strategy": 102536.36873175114,
+      "benchmark": 90045.74722752406,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0064274418264714805
+    },
+    {
+      "date": "2026-06-15",
+      "strategy": 102536.36873175114,
+      "benchmark": 89414.18916518724,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0070137466985645824
+    },
+    {
+      "date": "2026-06-16",
+      "strategy": 102536.36873175114,
+      "benchmark": 89007.21835985937,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004551523747265973
+    },
+    {
+      "date": "2026-06-17",
+      "strategy": 102536.36873175114,
+      "benchmark": 88491.47129060022,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005794440931452982
+    },
+    {
+      "date": "2026-06-18",
+      "strategy": 102536.36873175114,
+      "benchmark": 87289.12715597815,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013587118815932553
+    },
+    {
+      "date": "2026-06-19",
+      "strategy": 102536.36873175114,
+      "benchmark": 86748.7683123889,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006190448469299947
+    },
+    {
+      "date": "2026-06-22",
+      "strategy": 102536.36873175114,
+      "benchmark": 85723.307308846,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.011821043958228361
+    },
+    {
+      "date": "2026-06-23",
+      "strategy": 102536.36873175114,
+      "benchmark": 85093.72086423275,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00734440217460286
+    },
+    {
+      "date": "2026-06-24",
+      "strategy": 102536.36873175114,
+      "benchmark": 84959.07494768374,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0015823249375100934
+    },
+    {
+      "date": "2026-06-25",
+      "strategy": 102536.36873175114,
+      "benchmark": 83783.55341311338,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013836326905562801
+    },
+    {
+      "date": "2026-06-26",
+      "strategy": 102536.36873175114,
+      "benchmark": 83680.84235603748,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.001225909535842451
+    },
+    {
+      "date": "2026-06-29",
+      "strategy": 102536.36873175114,
+      "benchmark": 85122.5167175582,
+      "drawdown": -0.023862467789937947,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.01722824867592543
+    },
+    {
+      "date": "2026-06-30",
+      "strategy": 102523.17677266276,
+      "benchmark": 85111.56516181337,
+      "drawdown": -0.023988054121391045,
+      "signal": "BUY",
+      "return": -0.00012865639042569654,
+      "benchmark_return": -0.00012865639042569654
+    },
+    {
+      "date": "2026-07-01",
+      "strategy": 102523.17677266276,
+      "benchmark": 84764.68371019281,
+      "drawdown": -0.023988054121391045,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.004075608890061866
+    },
+    {
+      "date": "2026-07-02",
+      "strategy": 102523.17677266276,
+      "benchmark": 84460.77684718171,
+      "drawdown": -0.023988054121391045,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0035853005014463424
+    },
+    {
+      "date": "2026-07-03",
+      "strategy": 102523.17677266276,
+      "benchmark": 85089.46283227392,
+      "drawdown": -0.023988054121391045,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0074435259603367054
+    },
+    {
+      "date": "2026-07-06",
+      "strategy": 101056.88632092703,
+      "benchmark": 83872.51003367947,
+      "drawdown": -0.03794701483712459,
+      "signal": "BUY",
+      "return": -0.014302038796428551,
+      "benchmark_return": -0.014302038796428551
+    },
+    {
+      "date": "2026-07-07",
+      "strategy": 101056.88632092703,
+      "benchmark": 83005.28864929877,
+      "drawdown": -0.03794701483712459,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.010339757138929762
+    },
+    {
+      "date": "2026-07-08",
+      "strategy": 101056.88632092703,
+      "benchmark": 82562.74063198744,
+      "drawdown": -0.03794701483712459,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0053315641028743865
+    },
+    {
+      "date": "2026-07-09",
+      "strategy": 101056.88632092703,
+      "benchmark": 82880.12576377524,
+      "drawdown": -0.03794701483712459,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.00384416904475704
+    },
+    {
+      "date": "2026-07-10",
+      "strategy": 101147.40282036139,
+      "benchmark": 82954.36136641382,
+      "drawdown": -0.03708530544098543,
+      "signal": "BUY",
+      "return": 0.0008956984796353318,
+      "benchmark_return": 0.0008956984796353318
+    },
+    {
+      "date": "2026-07-13",
+      "strategy": 101147.40282036139,
+      "benchmark": 83182.19567452489,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0027465018638948013
+    },
+    {
+      "date": "2026-07-14",
+      "strategy": 101147.40282036139,
+      "benchmark": 82626.28108982377,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006683095825894214
+    },
+    {
+      "date": "2026-07-15",
+      "strategy": 101147.40282036139,
+      "benchmark": 83089.66759658567,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.00560822175039144
+    },
+    {
+      "date": "2026-07-16",
+      "strategy": 101147.40282036139,
+      "benchmark": 82341.88177192229,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008999745050058516
+    },
+    {
+      "date": "2026-07-17",
+      "strategy": 101147.40282036139,
+      "benchmark": 83005.08528066051,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0080542670930841
+    },
+    {
+      "date": "2026-07-20",
+      "strategy": 101147.40282036139,
+      "benchmark": 82576.16228080018,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005167430385861649
+    },
+    {
+      "date": "2026-07-21",
+      "strategy": 101147.40282036139,
+      "benchmark": 82136.29871496551,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005326762030171905
+    },
+    {
+      "date": "2026-07-22",
+      "strategy": 101147.40282036139,
+      "benchmark": 80427.70867151798,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.020801887474584002
+    },
+    {
+      "date": "2026-07-23",
+      "strategy": 101147.40282036139,
+      "benchmark": 81944.79992270264,
+      "drawdown": -0.03708530544098543,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.01886279338605501
+    },
+    {
+      "date": "2026-07-24",
+      "strategy": 101239.17692304059,
+      "benchmark": 82019.15092206036,
+      "drawdown": -0.03621162376863718,
+      "signal": "BUY",
+      "return": 0.000907330293415276,
+      "benchmark_return": 0.000907330293415276
+    },
+    {
+      "date": "2026-07-27",
+      "strategy": 101239.17692304059,
+      "benchmark": 82587.70451207041,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.006931961421428712
+    },
+    {
+      "date": "2026-07-28",
+      "strategy": 101239.17692304059,
+      "benchmark": 82652.03337253386,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0007789157095901
+    },
+    {
+      "date": "2026-07-29",
+      "strategy": 101239.17692304059,
+      "benchmark": 82407.83684982806,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.002954513189108554
+    },
+    {
+      "date": "2026-07-30",
+      "strategy": 101239.17692304059,
+      "benchmark": 82911.28315921762,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.006109204277585656
+    },
+    {
+      "date": "2026-07-31",
+      "strategy": 101239.17692304059,
+      "benchmark": 82887.21935935802,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00029023552576556977
+    },
+    {
+      "date": "2026-08-03",
+      "strategy": 101239.17692304059,
+      "benchmark": 83364.58876201349,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.005759264291227417
+    },
+    {
+      "date": "2026-08-04",
+      "strategy": 101239.17692304059,
+      "benchmark": 83970.35092776797,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.0072664206079608995
+    },
+    {
+      "date": "2026-08-05",
+      "strategy": 101239.17692304059,
+      "benchmark": 84256.1444419448,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.003403505058859002
+    },
+    {
+      "date": "2026-08-06",
+      "strategy": 101239.17692304059,
+      "benchmark": 85746.53194563904,
+      "drawdown": -0.03621162376863718,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.017688769330302945
+    },
+    {
+      "date": "2026-08-07",
+      "strategy": 102979.32318845476,
+      "benchmark": 87220.38339200991,
+      "drawdown": -0.019645578937756203,
+      "signal": "BUY",
+      "return": 0.017188467135968333,
+      "benchmark_return": 0.017188467135968333
+    },
+    {
+      "date": "2026-08-10",
+      "strategy": 101573.9013311636,
+      "benchmark": 86030.03343218236,
+      "drawdown": -0.03302507579783431,
+      "signal": "BUY",
+      "return": -0.013647612100918582,
+      "benchmark_return": -0.013647612100918582
+    },
+    {
+      "date": "2026-08-11",
+      "strategy": 101573.9013311636,
+      "benchmark": 84882.56374851747,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013338012760037432
+    },
+    {
+      "date": "2026-08-12",
+      "strategy": 101573.9013311636,
+      "benchmark": 84009.17707892568,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.010289353089986575
+    },
+    {
+      "date": "2026-08-13",
+      "strategy": 101573.9013311636,
+      "benchmark": 84363.59723119422,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.004218826616234628
+    },
+    {
+      "date": "2026-08-14",
+      "strategy": 101573.9013311636,
+      "benchmark": 83772.74657938846,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.007003620888599182
+    },
+    {
+      "date": "2026-08-17",
+      "strategy": 101573.9013311636,
+      "benchmark": 83233.85317118873,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.006432801002758559
+    },
+    {
+      "date": "2026-08-18",
+      "strategy": 101573.9013311636,
+      "benchmark": 81783.30478433524,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01742738479101902
+    },
+    {
+      "date": "2026-08-19",
+      "strategy": 101573.9013311636,
+      "benchmark": 81779.94907705605,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -4.103169085711844e-05
+    },
+    {
+      "date": "2026-08-20",
+      "strategy": 101573.9013311636,
+      "benchmark": 83169.66626844794,
+      "drawdown": -0.03302507579783431,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.016993373156572122
+    },
+    {
+      "date": "2026-08-21",
+      "strategy": 100863.15187108808,
+      "benchmark": 82587.69792204924,
+      "drawdown": -0.03979135036518111,
+      "signal": "BUY",
+      "return": -0.006997363011176039,
+      "benchmark_return": -0.006997363011176039
+    },
+    {
+      "date": "2026-08-24",
+      "strategy": 100863.15187108808,
+      "benchmark": 82360.19296429036,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0027547075833693757
+    },
+    {
+      "date": "2026-08-25",
+      "strategy": 100863.15187108808,
+      "benchmark": 81890.17742497366,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0057068290201856
+    },
+    {
+      "date": "2026-08-26",
+      "strategy": 100863.15187108808,
+      "benchmark": 81569.95668336177,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.003910368150139565
+    },
+    {
+      "date": "2026-08-27",
+      "strategy": 100863.15187108808,
+      "benchmark": 80669.66519730884,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.011037047494675933
+    },
+    {
+      "date": "2026-08-28",
+      "strategy": 100863.15187108808,
+      "benchmark": 79986.98946178787,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008462607770234665
+    },
+    {
+      "date": "2026-08-31",
+      "strategy": 100863.15187108808,
+      "benchmark": 79718.18066505769,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0033606565085012585
+    },
+    {
+      "date": "2026-09-01",
+      "strategy": 100863.15187108808,
+      "benchmark": 79699.3255468936,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0002365221836072573
+    },
+    {
+      "date": "2026-09-02",
+      "strategy": 100863.15187108808,
+      "benchmark": 79083.35507402147,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.007728678613593831
+    },
+    {
+      "date": "2026-09-03",
+      "strategy": 100863.15187108808,
+      "benchmark": 79441.86781212107,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.004533352660165191
+    },
+    {
+      "date": "2026-09-04",
+      "strategy": 100863.15187108808,
+      "benchmark": 78996.07023854369,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005611619991509831
+    },
+    {
+      "date": "2026-09-07",
+      "strategy": 100863.15187108808,
+      "benchmark": 78208.86082992169,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.009965171764176106
+    },
+    {
+      "date": "2026-09-08",
+      "strategy": 100863.15187108808,
+      "benchmark": 77196.77447989161,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.012940814369244324
+    },
+    {
+      "date": "2026-09-09",
+      "strategy": 100863.15187108808,
+      "benchmark": 76324.85048936016,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01129482412193994
+    },
+    {
+      "date": "2026-09-10",
+      "strategy": 100863.15187108808,
+      "benchmark": 75563.6809387554,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.009972761764019067
+    },
+    {
+      "date": "2026-09-11",
+      "strategy": 100863.15187108808,
+      "benchmark": 75345.69359446004,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0028848163772227098
+    },
+    {
+      "date": "2026-09-14",
+      "strategy": 100863.15187108808,
+      "benchmark": 73928.83900939177,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.018804718856187508
+    },
+    {
+      "date": "2026-09-15",
+      "strategy": 100863.15187108808,
+      "benchmark": 74177.01496835425,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.003356957342870892
+    },
+    {
+      "date": "2026-09-16",
+      "strategy": 100863.15187108808,
+      "benchmark": 73767.12473882645,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005525838828951191
+    },
+    {
+      "date": "2026-09-17",
+      "strategy": 100863.15187108808,
+      "benchmark": 75316.07816961288,
+      "drawdown": -0.03979135036518111,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.02099788267836833
+    },
+    {
+      "date": "2026-09-18",
+      "strategy": 101779.4550632717,
+      "benchmark": 76000.29595945324,
+      "drawdown": -0.031068221705200072,
+      "signal": "BUY",
+      "return": 0.009084617872687106,
+      "benchmark_return": 0.009084617872687106
+    },
+    {
+      "date": "2026-09-21",
+      "strategy": 101779.4550632717,
+      "benchmark": 75406.66567086741,
+      "drawdown": -0.031068221705200072,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.007810894432602522
+    },
+    {
+      "date": "2026-09-22",
+      "strategy": 101779.4550632717,
+      "benchmark": 74728.03379056846,
+      "drawdown": -0.031068221705200072,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008999627211485839
+    },
+    {
+      "date": "2026-09-23",
+      "strategy": 101779.4550632717,
+      "benchmark": 73651.78995677209,
+      "drawdown": -0.031068221705200072,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.014402143067387962
+    },
+    {
+      "date": "2026-09-24",
+      "strategy": 101779.4550632717,
+      "benchmark": 73046.29801576286,
+      "drawdown": -0.031068221705200072,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.008221007817523551
+    },
+    {
+      "date": "2026-09-25",
+      "strategy": 101779.4550632717,
+      "benchmark": 72924.08441042624,
+      "drawdown": -0.031068221705200072,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0016730978660993712
+    },
+    {
+      "date": "2026-09-28",
+      "strategy": 101086.39638289396,
+      "benchmark": 72427.51396133288,
+      "drawdown": -0.03766608155052542,
+      "signal": "BUY",
+      "return": -0.006809416300636584,
+      "benchmark_return": -0.006809416300636584
+    },
+    {
+      "date": "2026-09-29",
+      "strategy": 101086.39638289396,
+      "benchmark": 72719.03959770175,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.004025067552705153
+    },
+    {
+      "date": "2026-09-30",
+      "strategy": 101086.39638289396,
+      "benchmark": 72580.91273572063,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.00189945938154934
+    },
+    {
+      "date": "2026-10-01",
+      "strategy": 101086.39638289396,
+      "benchmark": 71616.29235211594,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013290276289539493
+    },
+    {
+      "date": "2026-10-02",
+      "strategy": 101086.39638289396,
+      "benchmark": 71383.4406870996,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0032513783856817913
+    },
+    {
+      "date": "2026-10-05",
+      "strategy": 101086.39638289396,
+      "benchmark": 70468.52691930068,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.012816890850208873
+    },
+    {
+      "date": "2026-10-06",
+      "strategy": 101086.39638289396,
+      "benchmark": 70969.45046742905,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.007108471966527974
+    },
+    {
+      "date": "2026-10-07",
+      "strategy": 101086.39638289396,
+      "benchmark": 72080.10882618053,
+      "drawdown": -0.03766608155052542,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.01564980919869452
+    },
+    {
+      "date": "2026-10-08",
+      "strategy": 102496.88120577787,
+      "benchmark": 73085.86136231852,
+      "drawdown": -0.02423838568749348,
+      "signal": "BUY",
+      "return": 0.013953260511347931,
+      "benchmark_return": 0.013953260511347931
+    },
+    {
+      "date": "2026-10-09",
+      "strategy": 102709.9492129667,
+      "benchmark": 73237.79046153555,
+      "drawdown": -0.022209996333523496,
+      "signal": "BUY",
+      "return": 0.0020787755167015476,
+      "benchmark_return": 0.0020787755167015476
+    },
+    {
+      "date": "2026-10-12",
+      "strategy": 102709.9492129667,
+      "benchmark": 73469.98626871697,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.003170437088805489
+    },
+    {
+      "date": "2026-10-13",
+      "strategy": 102709.9492129667,
+      "benchmark": 73257.08851883069,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0028977513226641216
+    },
+    {
+      "date": "2026-10-14",
+      "strategy": 102709.9492129667,
+      "benchmark": 73276.96160742124,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": 0.00027127871162191397
+    },
+    {
+      "date": "2026-10-15",
+      "strategy": 102709.9492129667,
+      "benchmark": 73209.27550261117,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0009237023932937571
+    },
+    {
+      "date": "2026-10-16",
+      "strategy": 102709.9492129667,
+      "benchmark": 72776.41045622392,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.005912707691961838
+    },
+    {
+      "date": "2026-10-19",
+      "strategy": 102709.9492129667,
+      "benchmark": 72644.36515470121,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.0018143970098958295
+    },
+    {
+      "date": "2026-10-20",
+      "strategy": 102709.9492129667,
+      "benchmark": 71686.14516746678,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.013190561789532262
+    },
+    {
+      "date": "2026-10-21",
+      "strategy": 102709.9492129667,
+      "benchmark": 70485.58610450356,
+      "drawdown": -0.022209996333523496,
+      "signal": "WAIT",
+      "return": 0.0,
+      "benchmark_return": -0.01674743508886667
+    }
+  ],
+  "predictions": [
+    {
+      "signal_date": "2026-01-21",
+      "date": "2026-01-22",
+      "probability_up": 0.4666389451025365,
+      "predicted_return": -0.0014742869369819805,
+      "actual_return": -0.00022745330172968536,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-22",
+      "date": "2026-01-23",
+      "probability_up": 0.5297876465260954,
+      "predicted_return": 0.0008494050809798633,
+      "actual_return": -0.0017059117857406436,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-01-23",
+      "date": "2026-01-26",
+      "probability_up": 0.5088456523747457,
+      "predicted_return": 0.0003838105314191573,
+      "actual_return": 0.004946120787620911,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-26",
+      "date": "2026-01-27",
+      "probability_up": 0.5136306275102083,
+      "predicted_return": 0.0014714812509425683,
+      "actual_return": 0.0021184388302373236,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-27",
+      "date": "2026-01-28",
+      "probability_up": 0.4908375960549996,
+      "predicted_return": 0.001042274527269371,
+      "actual_return": -0.0029603986016921713,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-28",
+      "date": "2026-01-29",
+      "probability_up": 0.4955602301029084,
+      "predicted_return": 0.0006740082301606771,
+      "actual_return": -0.0010348800121675605,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-29",
+      "date": "2026-01-30",
+      "probability_up": 0.44932024278587157,
+      "predicted_return": -0.00017248999706151642,
+      "actual_return": -0.01613170794750629,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-01-30",
+      "date": "2026-02-02",
+      "probability_up": 0.2979131059975077,
+      "predicted_return": -0.005128990431572382,
+      "actual_return": -0.007729137278536191,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-02",
+      "date": "2026-02-03",
+      "probability_up": 0.4454765313948474,
+      "predicted_return": -0.0016084170620397316,
+      "actual_return": -0.010890096869867971,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-03",
+      "date": "2026-02-04",
+      "probability_up": 0.3715562512643616,
+      "predicted_return": -0.003808614245760451,
+      "actual_return": -0.0013001637878773398,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-04",
+      "date": "2026-02-05",
+      "probability_up": 0.5351570991799386,
+      "predicted_return": 0.00045408196674756574,
+      "actual_return": -0.011724102071295484,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-05",
+      "date": "2026-02-06",
+      "probability_up": 0.44644488089524303,
+      "predicted_return": -0.002097394944535399,
+      "actual_return": -0.0006347821170339385,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-06",
+      "date": "2026-02-09",
+      "probability_up": 0.4226054597649102,
+      "predicted_return": -0.001653027056521517,
+      "actual_return": -0.0051565459619675735,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-09",
+      "date": "2026-02-10",
+      "probability_up": 0.46248427957084826,
+      "predicted_return": -0.000706441172810487,
+      "actual_return": 0.0037183588013742774,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-10",
+      "date": "2026-02-11",
+      "probability_up": 0.4742053118473707,
+      "predicted_return": 0.001000527423512423,
+      "actual_return": -0.02028885105170697,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-11",
+      "date": "2026-02-12",
+      "probability_up": 0.3030264945702589,
+      "predicted_return": -0.004218606525193463,
+      "actual_return": 0.00822837684495048,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-12",
+      "date": "2026-02-13",
+      "probability_up": 0.4659260791411549,
+      "predicted_return": 0.0007584271420807327,
+      "actual_return": 0.008450207062383974,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-13",
+      "date": "2026-02-16",
+      "probability_up": 0.4959299409065063,
+      "predicted_return": 0.0014612241949389637,
+      "actual_return": 0.018504404902235372,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-16",
+      "date": "2026-02-17",
+      "probability_up": 0.5292149475177285,
+      "predicted_return": 0.0019758710886978617,
+      "actual_return": -0.002756603251539702,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-17",
+      "date": "2026-02-18",
+      "probability_up": 0.4214103676277792,
+      "predicted_return": -0.0001867998357353921,
+      "actual_return": -0.005582428645298232,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-18",
+      "date": "2026-02-19",
+      "probability_up": 0.4151648283780297,
+      "predicted_return": -0.0012366406425443587,
+      "actual_return": -0.014472613727093742,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-19",
+      "date": "2026-02-20",
+      "probability_up": 0.3896519553251524,
+      "predicted_return": -0.0028804770970405637,
+      "actual_return": -0.0030553572593703393,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-20",
+      "date": "2026-02-23",
+      "probability_up": 0.4965731987049529,
+      "predicted_return": -0.0001629438413308486,
+      "actual_return": 0.02424237744249602,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-23",
+      "date": "2026-02-24",
+      "probability_up": 0.6570549091022125,
+      "predicted_return": 0.003820908496620084,
+      "actual_return": 0.007092619985708426,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-24",
+      "date": "2026-02-25",
+      "probability_up": 0.5551171443216697,
+      "predicted_return": 0.0014131686741895148,
+      "actual_return": 0.013284877171823029,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-25",
+      "date": "2026-02-26",
+      "probability_up": 0.5456017208604442,
+      "predicted_return": 0.0023290716581014447,
+      "actual_return": 0.020320420148121965,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-02-26",
+      "date": "2026-02-27",
+      "probability_up": 0.6455706137582429,
+      "predicted_return": 0.002910237186490696,
+      "actual_return": -0.010404173920997573,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-02-27",
+      "date": "2026-03-02",
+      "probability_up": 0.4537075925828944,
+      "predicted_return": -0.0020190407136677947,
+      "actual_return": 0.0006901115040311989,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-02",
+      "date": "2026-03-03",
+      "probability_up": 0.5145023688794826,
+      "predicted_return": 0.00035325807974285345,
+      "actual_return": -0.003717019898076379,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-03",
+      "date": "2026-03-04",
+      "probability_up": 0.5820950214533372,
+      "predicted_return": 0.0008780147030279268,
+      "actual_return": 0.01071442529054556,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-04",
+      "date": "2026-03-05",
+      "probability_up": 0.5847786891088812,
+      "predicted_return": 0.0020062087959874324,
+      "actual_return": -0.001094779614965291,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-05",
+      "date": "2026-03-06",
+      "probability_up": 0.4723285010826479,
+      "predicted_return": -0.0006236960001309735,
+      "actual_return": 0.01013485701213579,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-06",
+      "date": "2026-03-09",
+      "probability_up": 0.5143353280435095,
+      "predicted_return": 0.0005766547938465317,
+      "actual_return": -0.016727355723281434,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-09",
+      "date": "2026-03-10",
+      "probability_up": 0.3181747863528428,
+      "predicted_return": -0.0044078854736518645,
+      "actual_return": 0.010560817369811959,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-10",
+      "date": "2026-03-11",
+      "probability_up": 0.5337622288684687,
+      "predicted_return": 0.0008532078877906168,
+      "actual_return": 0.013548832579797443,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-11",
+      "date": "2026-03-12",
+      "probability_up": 0.49783287646080465,
+      "predicted_return": 0.00023288245743393482,
+      "actual_return": 0.01115549733404575,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-12",
+      "date": "2026-03-13",
+      "probability_up": 0.5487187946263758,
+      "predicted_return": 0.0020669975184543737,
+      "actual_return": -0.0018241986025288037,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-13",
+      "date": "2026-03-16",
+      "probability_up": 0.48273854078664874,
+      "predicted_return": 0.0009991038137221737,
+      "actual_return": -0.006433687477011563,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-16",
+      "date": "2026-03-17",
+      "probability_up": 0.48228259734169815,
+      "predicted_return": -0.00043592289176762886,
+      "actual_return": 0.003335113212279861,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-17",
+      "date": "2026-03-18",
+      "probability_up": 0.5227060914260216,
+      "predicted_return": 0.0010908221126368957,
+      "actual_return": -0.00852946322400605,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-18",
+      "date": "2026-03-19",
+      "probability_up": 0.5017233913684176,
+      "predicted_return": -0.00013856674896984005,
+      "actual_return": 0.012815938599409549,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-19",
+      "date": "2026-03-20",
+      "probability_up": 0.5116210927642486,
+      "predicted_return": 0.0022259388936459908,
+      "actual_return": -0.005512456279349598,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-20",
+      "date": "2026-03-23",
+      "probability_up": 0.42714443321306966,
+      "predicted_return": -0.0006855706928597985,
+      "actual_return": 0.0048547296177234855,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-23",
+      "date": "2026-03-24",
+      "probability_up": 0.48655676553736704,
+      "predicted_return": 0.0009818762885964816,
+      "actual_return": 0.0029853461956252936,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-24",
+      "date": "2026-03-25",
+      "probability_up": 0.5040751188467644,
+      "predicted_return": 0.0012760873950900635,
+      "actual_return": 0.012244018094643927,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-25",
+      "date": "2026-03-26",
+      "probability_up": 0.541353666632242,
+      "predicted_return": 0.002674357344579587,
+      "actual_return": 0.012489658328780795,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-26",
+      "date": "2026-03-27",
+      "probability_up": 0.5559097107202657,
+      "predicted_return": 0.0021513087408207526,
+      "actual_return": 0.0022894939342079645,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-03-27",
+      "date": "2026-03-30",
+      "probability_up": 0.48790797067094505,
+      "predicted_return": -6.067991486015532e-05,
+      "actual_return": 0.0038824756944235705,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-30",
+      "date": "2026-03-31",
+      "probability_up": 0.46209222428010527,
+      "predicted_return": 0.0004125758360305024,
+      "actual_return": 0.02294010871309271,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-03-31",
+      "date": "2026-04-01",
+      "probability_up": 0.6094011794495152,
+      "predicted_return": 0.003284309713857519,
+      "actual_return": 0.018166788781622145,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-01",
+      "date": "2026-04-02",
+      "probability_up": 0.5927163132326367,
+      "predicted_return": 0.0037753722635800223,
+      "actual_return": 0.02095673581770585,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-02",
+      "date": "2026-04-03",
+      "probability_up": 0.5667300916372163,
+      "predicted_return": 0.004119920180756191,
+      "actual_return": -0.0006637211556074218,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-03",
+      "date": "2026-04-06",
+      "probability_up": 0.5259298629034583,
+      "predicted_return": 0.0015475891079429194,
+      "actual_return": 0.014119429526478156,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-06",
+      "date": "2026-04-07",
+      "probability_up": 0.5383453024871541,
+      "predicted_return": 0.0017471899835584351,
+      "actual_return": 0.010949142821557345,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-07",
+      "date": "2026-04-08",
+      "probability_up": 0.5547288321406839,
+      "predicted_return": 0.002414865662424911,
+      "actual_return": -0.011476145152996997,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-08",
+      "date": "2026-04-09",
+      "probability_up": 0.38933162066466115,
+      "predicted_return": -0.0027677757161680117,
+      "actual_return": 0.0032426283192310557,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-09",
+      "date": "2026-04-10",
+      "probability_up": 0.5013522890006483,
+      "predicted_return": 0.00016667911908838556,
+      "actual_return": -0.006733778247122735,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-10",
+      "date": "2026-04-13",
+      "probability_up": 0.46328142482787016,
+      "predicted_return": -0.0012663565949142315,
+      "actual_return": 0.006332388048770454,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-13",
+      "date": "2026-04-14",
+      "probability_up": 0.5284561359146905,
+      "predicted_return": 0.001082699722477634,
+      "actual_return": 0.004437051883128484,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-14",
+      "date": "2026-04-15",
+      "probability_up": 0.5157357034416189,
+      "predicted_return": 0.001429587473807529,
+      "actual_return": 0.0069947107810819364,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-15",
+      "date": "2026-04-16",
+      "probability_up": 0.5198991990484624,
+      "predicted_return": 0.001521235920317377,
+      "actual_return": 0.009925794153158307,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-16",
+      "date": "2026-04-17",
+      "probability_up": 0.5356182353168693,
+      "predicted_return": 0.001998428816656467,
+      "actual_return": -0.0013602280976883208,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-17",
+      "date": "2026-04-20",
+      "probability_up": 0.48234618902832505,
+      "predicted_return": 0.0006236164550218749,
+      "actual_return": -0.00517504319718276,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-20",
+      "date": "2026-04-21",
+      "probability_up": 0.4624832351978633,
+      "predicted_return": -0.000449828522506755,
+      "actual_return": 0.0039848447879777815,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-21",
+      "date": "2026-04-22",
+      "probability_up": 0.4842853798383179,
+      "predicted_return": 0.0008569627099650938,
+      "actual_return": 0.0012974795071265532,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-22",
+      "date": "2026-04-23",
+      "probability_up": 0.48291466122792776,
+      "predicted_return": 0.0001059567806199172,
+      "actual_return": -0.014494242609144337,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-23",
+      "date": "2026-04-24",
+      "probability_up": 0.4020861240162168,
+      "predicted_return": -0.002102150485786625,
+      "actual_return": -0.0013763300061171435,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-24",
+      "date": "2026-04-27",
+      "probability_up": 0.4453798946295617,
+      "predicted_return": 0.0005517915708736512,
+      "actual_return": 0.004220400105294786,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-27",
+      "date": "2026-04-28",
+      "probability_up": 0.4796422400521661,
+      "predicted_return": 0.0013635515526531283,
+      "actual_return": 0.00726452546648404,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-28",
+      "date": "2026-04-29",
+      "probability_up": 0.4513202569664942,
+      "predicted_return": 0.0011412988118552003,
+      "actual_return": -0.006400781467834071,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-04-29",
+      "date": "2026-04-30",
+      "probability_up": 0.43076706060882364,
+      "predicted_return": 0.00011996081095150728,
+      "actual_return": 0.0071751840416602874,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-04-30",
+      "date": "2026-05-01",
+      "probability_up": 0.5047759395390802,
+      "predicted_return": 0.001396199817038276,
+      "actual_return": -0.0027362257297447456,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-01",
+      "date": "2026-05-04",
+      "probability_up": 0.48914602709826954,
+      "predicted_return": 2.8064944575267335e-05,
+      "actual_return": -0.007424815578419008,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-04",
+      "date": "2026-05-05",
+      "probability_up": 0.4090252416474414,
+      "predicted_return": -0.0019887915193524184,
+      "actual_return": -0.013959668989088514,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-05",
+      "date": "2026-05-06",
+      "probability_up": 0.36671367676028616,
+      "predicted_return": -0.003533267557513905,
+      "actual_return": -0.01241309585460415,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-06",
+      "date": "2026-05-07",
+      "probability_up": 0.3654219654528751,
+      "predicted_return": -0.0032319124802891075,
+      "actual_return": -0.001374978685030448,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-07",
+      "date": "2026-05-08",
+      "probability_up": 0.5086185372276769,
+      "predicted_return": 0.0007583893043920592,
+      "actual_return": 0.0010144409438010982,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-08",
+      "date": "2026-05-11",
+      "probability_up": 0.48982186355414997,
+      "predicted_return": 0.001263744579325807,
+      "actual_return": 0.00320447889028741,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-11",
+      "date": "2026-05-12",
+      "probability_up": 0.43847288198278567,
+      "predicted_return": 0.0015229378072454994,
+      "actual_return": 0.006319421548079962,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-12",
+      "date": "2026-05-13",
+      "probability_up": 0.4521390877674922,
+      "predicted_return": 0.0006527673470936921,
+      "actual_return": 0.004251284493465457,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-13",
+      "date": "2026-05-14",
+      "probability_up": 0.48801503986832645,
+      "predicted_return": 0.0007873133562338693,
+      "actual_return": 0.0022055237459359667,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-14",
+      "date": "2026-05-15",
+      "probability_up": 0.4667773971214418,
+      "predicted_return": 4.907492063552826e-06,
+      "actual_return": -0.004797478437254421,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-15",
+      "date": "2026-05-18",
+      "probability_up": 0.4714874039949445,
+      "predicted_return": -0.0009414904094135519,
+      "actual_return": -0.009312244104367151,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-18",
+      "date": "2026-05-19",
+      "probability_up": 0.47286676566456287,
+      "predicted_return": -0.0011907367100791317,
+      "actual_return": -0.01372350910225073,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-19",
+      "date": "2026-05-20",
+      "probability_up": 0.3794668086152398,
+      "predicted_return": -0.003361400480082341,
+      "actual_return": -0.00573992924106137,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-20",
+      "date": "2026-05-21",
+      "probability_up": 0.4170382009767389,
+      "predicted_return": -0.0021257271884989417,
+      "actual_return": 0.004634122535349894,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-21",
+      "date": "2026-05-22",
+      "probability_up": 0.48082523111958564,
+      "predicted_return": 0.001771473249859019,
+      "actual_return": 0.003577998376629976,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-22",
+      "date": "2026-05-25",
+      "probability_up": 0.486346488478891,
+      "predicted_return": 0.0018609583728823227,
+      "actual_return": -0.0028573546344726752,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-25",
+      "date": "2026-05-26",
+      "probability_up": 0.48474236033000356,
+      "predicted_return": 0.0007802950662257451,
+      "actual_return": -0.014679969830293738,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-26",
+      "date": "2026-05-27",
+      "probability_up": 0.3743384899794383,
+      "predicted_return": -0.003325816017374557,
+      "actual_return": -0.008977663344657993,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-27",
+      "date": "2026-05-28",
+      "probability_up": 0.4458364881668725,
+      "predicted_return": -0.001951643188342668,
+      "actual_return": -0.002653922747536841,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-05-28",
+      "date": "2026-05-29",
+      "probability_up": 0.5337326960218989,
+      "predicted_return": 0.0001850666214813707,
+      "actual_return": -0.00030633159217852146,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-05-29",
+      "date": "2026-06-01",
+      "probability_up": 0.554970675824063,
+      "predicted_return": 0.0009884899253494075,
+      "actual_return": -0.003615001155789277,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-01",
+      "date": "2026-06-02",
+      "probability_up": 0.43130427768072743,
+      "predicted_return": -0.0010448375283972858,
+      "actual_return": -0.013128110102261448,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-02",
+      "date": "2026-06-03",
+      "probability_up": 0.3579080103541697,
+      "predicted_return": -0.002919715108834446,
+      "actual_return": -0.01345849513856423,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-03",
+      "date": "2026-06-04",
+      "probability_up": 0.3185570843757836,
+      "predicted_return": -0.0037453009788360574,
+      "actual_return": 0.0003974198666465423,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-04",
+      "date": "2026-06-05",
+      "probability_up": 0.5098757213020094,
+      "predicted_return": 0.0010748039252678177,
+      "actual_return": 0.015088754796733106,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-05",
+      "date": "2026-06-08",
+      "probability_up": 0.5617339218892107,
+      "predicted_return": 0.0028924814080719683,
+      "actual_return": -0.0027200849669367644,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-08",
+      "date": "2026-06-09",
+      "probability_up": 0.49052374414387345,
+      "predicted_return": 0.0009787473917346752,
+      "actual_return": -0.009470177925292478,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-09",
+      "date": "2026-06-10",
+      "probability_up": 0.32939232854964146,
+      "predicted_return": -0.0031608034592937894,
+      "actual_return": -0.002820072694858178,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-10",
+      "date": "2026-06-11",
+      "probability_up": 0.452141931070717,
+      "predicted_return": -0.000558028989357831,
+      "actual_return": -0.0040436024790408975,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-11",
+      "date": "2026-06-12",
+      "probability_up": 0.45346770306197665,
+      "predicted_return": -0.0013543737183955883,
+      "actual_return": -0.005035466001148459,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-12",
+      "date": "2026-06-15",
+      "probability_up": 0.4329847041068342,
+      "predicted_return": -0.0015086372694294822,
+      "actual_return": -0.005622592274961646,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-15",
+      "date": "2026-06-16",
+      "probability_up": 0.45750171854936805,
+      "predicted_return": -0.0010124615910130383,
+      "actual_return": -0.003156919797207558,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-16",
+      "date": "2026-06-17",
+      "probability_up": 0.5055213904953565,
+      "predicted_return": 0.00031333132562679,
+      "actual_return": -0.0044015782841902995,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-17",
+      "date": "2026-06-18",
+      "probability_up": 0.4386096192823322,
+      "predicted_return": -0.001058962318415278,
+      "actual_return": -0.012205173558789584,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-18",
+      "date": "2026-06-19",
+      "probability_up": 0.38782637016228966,
+      "predicted_return": -0.0028190752005143416,
+      "actual_return": -0.004798140620894009,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-19",
+      "date": "2026-06-22",
+      "probability_up": 0.4418866933019528,
+      "predicted_return": -0.0016303291036902834,
+      "actual_return": -0.01043662446456628,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-22",
+      "date": "2026-06-23",
+      "probability_up": 0.3961515516325563,
+      "predicted_return": -0.0030536808521425753,
+      "actual_return": -0.005953710992889327,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-23",
+      "date": "2026-06-24",
+      "probability_up": 0.4258790980297437,
+      "predicted_return": -0.0017446924398755192,
+      "actual_return": -0.000183561197681259,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-24",
+      "date": "2026-06-25",
+      "probability_up": 0.4717669136754467,
+      "predicted_return": -0.0002099980034479433,
+      "actual_return": -0.012454730784105306,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-25",
+      "date": "2026-06-26",
+      "probability_up": 0.36736168034017297,
+      "predicted_return": -0.003358552741109541,
+      "actual_return": 0.0001733535350305626,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-26",
+      "date": "2026-06-29",
+      "probability_up": 0.4086772854727046,
+      "predicted_return": -0.001575128018520276,
+      "actual_return": 0.018653365663451105,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-06-29",
+      "date": "2026-06-30",
+      "probability_up": 0.5645898760383115,
+      "predicted_return": 0.0018266819525503799,
+      "actual_return": 0.001272143910758361,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-06-30",
+      "date": "2026-07-01",
+      "probability_up": 0.49369929235344673,
+      "predicted_return": 0.0003788091824722628,
+      "actual_return": -0.0026803381925468717,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-01",
+      "date": "2026-07-02",
+      "probability_up": 0.38874245319847334,
+      "predicted_return": -0.0015418976080255275,
+      "actual_return": -0.0021893428914172564,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-02",
+      "date": "2026-07-03",
+      "probability_up": 0.5030643132962702,
+      "predicted_return": 0.0007594278940699248,
+      "actual_return": 0.008854934741687304,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-03",
+      "date": "2026-07-06",
+      "probability_up": 0.5724304586264034,
+      "predicted_return": 0.00195685774962734,
+      "actual_return": -0.012921095128270332,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-06",
+      "date": "2026-07-07",
+      "probability_up": 0.3769981456373699,
+      "predicted_return": -0.003381010082325177,
+      "actual_return": -0.008953262391250494,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-07",
+      "date": "2026-07-08",
+      "probability_up": 0.3794177669288396,
+      "predicted_return": -0.002526779218416033,
+      "actual_return": -0.0039380529741795955,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-08",
+      "date": "2026-07-09",
+      "probability_up": 0.5139857266916046,
+      "predicted_return": -0.00038332541531481076,
+      "actual_return": 0.005250535197089512,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-09",
+      "date": "2026-07-10",
+      "probability_up": 0.5557904846675376,
+      "predicted_return": 0.0014312540174925253,
+      "actual_return": 0.0022979338820647843,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-10",
+      "date": "2026-07-13",
+      "probability_up": 0.5122274488046207,
+      "predicted_return": 0.0006426084058329095,
+      "actual_return": 0.0041513302058606705,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-13",
+      "date": "2026-07-14",
+      "probability_up": 0.5067028825455461,
+      "predicted_return": -3.474651354213043e-05,
+      "actual_return": -0.005291478166850938,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-14",
+      "date": "2026-07-15",
+      "probability_up": 0.458804770264161,
+      "predicted_return": -0.001467953861350527,
+      "actual_return": 0.007017059306247075,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-15",
+      "date": "2026-07-16",
+      "probability_up": 0.5175030265864476,
+      "predicted_return": 0.00034989497722141957,
+      "actual_return": -0.007611372971510821,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-16",
+      "date": "2026-07-17",
+      "probability_up": 0.49059216830954505,
+      "predicted_return": -0.0010415075769751932,
+      "actual_return": 0.009466531510880394,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-17",
+      "date": "2026-07-20",
+      "probability_up": 0.5175278807477732,
+      "predicted_return": 0.00044814627934970045,
+      "actual_return": -0.003773689309022221,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-20",
+      "date": "2026-07-21",
+      "probability_up": 0.47145125448963177,
+      "predicted_return": -0.0005546952135371397,
+      "actual_return": -0.003933244173866646,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-21",
+      "date": "2026-07-22",
+      "probability_up": 0.4937469575275116,
+      "predicted_return": -5.743130419003304e-06,
+      "actual_return": -0.019430049967977592,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-22",
+      "date": "2026-07-23",
+      "probability_up": 0.33072647751127754,
+      "predicted_return": -0.00411557879167045,
+      "actual_return": 0.020290200338921593,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-23",
+      "date": "2026-07-24",
+      "probability_up": 0.5601102208945735,
+      "predicted_return": 0.002480008818739109,
+      "actual_return": 0.0023095819917897664,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-24",
+      "date": "2026-07-27",
+      "probability_up": 0.49096415428831014,
+      "predicted_return": 0.0007553333747979999,
+      "actual_return": 0.008342653510811981,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-27",
+      "date": "2026-07-28",
+      "probability_up": 0.4945721504194543,
+      "predicted_return": 0.0015206675205528286,
+      "actual_return": 0.00218098750163076,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-28",
+      "date": "2026-07-29",
+      "probability_up": 0.5188970117691087,
+      "predicted_return": 0.0017548111304302005,
+      "actual_return": -0.001557671858325893,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-29",
+      "date": "2026-07-30",
+      "probability_up": 0.4955746984667508,
+      "predicted_return": 0.00017132274471958094,
+      "actual_return": 0.007518743700215991,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-07-30",
+      "date": "2026-07-31",
+      "probability_up": 0.5128880111883283,
+      "predicted_return": 0.0010373412230079264,
+      "actual_return": 0.0011103384061930122,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-07-31",
+      "date": "2026-08-03",
+      "probability_up": 0.5099110431141317,
+      "predicted_return": -0.0003166181433511255,
+      "actual_return": 0.007168313454744668,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-03",
+      "date": "2026-08-04",
+      "probability_up": 0.5084497887275867,
+      "predicted_return": 0.0007713310152868804,
+      "actual_return": 0.008677581268158097,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-04",
+      "date": "2026-08-05",
+      "probability_up": 0.526792998774966,
+      "predicted_return": 0.0013169352535756776,
+      "actual_return": 0.004809253849519912,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-05",
+      "date": "2026-08-06",
+      "probability_up": 0.534822382430681,
+      "predicted_return": 0.0007571265355369482,
+      "actual_return": 0.019114531498306775,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-06",
+      "date": "2026-08-07",
+      "probability_up": 0.6137035041198655,
+      "predicted_return": 0.00262265041738767,
+      "actual_return": 0.01861352839033059,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-07",
+      "date": "2026-08-10",
+      "probability_up": 0.5896435478276714,
+      "predicted_return": 0.0017615588617445094,
+      "actual_return": -0.012265751593690921,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-10",
+      "date": "2026-08-11",
+      "probability_up": 0.39559679839237666,
+      "predicted_return": -0.002949520575057052,
+      "actual_return": -0.011955718510156088,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-11",
+      "date": "2026-08-12",
+      "probability_up": 0.4349452982289679,
+      "predicted_return": -0.002125238353210372,
+      "actual_return": -0.0089027877272152,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-12",
+      "date": "2026-08-13",
+      "probability_up": 0.4237095338932324,
+      "predicted_return": -0.0025236227162121648,
+      "actual_return": 0.005625717656536189,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-13",
+      "date": "2026-08-14",
+      "probability_up": 0.5136246575780162,
+      "predicted_return": 0.0016846753307617115,
+      "actual_return": -0.005612452278933477,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-14",
+      "date": "2026-08-17",
+      "probability_up": 0.44409856845544915,
+      "predicted_return": -0.0012241947115331274,
+      "actual_return": -0.005040832685537344,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-17",
+      "date": "2026-08-18",
+      "probability_up": 0.5242132761803424,
+      "predicted_return": 0.000731438970579097,
+      "actual_return": -0.016050819671799554,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-18",
+      "date": "2026-08-19",
+      "probability_up": 0.31017271888286546,
+      "predicted_return": -0.004512522991096096,
+      "actual_return": 0.0013598913708263716,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-19",
+      "date": "2026-08-20",
+      "probability_up": 0.48414788775451134,
+      "predicted_return": 0.001140977700322927,
+      "actual_return": 0.01841816108806449,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-20",
+      "date": "2026-08-21",
+      "probability_up": 0.5682978335950476,
+      "predicted_return": 0.002599413750041288,
+      "actual_return": -0.005606185634345784,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-08-21",
+      "date": "2026-08-24",
+      "probability_up": 0.4801297522457234,
+      "predicted_return": 0.0007801522272963113,
+      "actual_return": -0.001357586328820104,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-24",
+      "date": "2026-08-25",
+      "probability_up": 0.46396452179529857,
+      "predicted_return": 0.0006604359763622906,
+      "actual_return": -0.004313843630339598,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-25",
+      "date": "2026-08-26",
+      "probability_up": 0.4452843949907817,
+      "predicted_return": -0.0005388935291613627,
+      "actual_return": -0.0025148659535625395,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-26",
+      "date": "2026-08-27",
+      "probability_up": 0.4546481838506575,
+      "predicted_return": -7.413533253858321e-05,
+      "actual_return": -0.009651529637220158,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-27",
+      "date": "2026-08-28",
+      "probability_up": 0.42146345737456437,
+      "predicted_return": -0.0016331134865909577,
+      "actual_return": -0.0070734831728074266,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-28",
+      "date": "2026-08-31",
+      "probability_up": 0.43163723105579643,
+      "predicted_return": -0.0013176142619713662,
+      "actual_return": -0.001964384176608047,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-08-31",
+      "date": "2026-09-01",
+      "probability_up": 0.4763732544916138,
+      "predicted_return": 0.0001196293212865155,
+      "actual_return": 0.0011641269996989223,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-01",
+      "date": "2026-09-02",
+      "probability_up": 0.502974859757642,
+      "predicted_return": 0.0014385549646558648,
+      "actual_return": -0.006338525795695826,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-02",
+      "date": "2026-09-03",
+      "probability_up": 0.420645776968852,
+      "predicted_return": -0.001258329447478959,
+      "actual_return": 0.005940684345335789,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-03",
+      "date": "2026-09-04",
+      "probability_up": 0.47367820792702353,
+      "predicted_return": 0.00022210535672024552,
+      "actual_return": -0.004218501215666803,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-04",
+      "date": "2026-09-07",
+      "probability_up": 0.4669562450529138,
+      "predicted_return": -0.0014199723957731938,
+      "actual_return": -0.008578152229673841,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-07",
+      "date": "2026-09-08",
+      "probability_up": 0.422555190397771,
+      "predicted_return": -0.0020119717573207707,
+      "actual_return": -0.011557963652144454,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-08",
+      "date": "2026-09-09",
+      "probability_up": 0.40509347951288166,
+      "predicted_return": -0.0023833801358466864,
+      "actual_return": -0.009909667404524258,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-09",
+      "date": "2026-09-10",
+      "probability_up": 0.39586961481664706,
+      "predicted_return": -0.002492433803986772,
+      "actual_return": -0.008585752862958929,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-10",
+      "date": "2026-09-11",
+      "probability_up": 0.37309102021501117,
+      "predicted_return": -0.0027808327383587257,
+      "actual_return": -0.0014878774025625097,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-11",
+      "date": "2026-09-14",
+      "probability_up": 0.45967580514087136,
+      "predicted_return": -0.0002024199163386971,
+      "actual_return": -0.017430083355199133,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-14",
+      "date": "2026-09-15",
+      "probability_up": 0.2914938325459586,
+      "predicted_return": -0.004698196358284028,
+      "actual_return": 0.004762640921087247,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-15",
+      "date": "2026-09-16",
+      "probability_up": 0.415347073900838,
+      "predicted_return": -0.0001370327147153269,
+      "actual_return": -0.004132599875368292,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-16",
+      "date": "2026-09-17",
+      "probability_up": 0.44990530716809013,
+      "predicted_return": -6.372648400580751e-05,
+      "actual_return": 0.0224282808497982,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-17",
+      "date": "2026-09-18",
+      "probability_up": 0.578375343272274,
+      "predicted_return": 0.0025908975244335144,
+      "actual_return": 0.010498325791881591,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-18",
+      "date": "2026-09-21",
+      "probability_up": 0.5182405590888781,
+      "predicted_return": 0.002080239082106322,
+      "actual_return": -0.0064208567974674,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-21",
+      "date": "2026-09-22",
+      "probability_up": 0.43865533947779145,
+      "predicted_return": -0.0010501325443090374,
+      "actual_return": -0.007611254967848646,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-22",
+      "date": "2026-09-23",
+      "probability_up": 0.41488334134977,
+      "predicted_return": -0.0019010641065883539,
+      "actual_return": -0.013021339643365937,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-23",
+      "date": "2026-09-24",
+      "probability_up": 0.3967102573732081,
+      "predicted_return": -0.002972182870768291,
+      "actual_return": -0.00683154474326253,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-24",
+      "date": "2026-09-25",
+      "probability_up": 0.46854030243991757,
+      "predicted_return": -0.0013072447184023456,
+      "actual_return": -0.0002744612973775151,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-25",
+      "date": "2026-09-28",
+      "probability_up": 0.5525002611817509,
+      "predicted_return": 0.001413046067086526,
+      "actual_return": -0.005417975614121162,
+      "signal": "BUY",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-09-28",
+      "date": "2026-09-29",
+      "probability_up": 0.5245069688745203,
+      "predicted_return": 0.000374854344755446,
+      "actual_return": 0.005431687140328156,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-29",
+      "date": "2026-09-30",
+      "probability_up": 0.4676147103109851,
+      "predicted_return": 0.0009519140741872964,
+      "actual_return": -0.0005011399409070583,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-09-30",
+      "date": "2026-10-01",
+      "probability_up": 0.4618612159105583,
+      "predicted_return": -1.1793835351410766e-05,
+      "actual_return": -0.011907915161791571,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-01",
+      "date": "2026-10-02",
+      "probability_up": 0.3904450971282648,
+      "predicted_return": -0.003094791827089322,
+      "actual_return": -0.0018549529572645662,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-02",
+      "date": "2026-10-05",
+      "probability_up": 0.5281896295999902,
+      "predicted_return": 7.333565060148343e-05,
+      "actual_return": -0.011433866518669622,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-05",
+      "date": "2026-10-06",
+      "probability_up": 0.43259813912179135,
+      "predicted_return": -0.002852828546899,
+      "actual_return": 0.008519411343751226,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-06",
+      "date": "2026-10-07",
+      "probability_up": 0.5408564747274798,
+      "predicted_return": 0.0014725246264318083,
+      "actual_return": 0.017072714823219037,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-07",
+      "date": "2026-10-08",
+      "probability_up": 0.5629671565289788,
+      "predicted_return": 0.0022814462503003914,
+      "actual_return": 0.015373789304165886,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-08",
+      "date": "2026-10-09",
+      "probability_up": 0.5519697221126649,
+      "predicted_return": 0.0032453952883028016,
+      "actual_return": 0.003482668387044807,
+      "signal": "BUY",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-09",
+      "date": "2026-10-12",
+      "probability_up": 0.5196230528218951,
+      "predicted_return": 0.002078339503121337,
+      "actual_return": 0.004575859355774314,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-12",
+      "date": "2026-10-13",
+      "probability_up": 0.5256152365457141,
+      "predicted_return": 0.001632916323975983,
+      "actual_return": -0.0015008304696108032,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-13",
+      "date": "2026-10-14",
+      "probability_up": 0.4915672680850547,
+      "predicted_return": 0.00012868502238779292,
+      "actual_return": 0.0016726393141035523,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-14",
+      "date": "2026-10-15",
+      "probability_up": 0.4799735411580925,
+      "predicted_return": 0.00018042142583932935,
+      "actual_return": 0.0004759840639070312,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-15",
+      "date": "2026-10-16",
+      "probability_up": 0.5004474967946643,
+      "predicted_return": 2.7304882130780777e-06,
+      "actual_return": -0.004520010734129887,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-16",
+      "date": "2026-10-19",
+      "probability_up": 0.49829619891375343,
+      "predicted_return": -0.0009033621283265171,
+      "actual_return": -0.00041595839852559546,
+      "signal": "WAIT",
+      "correct": true
+    },
+    {
+      "signal_date": "2026-10-19",
+      "date": "2026-10-20",
+      "probability_up": 0.5198707659586129,
+      "predicted_return": 0.0008857471916687608,
+      "actual_return": -0.011808060963709677,
+      "signal": "WAIT",
+      "correct": false
+    },
+    {
+      "signal_date": "2026-10-20",
+      "date": "2026-10-21",
+      "probability_up": 0.46003943975910955,
+      "predicted_return": -0.0017062169742900995,
+      "actual_return": -0.015369917373342035,
+      "signal": "WAIT",
+      "correct": true
+    }
+  ],
+  "prices": [
+    {
+      "date": "2025-11-06",
+      "open": 73.518174,
+      "high": 74.303101,
+      "low": 72.796367,
+      "close": 73.533887,
+      "volume": 2206412.0
+    },
+    {
+      "date": "2025-11-07",
+      "open": 74.284531,
+      "high": 74.881963,
+      "low": 73.32352,
+      "close": 73.923034,
+      "volume": 1608963.0
+    },
+    {
+      "date": "2025-11-10",
+      "open": 74.004118,
+      "high": 74.666692,
+      "low": 72.935351,
+      "close": 73.695778,
+      "volume": 1322864.0
+    },
+    {
+      "date": "2025-11-11",
+      "open": 74.250776,
+      "high": 75.347039,
+      "low": 73.906813,
+      "close": 74.683092,
+      "volume": 2721550.0
+    },
+    {
+      "date": "2025-11-12",
+      "open": 74.501224,
+      "high": 74.846044,
+      "low": 73.822349,
+      "close": 74.031025,
+      "volume": 2115628.0
+    },
+    {
+      "date": "2025-11-13",
+      "open": 74.370782,
+      "high": 74.566044,
+      "low": 73.41972,
+      "close": 73.640755,
+      "volume": 1192267.0
+    },
+    {
+      "date": "2025-11-14",
+      "open": 73.911242,
+      "high": 74.314828,
+      "low": 72.839183,
+      "close": 73.084747,
+      "volume": 4088413.0
+    },
+    {
+      "date": "2025-11-17",
+      "open": 72.804657,
+      "high": 73.428953,
+      "low": 72.300758,
+      "close": 72.694757,
+      "volume": 3331118.0
+    },
+    {
+      "date": "2025-11-18",
+      "open": 73.091706,
+      "high": 73.921499,
+      "low": 72.736613,
+      "close": 73.435438,
+      "volume": 2339616.0
+    },
+    {
+      "date": "2025-11-19",
+      "open": 73.938145,
+      "high": 75.010002,
+      "low": 73.768942,
+      "close": 74.725353,
+      "volume": 2134872.0
+    },
+    {
+      "date": "2025-11-20",
+      "open": 74.478844,
+      "high": 74.947975,
+      "low": 73.940745,
+      "close": 74.415083,
+      "volume": 2179455.0
+    },
+    {
+      "date": "2025-11-21",
+      "open": 74.266489,
+      "high": 74.725812,
+      "low": 72.230392,
+      "close": 72.498235,
+      "volume": 3196170.0
+    },
+    {
+      "date": "2025-11-24",
+      "open": 72.58896,
+      "high": 73.090942,
+      "low": 70.84001,
+      "close": 71.297679,
+      "volume": 3460301.0
+    },
+    {
+      "date": "2025-11-25",
+      "open": 71.332142,
+      "high": 71.640343,
+      "low": 70.752968,
+      "close": 71.089816,
+      "volume": 2253020.0
+    },
+    {
+      "date": "2025-11-26",
+      "open": 71.360971,
+      "high": 71.841849,
+      "low": 71.233344,
+      "close": 71.663568,
+      "volume": 3790873.0
+    },
+    {
+      "date": "2025-11-27",
+      "open": 71.617658,
+      "high": 72.401671,
+      "low": 70.120838,
+      "close": 70.93811,
+      "volume": 1564607.0
+    },
+    {
+      "date": "2025-11-28",
+      "open": 70.810663,
+      "high": 71.786795,
+      "low": 70.476288,
+      "close": 71.304472,
+      "volume": 1318828.0
+    },
+    {
+      "date": "2025-12-01",
+      "open": 71.248301,
+      "high": 71.537366,
+      "low": 70.029272,
+      "close": 70.316273,
+      "volume": 980411.0
+    },
+    {
+      "date": "2025-12-02",
+      "open": 70.39871,
+      "high": 70.780347,
+      "low": 69.230937,
+      "close": 69.453917,
+      "volume": 2558288.0
+    },
+    {
+      "date": "2025-12-03",
+      "open": 69.653946,
+      "high": 70.013332,
+      "low": 68.733168,
+      "close": 69.098392,
+      "volume": 3531014.0
+    },
+    {
+      "date": "2025-12-04",
+      "open": 68.950436,
+      "high": 69.525963,
+      "low": 68.007258,
+      "close": 68.610478,
+      "volume": 2751047.0
+    },
+    {
+      "date": "2025-12-05",
+      "open": 68.622479,
+      "high": 69.140014,
+      "low": 68.245567,
+      "close": 68.646923,
+      "volume": 1817725.0
+    },
+    {
+      "date": "2025-12-08",
+      "open": 68.853606,
+      "high": 70.51377,
+      "low": 68.365907,
+      "close": 70.079835,
+      "volume": 2767191.0
+    },
+    {
+      "date": "2025-12-09",
+      "open": 70.162787,
+      "high": 71.500312,
+      "low": 69.562484,
+      "close": 70.97737,
+      "volume": 1427501.0
+    },
+    {
+      "date": "2025-12-10",
+      "open": 71.002055,
+      "high": 72.463012,
+      "low": 70.38682,
+      "close": 71.794366,
+      "volume": 2850244.0
+    },
+    {
+      "date": "2025-12-11",
+      "open": 72.059609,
+      "high": 73.849535,
+      "low": 71.791134,
+      "close": 73.503392,
+      "volume": 2139976.0
+    },
+    {
+      "date": "2025-12-12",
+      "open": 73.535283,
+      "high": 74.55251,
+      "low": 73.246787,
+      "close": 74.217318,
+      "volume": 2493016.0
+    },
+    {
+      "date": "2025-12-15",
+      "open": 73.980493,
+      "high": 74.589779,
+      "low": 73.661247,
+      "close": 74.191858,
+      "volume": 1290387.0
+    },
+    {
+      "date": "2025-12-16",
+      "open": 74.469802,
+      "high": 76.172919,
+      "low": 74.11962,
+      "close": 75.555685,
+      "volume": 3970685.0
+    },
+    {
+      "date": "2025-12-17",
+      "open": 75.224206,
+      "high": 76.067323,
+      "low": 74.685111,
+      "close": 75.565168,
+      "volume": 1008814.0
+    },
+    {
+      "date": "2025-12-18",
+      "open": 75.653975,
+      "high": 76.508942,
+      "low": 75.447894,
+      "close": 76.129499,
+      "volume": 3047718.0
+    },
+    {
+      "date": "2025-12-19",
+      "open": 76.128052,
+      "high": 76.494408,
+      "low": 74.686981,
+      "close": 75.009211,
+      "volume": 4618043.0
+    },
+    {
+      "date": "2025-12-22",
+      "open": 75.084041,
+      "high": 76.39801,
+      "low": 74.786659,
+      "close": 76.115657,
+      "volume": 1767756.0
+    },
+    {
+      "date": "2025-12-23",
+      "open": 76.110343,
+      "high": 77.54938,
+      "low": 75.862646,
+      "close": 77.098945,
+      "volume": 2113638.0
+    },
+    {
+      "date": "2025-12-24",
+      "open": 77.133378,
+      "high": 78.444591,
+      "low": 76.692816,
+      "close": 77.682722,
+      "volume": 2531772.0
+    },
+    {
+      "date": "2025-12-25",
+      "open": 77.890838,
+      "high": 78.845015,
+      "low": 76.686519,
+      "close": 77.686994,
+      "volume": 1664395.0
+    },
+    {
+      "date": "2025-12-26",
+      "open": 77.532613,
+      "high": 78.476331,
+      "low": 76.791036,
+      "close": 77.269579,
+      "volume": 2385885.0
+    },
+    {
+      "date": "2025-12-29",
+      "open": 77.768353,
+      "high": 78.462295,
+      "low": 77.089468,
+      "close": 77.643323,
+      "volume": 1804946.0
+    },
+    {
+      "date": "2025-12-30",
+      "open": 77.497575,
+      "high": 78.469259,
+      "low": 76.914477,
+      "close": 77.599422,
+      "volume": 2620800.0
+    },
+    {
+      "date": "2025-12-31",
+      "open": 77.173815,
+      "high": 77.4498,
+      "low": 76.865795,
+      "close": 77.03283,
+      "volume": 2693832.0
+    },
+    {
+      "date": "2026-01-01",
+      "open": 76.481523,
+      "high": 77.608061,
+      "low": 75.958002,
+      "close": 76.992328,
+      "volume": 1870360.0
+    },
+    {
+      "date": "2026-01-02",
+      "open": 77.16113,
+      "high": 78.095597,
+      "low": 76.884411,
+      "close": 77.837867,
+      "volume": 2001058.0
+    },
+    {
+      "date": "2026-01-05",
+      "open": 77.984406,
+      "high": 78.917568,
+      "low": 77.670714,
+      "close": 78.412767,
+      "volume": 2670655.0
+    },
+    {
+      "date": "2026-01-06",
+      "open": 78.65679,
+      "high": 80.687602,
+      "low": 78.078424,
+      "close": 80.110223,
+      "volume": 2863825.0
+    },
+    {
+      "date": "2026-01-07",
+      "open": 79.691256,
+      "high": 81.271487,
+      "low": 79.49318,
+      "close": 80.916181,
+      "volume": 3382397.0
+    },
+    {
+      "date": "2026-01-08",
+      "open": 81.109203,
+      "high": 81.608631,
+      "low": 80.890332,
+      "close": 81.36591,
+      "volume": 4406680.0
+    },
+    {
+      "date": "2026-01-09",
+      "open": 80.661554,
+      "high": 81.220747,
+      "low": 79.597561,
+      "close": 79.973319,
+      "volume": 1951929.0
+    },
+    {
+      "date": "2026-01-12",
+      "open": 80.327109,
+      "high": 81.105712,
+      "low": 79.027952,
+      "close": 79.801491,
+      "volume": 2187020.0
+    },
+    {
+      "date": "2026-01-13",
+      "open": 79.906743,
+      "high": 80.464154,
+      "low": 77.307564,
+      "close": 77.892694,
+      "volume": 3276024.0
+    },
+    {
+      "date": "2026-01-14",
+      "open": 78.263803,
+      "high": 78.804655,
+      "low": 77.574304,
+      "close": 78.063496,
+      "volume": 2017150.0
+    },
+    {
+      "date": "2026-01-15",
+      "open": 78.038539,
+      "high": 79.294968,
+      "low": 77.681698,
+      "close": 78.806933,
+      "volume": 1936647.0
+    },
+    {
+      "date": "2026-01-16",
+      "open": 79.125263,
+      "high": 79.445851,
+      "low": 78.390489,
+      "close": 78.678966,
+      "volume": 1966665.0
+    },
+    {
+      "date": "2026-01-19",
+      "open": 78.595984,
+      "high": 78.862453,
+      "low": 78.472827,
+      "close": 78.682188,
+      "volume": 1286766.0
+    },
+    {
+      "date": "2026-01-20",
+      "open": 78.662719,
+      "high": 79.814343,
+      "low": 78.122429,
+      "close": 79.31988,
+      "volume": 2625880.0
+    },
+    {
+      "date": "2026-01-21",
+      "open": 79.157138,
+      "high": 79.540445,
+      "low": 78.129503,
+      "close": 78.404071,
+      "volume": 2428601.0
+    },
+    {
+      "date": "2026-01-22",
+      "open": 78.578767,
+      "high": 78.890201,
+      "low": 78.384051,
+      "close": 78.560894,
+      "volume": 1591117.0
+    },
+    {
+      "date": "2026-01-23",
+      "open": 78.705711,
+      "high": 79.35066,
+      "low": 78.071786,
+      "close": 78.571446,
+      "volume": 1927768.0
+    },
+    {
+      "date": "2026-01-26",
+      "open": 78.757276,
+      "high": 79.573107,
+      "low": 78.2876,
+      "close": 79.146819,
+      "volume": 1140100.0
+    },
+    {
+      "date": "2026-01-27",
+      "open": 79.620425,
+      "high": 80.73974,
+      "low": 79.031646,
+      "close": 79.789096,
+      "volume": 1468920.0
+    },
+    {
+      "date": "2026-01-28",
+      "open": 79.363637,
+      "high": 79.632861,
+      "low": 78.972207,
+      "close": 79.128689,
+      "volume": 2591733.0
+    },
+    {
+      "date": "2026-01-29",
+      "open": 79.108688,
+      "high": 79.660642,
+      "low": 78.61555,
+      "close": 79.02682,
+      "volume": 2498690.0
+    },
+    {
+      "date": "2026-01-30",
+      "open": 78.954628,
+      "high": 79.99779,
+      "low": 76.789849,
+      "close": 77.680955,
+      "volume": 2798041.0
+    },
+    {
+      "date": "2026-02-02",
+      "open": 77.380305,
+      "high": 77.974022,
+      "low": 76.46487,
+      "close": 76.782222,
+      "volume": 2779966.0
+    },
+    {
+      "date": "2026-02-03",
+      "open": 76.691237,
+      "high": 77.619591,
+      "low": 74.808403,
+      "close": 75.856062,
+      "volume": 1593917.0
+    },
+    {
+      "date": "2026-02-04",
+      "open": 75.824293,
+      "high": 76.559928,
+      "low": 75.34518,
+      "close": 75.725709,
+      "volume": 1494890.0
+    },
+    {
+      "date": "2026-02-05",
+      "open": 75.254889,
+      "high": 75.427479,
+      "low": 74.241364,
+      "close": 74.372593,
+      "volume": 3569487.0
+    },
+    {
+      "date": "2026-02-06",
+      "open": 74.512181,
+      "high": 75.906701,
+      "low": 73.560213,
+      "close": 74.464882,
+      "volume": 1993768.0
+    },
+    {
+      "date": "2026-02-09",
+      "open": 73.900437,
+      "high": 74.527546,
+      "low": 72.805994,
+      "close": 73.519366,
+      "volume": 1051967.0
+    },
+    {
+      "date": "2026-02-10",
+      "open": 73.629796,
+      "high": 74.499353,
+      "low": 72.946418,
+      "close": 73.903578,
+      "volume": 1123175.0
+    },
+    {
+      "date": "2026-02-11",
+      "open": 73.882646,
+      "high": 74.411289,
+      "low": 71.838394,
+      "close": 72.383652,
+      "volume": 1536813.0
+    },
+    {
+      "date": "2026-02-12",
+      "open": 72.757849,
+      "high": 73.788495,
+      "low": 72.495996,
+      "close": 73.356528,
+      "volume": 2482150.0
+    },
+    {
+      "date": "2026-02-13",
+      "open": 73.566718,
+      "high": 74.731758,
+      "low": 73.051442,
+      "close": 74.188372,
+      "volume": 2728322.0
+    },
+    {
+      "date": "2026-02-16",
+      "open": 74.43298,
+      "high": 76.770268,
+      "low": 73.845726,
+      "close": 75.810318,
+      "volume": 4007294.0
+    },
+    {
+      "date": "2026-02-17",
+      "open": 75.60972,
+      "high": 76.348002,
+      "low": 74.558204,
+      "close": 75.401294,
+      "volume": 2729313.0
+    },
+    {
+      "date": "2026-02-18",
+      "open": 75.544181,
+      "high": 76.183509,
+      "low": 74.394124,
+      "close": 75.122461,
+      "volume": 1833145.0
+    },
+    {
+      "date": "2026-02-19",
+      "open": 75.28571,
+      "high": 75.835154,
+      "low": 73.774115,
+      "close": 74.196129,
+      "volume": 2629238.0
+    },
+    {
+      "date": "2026-02-20",
+      "open": 74.700266,
+      "high": 75.296308,
+      "low": 73.88939,
+      "close": 74.47203,
+      "volume": 1420782.0
+    },
+    {
+      "date": "2026-02-23",
+      "open": 74.592189,
+      "high": 77.044779,
+      "low": 74.276638,
+      "close": 76.400481,
+      "volume": 2790679.0
+    },
+    {
+      "date": "2026-02-24",
+      "open": 76.189053,
+      "high": 77.459115,
+      "low": 75.33964,
+      "close": 76.729433,
+      "volume": 2078991.0
+    },
+    {
+      "date": "2026-02-25",
+      "open": 76.901125,
+      "high": 78.380392,
+      "low": 76.489342,
+      "close": 77.922747,
+      "volume": 2212301.0
+    },
+    {
+      "date": "2026-02-26",
+      "open": 78.209751,
+      "high": 80.769884,
+      "low": 77.500435,
+      "close": 79.799006,
+      "volume": 2136203.0
+    },
+    {
+      "date": "2026-02-27",
+      "open": 79.762123,
+      "high": 80.691018,
+      "low": 78.085831,
+      "close": 78.932264,
+      "volume": 2645467.0
+    },
+    {
+      "date": "2026-03-02",
+      "open": 78.964051,
+      "high": 79.45539,
+      "low": 78.48996,
+      "close": 79.018545,
+      "volume": 1646534.0
+    },
+    {
+      "date": "2026-03-03",
+      "open": 78.982359,
+      "high": 79.304917,
+      "low": 78.377726,
+      "close": 78.68878,
+      "volume": 1760968.0
+    },
+    {
+      "date": "2026-03-04",
+      "open": 78.733201,
+      "high": 79.85207,
+      "low": 78.502646,
+      "close": 79.576782,
+      "volume": 2853709.0
+    },
+    {
+      "date": "2026-03-05",
+      "open": 79.633379,
+      "high": 80.75926,
+      "low": 78.277515,
+      "close": 79.546198,
+      "volume": 1184174.0
+    },
+    {
+      "date": "2026-03-06",
+      "open": 79.73334,
+      "high": 81.617279,
+      "low": 78.792827,
+      "close": 80.541426,
+      "volume": 2611750.0
+    },
+    {
+      "date": "2026-03-09",
+      "open": 81.09919,
+      "high": 81.94797,
+      "low": 78.822898,
+      "close": 79.742615,
+      "volume": 1957075.0
+    },
+    {
+      "date": "2026-03-10",
+      "open": 79.59971,
+      "high": 81.645942,
+      "low": 78.889551,
+      "close": 80.440348,
+      "volume": 2333316.0
+    },
+    {
+      "date": "2026-03-11",
+      "open": 80.473723,
+      "high": 83.07456,
+      "low": 79.124127,
+      "close": 81.564048,
+      "volume": 3943023.0
+    },
+    {
+      "date": "2026-03-12",
+      "open": 81.687259,
+      "high": 83.259247,
+      "low": 81.207531,
+      "close": 82.598521,
+      "volume": 3045506.0
+    },
+    {
+      "date": "2026-03-13",
+      "open": 82.885712,
+      "high": 83.253008,
+      "low": 82.345736,
+      "close": 82.734512,
+      "volume": 2579473.0
+    },
+    {
+      "date": "2026-03-16",
+      "open": 82.769796,
+      "high": 83.086098,
+      "low": 81.905325,
+      "close": 82.237281,
+      "volume": 2408227.0
+    },
+    {
+      "date": "2026-03-17",
+      "open": 82.64607,
+      "high": 83.703165,
+      "low": 82.03332,
+      "close": 82.921704,
+      "volume": 929930.0
+    },
+    {
+      "date": "2026-03-18",
+      "open": 83.10394,
+      "high": 83.505957,
+      "low": 82.184734,
+      "close": 82.395108,
+      "volume": 2551209.0
+    },
+    {
+      "date": "2026-03-19",
+      "open": 82.460445,
+      "high": 83.965031,
+      "low": 82.168682,
+      "close": 83.517253,
+      "volume": 2174822.0
+    },
+    {
+      "date": "2026-03-20",
+      "open": 84.098989,
+      "high": 84.713374,
+      "low": 83.253249,
+      "close": 83.635397,
+      "volume": 4492593.0
+    },
+    {
+      "date": "2026-03-23",
+      "open": 83.942059,
+      "high": 85.028084,
+      "low": 83.568657,
+      "close": 84.349575,
+      "volume": 2549156.0
+    },
+    {
+      "date": "2026-03-24",
+      "open": 84.231437,
+      "high": 85.343645,
+      "low": 83.564354,
+      "close": 84.482897,
+      "volume": 1491710.0
+    },
+    {
+      "date": "2026-03-25",
+      "open": 84.82289,
+      "high": 85.957829,
+      "low": 84.731668,
+      "close": 85.861463,
+      "volume": 2041814.0
+    },
+    {
+      "date": "2026-03-26",
+      "open": 85.408101,
+      "high": 86.585372,
+      "low": 85.30307,
+      "close": 86.474819,
+      "volume": 2817802.0
+    },
+    {
+      "date": "2026-03-27",
+      "open": 85.447704,
+      "high": 86.40457,
+      "low": 84.93169,
+      "close": 85.643336,
+      "volume": 3674632.0
+    },
+    {
+      "date": "2026-03-30",
+      "open": 85.341938,
+      "high": 85.955965,
+      "low": 85.069955,
+      "close": 85.673276,
+      "volume": 3131842.0
+    },
+    {
+      "date": "2026-03-31",
+      "open": 85.582332,
+      "high": 88.068146,
+      "low": 85.176621,
+      "close": 87.5456,
+      "volume": 3155274.0
+    },
+    {
+      "date": "2026-04-01",
+      "open": 87.780676,
+      "high": 89.83022,
+      "low": 87.392242,
+      "close": 89.375369,
+      "volume": 2501208.0
+    },
+    {
+      "date": "2026-04-02",
+      "open": 89.379616,
+      "high": 91.527956,
+      "low": 89.0789,
+      "close": 91.252721,
+      "volume": 2638881.0
+    },
+    {
+      "date": "2026-04-03",
+      "open": 91.574601,
+      "high": 92.303673,
+      "low": 91.145341,
+      "close": 91.513821,
+      "volume": 1595506.0
+    },
+    {
+      "date": "2026-04-06",
+      "open": 91.679908,
+      "high": 93.776482,
+      "low": 91.126162,
+      "close": 92.974376,
+      "volume": 2434604.0
+    },
+    {
+      "date": "2026-04-07",
+      "open": 93.055595,
+      "high": 94.360175,
+      "low": 92.888552,
+      "close": 94.074474,
+      "volume": 2095661.0
+    },
+    {
+      "date": "2026-04-08",
+      "open": 94.514838,
+      "high": 95.008831,
+      "low": 92.954929,
+      "close": 93.430172,
+      "volume": 4169906.0
+    },
+    {
+      "date": "2026-04-09",
+      "open": 93.325528,
+      "high": 94.563294,
+      "low": 92.753495,
+      "close": 93.628148,
+      "volume": 1623293.0
+    },
+    {
+      "date": "2026-04-10",
+      "open": 94.104673,
+      "high": 95.12902,
+      "low": 92.849829,
+      "close": 93.470993,
+      "volume": 2908604.0
+    },
+    {
+      "date": "2026-04-13",
+      "open": 92.781585,
+      "high": 94.48856,
+      "low": 91.938551,
+      "close": 93.369114,
+      "volume": 1194937.0
+    },
+    {
+      "date": "2026-04-14",
+      "open": 93.283561,
+      "high": 94.210669,
+      "low": 92.782828,
+      "close": 93.697465,
+      "volume": 2077509.0
+    },
+    {
+      "date": "2026-04-15",
+      "open": 93.612877,
+      "high": 94.78839,
+      "low": 93.352722,
+      "close": 94.267672,
+      "volume": 2346981.0
+    },
+    {
+      "date": "2026-04-16",
+      "open": 94.503874,
+      "high": 95.968026,
+      "low": 94.242079,
+      "close": 95.4419,
+      "volume": 1985728.0
+    },
+    {
+      "date": "2026-04-17",
+      "open": 95.950819,
+      "high": 96.57895,
+      "low": 95.216099,
+      "close": 95.820304,
+      "volume": 1667844.0
+    },
+    {
+      "date": "2026-04-20",
+      "open": 95.605772,
+      "high": 96.241816,
+      "low": 94.659642,
+      "close": 95.111008,
+      "volume": 2476698.0
+    },
+    {
+      "date": "2026-04-21",
+      "open": 95.158286,
+      "high": 96.110838,
+      "low": 94.574319,
+      "close": 95.537477,
+      "volume": 1765649.0
+    },
+    {
+      "date": "2026-04-22",
+      "open": 95.677041,
+      "high": 96.915651,
+      "low": 94.492426,
+      "close": 95.80118,
+      "volume": 1905608.0
+    },
+    {
+      "date": "2026-04-23",
+      "open": 95.46425,
+      "high": 95.885408,
+      "low": 93.801375,
+      "close": 94.080568,
+      "volume": 1717592.0
+    },
+    {
+      "date": "2026-04-24",
+      "open": 94.441013,
+      "high": 95.122502,
+      "low": 93.834681,
+      "close": 94.311031,
+      "volume": 1833312.0
+    },
+    {
+      "date": "2026-04-27",
+      "open": 94.432042,
+      "high": 95.837701,
+      "low": 93.671994,
+      "close": 94.830583,
+      "volume": 2308932.0
+    },
+    {
+      "date": "2026-04-28",
+      "open": 94.784443,
+      "high": 96.069859,
+      "low": 94.28161,
+      "close": 95.473007,
+      "volume": 4365364.0
+    },
+    {
+      "date": "2026-04-29",
+      "open": 95.958908,
+      "high": 96.335833,
+      "low": 95.036287,
+      "close": 95.344696,
+      "volume": 1502919.0
+    },
+    {
+      "date": "2026-04-30",
+      "open": 95.279786,
+      "high": 96.308048,
+      "low": 94.998395,
+      "close": 95.963436,
+      "volume": 2003823.0
+    },
+    {
+      "date": "2026-05-01",
+      "open": 96.023145,
+      "high": 96.711389,
+      "low": 95.14288,
+      "close": 95.760404,
+      "volume": 1652724.0
+    },
+    {
+      "date": "2026-05-04",
+      "open": 95.803457,
+      "high": 96.618438,
+      "low": 94.224263,
+      "close": 95.092134,
+      "volume": 1812889.0
+    },
+    {
+      "date": "2026-05-05",
+      "open": 94.641714,
+      "high": 95.250836,
+      "low": 92.895972,
+      "close": 93.320547,
+      "volume": 2486668.0
+    },
+    {
+      "date": "2026-05-06",
+      "open": 93.431245,
+      "high": 94.125172,
+      "low": 91.720662,
+      "close": 92.271474,
+      "volume": 1850721.0
+    },
+    {
+      "date": "2026-05-07",
+      "open": 92.323613,
+      "high": 93.092437,
+      "low": 91.765986,
+      "close": 92.19667,
+      "volume": 1327672.0
+    },
+    {
+      "date": "2026-05-08",
+      "open": 92.050701,
+      "high": 92.80724,
+      "low": 91.364568,
+      "close": 92.144081,
+      "volume": 1386096.0
+    },
+    {
+      "date": "2026-05-11",
+      "open": 92.355734,
+      "high": 92.804533,
+      "low": 92.186163,
+      "close": 92.651686,
+      "volume": 2286173.0
+    },
+    {
+      "date": "2026-05-12",
+      "open": 93.458554,
+      "high": 94.883969,
+      "low": 92.667585,
+      "close": 94.049158,
+      "volume": 2118297.0
+    },
+    {
+      "date": "2026-05-13",
+      "open": 94.020525,
+      "high": 95.104418,
+      "low": 93.368365,
+      "close": 94.420233,
+      "volume": 2165738.0
+    },
+    {
+      "date": "2026-05-14",
+      "open": 94.157227,
+      "high": 94.920929,
+      "low": 93.503752,
+      "close": 94.364893,
+      "volume": 2095011.0
+    },
+    {
+      "date": "2026-05-15",
+      "open": 94.567387,
+      "high": 95.23937,
+      "low": 93.546964,
+      "close": 94.113702,
+      "volume": 1016949.0
+    },
+    {
+      "date": "2026-05-18",
+      "open": 94.031255,
+      "high": 94.627115,
+      "low": 92.848447,
+      "close": 93.155613,
+      "volume": 1175694.0
+    },
+    {
+      "date": "2026-05-19",
+      "open": 93.076923,
+      "high": 93.610165,
+      "low": 91.396784,
+      "close": 91.799581,
+      "volume": 2099461.0
+    },
+    {
+      "date": "2026-05-20",
+      "open": 92.059323,
+      "high": 92.754531,
+      "low": 91.03689,
+      "close": 91.530909,
+      "volume": 2765060.0
+    },
+    {
+      "date": "2026-05-21",
+      "open": 92.064894,
+      "high": 92.665138,
+      "low": 91.88482,
+      "close": 92.491534,
+      "volume": 1102875.0
+    },
+    {
+      "date": "2026-05-22",
+      "open": 92.707141,
+      "high": 93.303964,
+      "low": 92.51366,
+      "close": 93.038847,
+      "volume": 2534156.0
+    },
+    {
+      "date": "2026-05-25",
+      "open": 93.157145,
+      "high": 93.342039,
+      "low": 92.698305,
+      "close": 92.890962,
+      "volume": 2044255.0
+    },
+    {
+      "date": "2026-05-26",
+      "open": 92.626689,
+      "high": 92.982745,
+      "low": 90.9709,
+      "close": 91.266932,
+      "volume": 2872741.0
+    },
+    {
+      "date": "2026-05-27",
+      "open": 90.853262,
+      "high": 91.289769,
+      "low": 89.728508,
+      "close": 90.037612,
+      "volume": 2340178.0
+    },
+    {
+      "date": "2026-05-28",
+      "open": 89.798017,
+      "high": 90.114668,
+      "low": 89.246912,
+      "close": 89.5597,
+      "volume": 2189771.0
+    },
+    {
+      "date": "2026-05-29",
+      "open": 89.592457,
+      "high": 90.132227,
+      "low": 89.216993,
+      "close": 89.565012,
+      "volume": 1506526.0
+    },
+    {
+      "date": "2026-06-01",
+      "open": 90.081299,
+      "high": 91.062415,
+      "low": 88.832291,
+      "close": 89.755655,
+      "volume": 1933352.0
+    },
+    {
+      "date": "2026-06-02",
+      "open": 89.253898,
+      "high": 89.906554,
+      "low": 87.665312,
+      "close": 88.082163,
+      "volume": 2655719.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 87.547901,
+      "high": 87.965594,
+      "low": 85.88443,
+      "close": 86.369638,
+      "volume": 3429655.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 85.858818,
+      "high": 86.154213,
+      "low": 85.71055,
+      "close": 85.89294,
+      "volume": 2739896.0
+    },
+    {
+      "date": "2026-06-05",
+      "open": 85.466761,
+      "high": 87.0829,
+      "low": 85.083142,
+      "close": 86.756348,
+      "volume": 2439318.0
+    },
+    {
+      "date": "2026-06-08",
+      "open": 86.544723,
+      "high": 87.165219,
+      "low": 85.803751,
+      "close": 86.309314,
+      "volume": 1917266.0
+    },
+    {
+      "date": "2026-06-09",
+      "open": 86.286552,
+      "high": 87.283681,
+      "low": 84.343607,
+      "close": 85.469403,
+      "volume": 2629108.0
+    },
+    {
+      "date": "2026-06-10",
+      "open": 85.313049,
+      "high": 85.912329,
+      "low": 84.483479,
+      "close": 85.07246,
+      "volume": 1971160.0
+    },
+    {
+      "date": "2026-06-11",
+      "open": 84.948014,
+      "high": 86.042172,
+      "low": 83.824108,
+      "close": 84.604518,
+      "volume": 2093848.0
+    },
+    {
+      "date": "2026-06-12",
+      "open": 85.051314,
+      "high": 85.492081,
+      "low": 84.156305,
+      "close": 84.623041,
+      "volume": 3001981.0
+    },
+    {
+      "date": "2026-06-15",
+      "open": 84.525069,
+      "high": 84.955853,
+      "low": 83.632272,
+      "close": 84.049819,
+      "volume": 2038648.0
+    },
+    {
+      "date": "2026-06-16",
+      "open": 83.842168,
+      "high": 84.065852,
+      "low": 83.425499,
+      "close": 83.577485,
+      "volume": 2216254.0
+    },
+    {
+      "date": "2026-06-17",
+      "open": 83.335562,
+      "high": 83.775391,
+      "low": 82.544635,
+      "close": 82.968754,
+      "volume": 3504223.0
+    },
+    {
+      "date": "2026-06-18",
+      "open": 83.055517,
+      "high": 83.393527,
+      "low": 81.70227,
+      "close": 82.04181,
+      "volume": 2739635.0
+    },
+    {
+      "date": "2026-06-19",
+      "open": 82.442144,
+      "high": 83.254236,
+      "low": 81.577821,
+      "close": 82.046575,
+      "volume": 2694523.0
+    },
+    {
+      "date": "2026-06-22",
+      "open": 82.137381,
+      "high": 83.114172,
+      "low": 80.523093,
+      "close": 81.280144,
+      "volume": 1658570.0
+    },
+    {
+      "date": "2026-06-23",
+      "open": 81.169207,
+      "high": 82.299686,
+      "low": 79.923113,
+      "close": 80.685949,
+      "volume": 1143215.0
+    },
+    {
+      "date": "2026-06-24",
+      "open": 80.763256,
+      "high": 81.835581,
+      "low": 79.975454,
+      "close": 80.748431,
+      "volume": 1765118.0
+    },
+    {
+      "date": "2026-06-25",
+      "open": 80.895205,
+      "high": 81.534044,
+      "low": 79.567656,
+      "close": 79.887677,
+      "volume": 3220475.0
+    },
+    {
+      "date": "2026-06-26",
+      "open": 79.39267,
+      "high": 80.370333,
+      "low": 78.270077,
+      "close": 79.406433,
+      "volume": 1916567.0
+    },
+    {
+      "date": "2026-06-29",
+      "open": 79.792678,
+      "high": 82.082728,
+      "low": 79.146337,
+      "close": 81.28108,
+      "volume": 2204648.0
+    },
+    {
+      "date": "2026-06-30",
+      "open": 81.244739,
+      "high": 82.350708,
+      "low": 80.146928,
+      "close": 81.348094,
+      "volume": 1722080.0
+    },
+    {
+      "date": "2026-07-01",
+      "open": 80.85808,
+      "high": 81.875897,
+      "low": 79.859603,
+      "close": 80.641353,
+      "volume": 3871937.0
+    },
+    {
+      "date": "2026-07-02",
+      "open": 81.219347,
+      "high": 81.296536,
+      "low": 80.979818,
+      "close": 81.04153,
+      "volume": 2036991.0
+    },
+    {
+      "date": "2026-07-03",
+      "open": 81.513983,
+      "high": 82.697363,
+      "low": 81.160852,
+      "close": 82.235784,
+      "volume": 1256050.0
+    },
+    {
+      "date": "2026-07-06",
+      "open": 81.868912,
+      "high": 82.830434,
+      "low": 80.000045,
+      "close": 80.811076,
+      "volume": 2594859.0
+    },
+    {
+      "date": "2026-07-07",
+      "open": 81.187166,
+      "high": 81.62344,
+      "low": 80.04893,
+      "close": 80.460276,
+      "volume": 2751882.0
+    },
+    {
+      "date": "2026-07-08",
+      "open": 80.473016,
+      "high": 81.251387,
+      "low": 79.763605,
+      "close": 80.156109,
+      "volume": 1620902.0
+    },
+    {
+      "date": "2026-07-09",
+      "open": 80.178874,
+      "high": 81.31685,
+      "low": 79.745044,
+      "close": 80.599856,
+      "volume": 1366829.0
+    },
+    {
+      "date": "2026-07-10",
+      "open": 80.689876,
+      "high": 81.524949,
+      "low": 80.344335,
+      "close": 80.875296,
+      "volume": 3449365.0
+    },
+    {
+      "date": "2026-07-13",
+      "open": 81.097861,
+      "high": 82.285044,
+      "low": 80.359924,
+      "close": 81.434525,
+      "volume": 1482748.0
+    },
+    {
+      "date": "2026-07-14",
+      "open": 81.075455,
+      "high": 81.799346,
+      "low": 79.838735,
+      "close": 80.646446,
+      "volume": 1796761.0
+    },
+    {
+      "date": "2026-07-15",
+      "open": 80.464761,
+      "high": 81.703712,
+      "low": 79.705681,
+      "close": 81.029387,
+      "volume": 1406874.0
+    },
+    {
+      "date": "2026-07-16",
+      "open": 80.294055,
+      "high": 81.020996,
+      "low": 79.124194,
+      "close": 79.682907,
+      "volume": 1536855.0
+    },
+    {
+      "date": "2026-07-17",
+      "open": 79.623672,
+      "high": 81.126287,
+      "low": 78.843387,
+      "close": 80.377432,
+      "volume": 1286811.0
+    },
+    {
+      "date": "2026-07-20",
+      "open": 80.421035,
+      "high": 81.271395,
+      "low": 79.295373,
+      "close": 80.117551,
+      "volume": 1341987.0
+    },
+    {
+      "date": "2026-07-21",
+      "open": 80.018424,
+      "high": 80.595366,
+      "low": 79.406305,
+      "close": 79.703692,
+      "volume": 1494263.0
+    },
+    {
+      "date": "2026-07-22",
+      "open": 80.015646,
+      "high": 80.14297,
+      "low": 78.35814,
+      "close": 78.460938,
+      "volume": 2067217.0
+    },
+    {
+      "date": "2026-07-23",
+      "open": 78.343189,
+      "high": 80.413574,
+      "low": 77.937761,
+      "close": 79.932788,
+      "volume": 2120464.0
+    },
+    {
+      "date": "2026-07-24",
+      "open": 80.098044,
+      "high": 81.332216,
+      "low": 79.104122,
+      "close": 80.283037,
+      "volume": 2040939.0
+    },
+    {
+      "date": "2026-07-27",
+      "open": 80.351653,
+      "high": 81.451286,
+      "low": 79.89445,
+      "close": 81.021999,
+      "volume": 1928567.0
+    },
+    {
+      "date": "2026-07-28",
+      "open": 81.454387,
+      "high": 82.039835,
+      "low": 81.250646,
+      "close": 81.632038,
+      "volume": 1735576.0
+    },
+    {
+      "date": "2026-07-29",
+      "open": 82.145671,
+      "high": 82.671709,
+      "low": 81.39785,
+      "close": 82.017715,
+      "volume": 1402463.0
+    },
+    {
+      "date": "2026-07-30",
+      "open": 82.676445,
+      "high": 83.74627,
+      "low": 82.359862,
+      "close": 83.298068,
+      "volume": 2488053.0
+    },
+    {
+      "date": "2026-07-31",
+      "open": 83.677192,
+      "high": 84.605996,
+      "low": 82.960084,
+      "close": 83.770102,
+      "volume": 2094054.0
+    },
+    {
+      "date": "2026-08-03",
+      "open": 83.583817,
+      "high": 84.473893,
+      "low": 83.389647,
+      "close": 84.182972,
+      "volume": 2447706.0
+    },
+    {
+      "date": "2026-08-04",
+      "open": 83.621804,
+      "high": 84.603897,
+      "low": 83.415616,
+      "close": 84.347439,
+      "volume": 1895130.0
+    },
+    {
+      "date": "2026-08-05",
+      "open": 84.230114,
+      "high": 85.505843,
+      "low": 83.610473,
+      "close": 84.635198,
+      "volume": 1386898.0
+    },
+    {
+      "date": "2026-08-06",
+      "open": 84.353153,
+      "high": 86.533796,
+      "low": 83.958134,
+      "close": 85.965524,
+      "volume": 1571344.0
+    },
+    {
+      "date": "2026-08-07",
+      "open": 85.93454,
+      "high": 88.561475,
+      "low": 84.94872,
+      "close": 87.534085,
+      "volume": 2066384.0
+    },
+    {
+      "date": "2026-08-10",
+      "open": 87.612976,
+      "high": 88.382148,
+      "low": 85.983057,
+      "close": 86.538337,
+      "volume": 2242245.0
+    },
+    {
+      "date": "2026-08-11",
+      "open": 86.414798,
+      "high": 86.44902,
+      "low": 85.35926,
+      "close": 85.381647,
+      "volume": 3064209.0
+    },
+    {
+      "date": "2026-08-12",
+      "open": 85.59948,
+      "high": 86.357881,
+      "low": 84.108361,
+      "close": 84.837406,
+      "volume": 2297573.0
+    },
+    {
+      "date": "2026-08-13",
+      "open": 84.978847,
+      "high": 85.543475,
+      "low": 84.917298,
+      "close": 85.456914,
+      "volume": 2985270.0
+    },
+    {
+      "date": "2026-08-14",
+      "open": 85.500237,
+      "high": 86.283209,
+      "low": 84.16477,
+      "close": 85.020371,
+      "volume": 2046785.0
+    },
+    {
+      "date": "2026-08-17",
+      "open": 84.501912,
+      "high": 84.592373,
+      "low": 83.981504,
+      "close": 84.075952,
+      "volume": 1966912.0
+    },
+    {
+      "date": "2026-08-18",
+      "open": 84.050287,
+      "high": 84.613483,
+      "low": 82.043626,
+      "close": 82.701211,
+      "volume": 3620910.0
+    },
+    {
+      "date": "2026-08-19",
+      "open": 82.399964,
+      "high": 82.952181,
+      "low": 82.00218,
+      "close": 82.512019,
+      "volume": 2158984.0
+    },
+    {
+      "date": "2026-08-20",
+      "open": 82.136973,
+      "high": 84.585545,
+      "low": 81.111993,
+      "close": 83.649785,
+      "volume": 1540967.0
+    },
+    {
+      "date": "2026-08-21",
+      "open": 83.716814,
+      "high": 84.084438,
+      "low": 82.941792,
+      "close": 83.247482,
+      "volume": 2351827.0
+    },
+    {
+      "date": "2026-08-24",
+      "open": 82.92364,
+      "high": 83.802157,
+      "low": 82.333632,
+      "close": 82.811064,
+      "volume": 1423911.0
+    },
+    {
+      "date": "2026-08-25",
+      "open": 83.041953,
+      "high": 83.607071,
+      "low": 82.384852,
+      "close": 82.683723,
+      "volume": 3686911.0
+    },
+    {
+      "date": "2026-08-26",
+      "open": 82.260448,
+      "high": 82.89493,
+      "low": 81.331222,
+      "close": 82.053574,
+      "volume": 1796437.0
+    },
+    {
+      "date": "2026-08-27",
+      "open": 82.647832,
+      "high": 82.944035,
+      "low": 81.676649,
+      "close": 81.850154,
+      "volume": 2483215.0
+    },
+    {
+      "date": "2026-08-28",
+      "open": 81.68564,
+      "high": 82.250947,
+      "low": 80.582654,
+      "close": 81.107838,
+      "volume": 1628673.0
+    },
+    {
+      "date": "2026-08-31",
+      "open": 81.149605,
+      "high": 81.655685,
+      "low": 80.572519,
+      "close": 80.990196,
+      "volume": 2257180.0
+    },
+    {
+      "date": "2026-09-01",
+      "open": 80.833105,
+      "high": 81.217666,
+      "low": 80.576516,
+      "close": 80.927205,
+      "volume": 1238545.0
+    },
+    {
+      "date": "2026-09-02",
+      "open": 80.971667,
+      "high": 81.654626,
+      "low": 79.828064,
+      "close": 80.458426,
+      "volume": 1753374.0
+    },
+    {
+      "date": "2026-09-03",
+      "open": 80.294958,
+      "high": 81.304128,
+      "low": 79.910761,
+      "close": 80.771965,
+      "volume": 2691467.0
+    },
+    {
+      "date": "2026-09-04",
+      "open": 80.980657,
+      "high": 81.919778,
+      "low": 80.122096,
+      "close": 80.63904,
+      "volume": 1442666.0
+    },
+    {
+      "date": "2026-09-07",
+      "open": 81.060464,
+      "high": 81.531335,
+      "low": 79.900329,
+      "close": 80.365115,
+      "volume": 1193878.0
+    },
+    {
+      "date": "2026-09-08",
+      "open": 80.668968,
+      "high": 80.956966,
+      "low": 79.482373,
+      "close": 79.736599,
+      "volume": 1973344.0
+    },
+    {
+      "date": "2026-09-09",
+      "open": 79.634156,
+      "high": 80.079852,
+      "low": 78.55003,
+      "close": 78.845008,
+      "volume": 2389378.0
+    },
+    {
+      "date": "2026-09-10",
+      "open": 79.233238,
+      "high": 79.834575,
+      "low": 77.84513,
+      "close": 78.552961,
+      "volume": 1203646.0
+    },
+    {
+      "date": "2026-09-11",
+      "open": 78.675837,
+      "high": 79.079961,
+      "low": 78.134021,
+      "close": 78.558777,
+      "volume": 2439356.0
+    },
+    {
+      "date": "2026-09-14",
+      "open": 78.658201,
+      "high": 79.147246,
+      "low": 76.7725,
+      "close": 77.287182,
+      "volume": 2725703.0
+    },
+    {
+      "date": "2026-09-15",
+      "open": 77.36422,
+      "high": 78.23081,
+      "low": 77.108849,
+      "close": 77.732678,
+      "volume": 4567971.0
+    },
+    {
+      "date": "2026-09-16",
+      "open": 77.694432,
+      "high": 78.074726,
+      "low": 76.954931,
+      "close": 77.373352,
+      "volume": 2076416.0
+    },
+    {
+      "date": "2026-09-17",
+      "open": 77.277791,
+      "high": 79.752006,
+      "low": 76.765155,
+      "close": 79.010999,
+      "volume": 2714401.0
+    },
+    {
+      "date": "2026-09-18",
+      "open": 79.326458,
+      "high": 80.544728,
+      "low": 78.941962,
+      "close": 80.159253,
+      "volume": 3409002.0
+    },
+    {
+      "date": "2026-09-21",
+      "open": 80.20752,
+      "high": 80.611131,
+      "low": 79.258804,
+      "close": 79.692519,
+      "volume": 2883778.0
+    },
+    {
+      "date": "2026-09-22",
+      "open": 80.008225,
+      "high": 80.476323,
+      "low": 79.088755,
+      "close": 79.399262,
+      "volume": 2909721.0
+    },
+    {
+      "date": "2026-09-23",
+      "open": 79.522463,
+      "high": 79.912939,
+      "low": 78.096644,
+      "close": 78.486974,
+      "volume": 3219372.0
+    },
+    {
+      "date": "2026-09-24",
+      "open": 78.064189,
+      "high": 78.548568,
+      "low": 77.146222,
+      "close": 77.53089,
+      "volume": 2670621.0
+    },
+    {
+      "date": "2026-09-25",
+      "open": 77.945416,
+      "high": 78.155847,
+      "low": 77.807752,
+      "close": 77.924023,
+      "volume": 1424384.0
+    },
+    {
+      "date": "2026-09-28",
+      "open": 77.775913,
+      "high": 78.247116,
+      "low": 77.090182,
+      "close": 77.354525,
+      "volume": 1969113.0
+    },
+    {
+      "date": "2026-09-29",
+      "open": 77.276358,
+      "high": 77.848301,
+      "low": 77.166311,
+      "close": 77.696099,
+      "volume": 3480150.0
+    },
+    {
+      "date": "2026-09-30",
+      "open": 78.054046,
+      "high": 78.672077,
+      "low": 77.326177,
+      "close": 78.01493,
+      "volume": 2251150.0
+    },
+    {
+      "date": "2026-10-01",
+      "open": 78.007022,
+      "high": 78.543751,
+      "low": 76.500315,
+      "close": 77.078121,
+      "volume": 2646730.0
+    },
+    {
+      "date": "2026-10-02",
+      "open": 76.781462,
+      "high": 77.390897,
+      "low": 76.322859,
+      "close": 76.639036,
+      "volume": 1076459.0
+    },
+    {
+      "date": "2026-10-05",
+      "open": 76.520484,
+      "high": 77.448049,
+      "low": 75.096731,
+      "close": 75.645559,
+      "volume": 2129864.0
+    },
+    {
+      "date": "2026-10-06",
+      "open": 75.432207,
+      "high": 76.364348,
+      "low": 75.095758,
+      "close": 76.074845,
+      "volume": 1284992.0
+    },
+    {
+      "date": "2026-10-07",
+      "open": 75.817526,
+      "high": 77.657535,
+      "low": 75.511531,
+      "close": 77.111937,
+      "volume": 3778642.0
+    },
+    {
+      "date": "2026-10-08",
+      "open": 76.814504,
+      "high": 78.201192,
+      "low": 76.678293,
+      "close": 77.995434,
+      "volume": 1424043.0
+    },
+    {
+      "date": "2026-10-09",
+      "open": 78.020061,
+      "high": 78.704642,
+      "low": 77.809521,
+      "close": 78.291779,
+      "volume": 1544240.0
+    },
+    {
+      "date": "2026-10-12",
+      "open": 78.211757,
+      "high": 79.101775,
+      "low": 77.919971,
+      "close": 78.569643,
+      "volume": 955760.0
+    },
+    {
+      "date": "2026-10-13",
+      "open": 78.009477,
+      "high": 78.508778,
+      "low": 77.372497,
+      "close": 77.892398,
+      "volume": 3122054.0
+    },
+    {
+      "date": "2026-10-14",
+      "open": 77.844039,
+      "high": 78.361078,
+      "low": 77.405761,
+      "close": 77.974244,
+      "volume": 1874086.0
+    },
+    {
+      "date": "2026-10-15",
+      "open": 77.990006,
+      "high": 78.607796,
+      "low": 77.338209,
+      "close": 78.027128,
+      "volume": 1773859.0
+    },
+    {
+      "date": "2026-10-16",
+      "open": 78.296053,
+      "high": 78.715279,
+      "low": 77.710008,
+      "close": 77.942154,
+      "volume": 2853347.0
+    },
+    {
+      "date": "2026-10-19",
+      "open": 78.08954,
+      "high": 78.333128,
+      "low": 77.832052,
+      "close": 78.057058,
+      "volume": 787965.0
+    },
+    {
+      "date": "2026-10-20",
+      "open": 78.080813,
+      "high": 78.373446,
+      "low": 76.992373,
+      "close": 77.15883,
+      "volume": 1713960.0
+    },
+    {
+      "date": "2026-10-21",
+      "open": 77.2632,
+      "high": 77.900656,
+      "low": 75.629861,
+      "close": 76.075671,
+      "volume": 1904763.0
+    }
+  ],
+  "notes": [
+    "当前为固定种子生成的虚构 OHLCV 数据，仅用于演示流程；不对应真实股票或实盘业绩。",
+    "研究演示，不构成投资建议；模型分数不是收益承诺，也未经概率校准。",
+    "t 日收盘后产生信号；目标为下一条行情记录的开盘至收盘收益，最新预测尚无真实标签。",
+    "按时间顺序约 60% / 20% / 20% 切分，两个边界各隔离 1 行；日期范围以特征/信号日为准。",
+    "分类器、回归器与标准化器仅拟合训练集。验证集仅报告指标，测试集仅做最终评估；未自动调参。",
+    "方向准确率、精确率和召回率固定以 0.5 为分类阈值；交易信号使用所选交易阈值。平盘归为非上涨。",
+    "策略为日内做多/空仓；基准为每日开盘全额买入、收盘卖出。两者均计双边手续费和滑点，不含隔夜收益。",
+    "假定碎股、充分流动性且可日内卖出；未模拟停牌、涨跌停、税费细则与最低佣金。不适用于直接交易 A 股 T+1 股票。",
+    "年化按每年 252 个交易日计算；夏普使用零无风险利率和样本日收益标准差；最大回撤以负数表示。",
+    "最新预测沿用训练期模型，未使用验证期或测试期重新拟合。特征重要性表示模型内关联，不代表因果关系。"
+  ],
+  "model": {
+    "name": "逻辑回归分类 + Ridge 收益回归",
+    "threshold": 0.55,
+    "feature_count": 18,
+    "seed": 42,
+    "direction_threshold": 0.5,
+    "sklearn_version": "1.7.2"
+  },
+  "config": {
+    "model": "logistic",
+    "threshold": 0.55,
+    "cost_bps": 5.0,
+    "slippage_bps": 2.0,
+    "initial_capital": 100000.0,
+    "seed": 42
+  },
+  "dataset_name": "星河科技 · 合成行情",
+  "dataset_source": "synthetic",
+  "dataset_sha256": "d9f5ca8f15b144a5bb8e558c596c65a0215fb46c67482b8055fb8da092a68ea0",
+  "generated_at": "2026-10-22T08:32:27.964278+00:00",
+  "app_version": "1.0.0"
+}
