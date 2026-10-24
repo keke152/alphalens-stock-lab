@@ -22,7 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from . import __version__, storage
-from .data import generate_demo, parse_csv
+from .data import canonical_csv, generate_demo, parse_csv
 from .engine import DEFAULT_CONFIG, run_experiment
 from .reporting import render_html_report
 
@@ -140,7 +140,7 @@ async def upload_dataset(file: UploadFile = File(...), name: str = Form("")):
         df = parse_csv(raw)
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
-    canonical = df.to_csv(index=False, float_format="%.10g").encode("utf-8")
+    canonical = canonical_csv(df)
     dataset_id = "csv-" + hashlib.sha256(canonical).hexdigest()[:20]
     existing = storage.get_dataset(dataset_id)
     if existing:

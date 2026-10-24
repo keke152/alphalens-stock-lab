@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import __version__
-from .data import generate_demo, parse_csv
+from .data import canonical_csv, generate_demo, parse_csv
 from .engine import run_experiment
 
 
@@ -41,7 +41,7 @@ def main() -> None:
             if not 300 <= args.rows <= 20000:
                 parser.error("rows 需要在 300 到 20000 之间")
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            generate_demo(args.symbol, args.rows).to_csv(args.output, index=False, float_format="%.10g")
+            args.output.write_bytes(canonical_csv(generate_demo(args.symbol, args.rows)))
             print(f"Saved synthetic data: {args.output.resolve()}")
             return
         from .main import RunRequest
@@ -53,7 +53,7 @@ def main() -> None:
         df = parse_csv(args.csv.read_bytes())
         df.attrs["source"] = args.source
         report = run_experiment(df, config, artifact_path=args.save_model)
-        canonical = df.to_csv(index=False, float_format="%.10g").encode("utf-8")
+        canonical = canonical_csv(df)
         report.update(dataset_name=args.name, dataset_source=args.source,
                       dataset_sha256=hashlib.sha256(canonical).hexdigest(),
                       generated_at=datetime.now(timezone.utc).isoformat(), app_version=__version__)

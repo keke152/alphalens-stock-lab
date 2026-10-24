@@ -160,3 +160,8 @@ def summarize(df: pd.DataFrame) -> dict:
         "start": pd.Timestamp(df["date"].min()).strftime("%Y-%m-%d"),
         "end": pd.Timestamp(df["date"].max()).strftime("%Y-%m-%d"),
     }
+
+
+def canonical_csv(df: pd.DataFrame) -> bytes:
+    """Stable UTF-8 / CRLF CSV for hashes on every OS, including legacy examples."""
+    return df.to_csv(index=False, float_format="%.10g", lineterminator="\r\n").encode("utf-8")

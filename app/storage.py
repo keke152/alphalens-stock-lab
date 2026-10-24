@@ -61,8 +61,8 @@ def get_dataset(dataset_id: str) -> dict | None:
 
 
 def register_dataset(dataset_id: str, name: str, symbol: str, source: str, df: Any) -> dict:
-    from .data import summarize
-    raw = df.to_csv(index=False, float_format="%.10g").encode("utf-8")
+    from .data import canonical_csv, summarize
+    raw = canonical_csv(df)
     info = summarize(df)
     path = HOME / "datasets" / f"{dataset_id}.csv"
     path.write_bytes(raw)
