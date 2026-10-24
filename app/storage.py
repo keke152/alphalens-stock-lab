@@ -5,12 +5,14 @@ import hashlib
 import json
 import os
 import sqlite3
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-HOME = Path(os.environ.get("STOCK_LAB_HOME", str(ROOT / "runtime"))).resolve()
+_default_home = Path(os.environ.get('USERPROFILE', str(Path.home()))) / 'Documents' / 'AlphaLensStockLab' / 'user-data' if getattr(sys, 'frozen', False) else ROOT / 'runtime'
+HOME = Path(os.environ.get("STOCK_LAB_HOME", str(_default_home))).resolve()
 
 
 def now() -> str:

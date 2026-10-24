@@ -27,3 +27,4 @@ jobs:
       - run: node --check static/research.js
       - run: node --check static/robustness.js
       - run: node --check static/tools.js
+      - run: node --check static/theme.js

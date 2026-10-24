@@ -12,7 +12,7 @@
 
 [快速开始](#快速开始) · [模型与架构](docs/01-architecture-and-model.md) · [回测口径](docs/02-data-and-backtest.md) · [API 文档](docs/03-api-and-configuration.md)
 
-![AlphaLens v1.3 研究工具](docs/images/tools-technical.png)
+![AlphaLens v1.4](docs/images/theme-light.png)
 
 **v1.3：** 技术K线与指标、自选七类预警、后台快照检查、规则扫描、带仓位风控的模拟账本及研究日报。[功能与演示指南](docs/10-v1.3-toolkit.md)。
 
@@ -52,6 +52,10 @@ flowchart LR
     G --> H[(SQLite / 本地文件)]
     G --> I[对比与导出]
 ```
+
+## Windows 桌面版
+
+[下载Windows版](https://github.com/keke152/alphalens-stock-lab/releases/tag/v1.4.0)，解压后双击 `AlphaLens.exe`，无需安装Python。可复制到桌面直接使用。提供灰白红色与深色行情两个主题。数据路径、构建和验证见 [桌面版说明](docs/12-windows-desktop.md)。
 
 ## 快速开始
 
@@ -126,7 +130,7 @@ alphalens-stock-lab/
 python -m unittest discover -s tests -v
 ```
 
-本次本机运行 52 项通过；在原有时间隔离与回测检查外，新增指标预热、七类预警、重复事件、FIFO / T+1、并发幂等、仓位限制及研究日报检查。浏览器流程与范围见 [v1.3验证记录](docs/11-v1.3-validation.md)。
+本次Windows源码运行55项通过，涵盖模型评估、指标预热、七类预警、FIFO / T+1、并发幂等、风控和桌面数据路径。研究工具流程见 [v1.3验证记录](docs/11-v1.3-validation.md)，实际EXE与主题检查见 [桌面版说明](docs/12-windows-desktop.md)。
 
 ## 研究边界
 

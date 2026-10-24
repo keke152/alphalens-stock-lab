@@ -60,7 +60,7 @@ class ApiTests(unittest.TestCase):
 
     def test_health_bootstrap_and_script_mime(self):
         with self.get('/health') as response:
-            self.assertEqual(json.load(response)['version'], '1.3.0')
+            self.assertEqual(json.load(response)['version'], '1.4.0')
         with self.get('/api/bootstrap') as response:
             bootstrap = json.load(response)
             self.assertEqual(bootstrap['defaults']['evaluation'], 'holdout')

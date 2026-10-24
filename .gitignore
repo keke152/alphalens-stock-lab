@@ -41,3 +41,6 @@ python-service/skills/proposals/
 .DS_Store
 Thumbs.db
 *.zip
+*.exe
+*.pkg
+/build/

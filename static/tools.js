@@ -90,12 +90,12 @@ function drawCandlesticks() {
   const y=value=>padding.top+(high-value)/span*h,x=i=>padding.left+(i+.5)*w/data.length;
   const bodyWidth=Math.max(1.5,w/data.length*.58);
   let content="";
-  for(let i=0;i<5;i++) { const value=low+span*i/4,py=y(value);content+=`<line x1="${padding.left}" x2="${width-padding.right}" y1="${py}" y2="${py}" stroke="#dce7ef" stroke-dasharray="3 5"/><text x="${padding.left-7}" y="${py+4}" text-anchor="end">${number(value,2)}</text>`; }
+  for(let i=0;i<5;i++) { const value=low+span*i/4,py=y(value);content+=`<line x1="${padding.left}" x2="${width-padding.right}" y1="${py}" y2="${py}" stroke="${chartColor("--border")}" stroke-dasharray="3 5"/><text x="${padding.left-7}" y="${py+4}" text-anchor="end">${number(value,2)}</text>`; }
   data.forEach((row,i)=>{
     const cx=x(i),style=row.close>row.open?"candle-up":"candle-down",top=y(Math.max(row.open,row.close)),bottom=y(Math.min(row.open,row.close));
     content+=`<g class="${style}"><title>${escapeHTML(row.date)} 开 ${row.open} 高 ${row.high} 低 ${row.low} 收 ${row.close} 量 ${row.volume}</title><line x1="${cx}" x2="${cx}" y1="${y(row.high)}" y2="${y(row.low)}"/><rect x="${cx-bodyWidth/2}" y="${top}" width="${bodyWidth}" height="${Math.max(bottom-top,1)}"/></g>`;
   });
-  for(const [key,color] of [["ma5","#087f73"],["ma20","#c08b37"],["ma60","#8c7cb4"]]) {
+  for(const [key,color] of [["ma5",chartColor("--amber")],["ma20",chartColor("--violet")],["ma60",chartColor("--blue")]]) {
     const points=data.map((row,i)=>Number.isFinite(row[key])?`${x(i)},${y(row[key])}`:null).filter(Boolean).join(" ");
     content+=`<polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.4"/>`;
   }
