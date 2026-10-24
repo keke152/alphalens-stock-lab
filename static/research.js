@@ -11,12 +11,13 @@ function formConfig() {
   return { dataset_id: $("dataset-select").value, model: $("model-select").value,
     threshold: Number($("threshold").value), cost_bps: Number($("cost-bps").value),
     slippage_bps: Number($("slippage-bps").value), initial_capital: Number($("initial-capital-input").value),
-    seed: Number($("seed-input").value) };
+    seed: Number($("seed-input").value), evaluation: $("evaluation-select").value,
+    folds: Number($("folds-input").value), threshold_mode: $("threshold-mode").value };
 }
 
 function showConfigDifference() {
   if (!state.report || state.busy) { $("config-dirty").hidden = true; return; }
-  const original = state.report.config || state.run?.config || {};
+  const original = { evaluation: "holdout", folds: 3, threshold_mode: "manual", ...(state.report.config || state.run?.config || {}) };
   const current = formConfig();
   const dirty = Object.keys(original).some((key) => key in current && current[key] !== original[key]);
   $("config-dirty").hidden = !dirty;
@@ -64,7 +65,7 @@ function filteredPredictions() {
 function downloadFilteredCsv() {
   const rows = filteredPredictions();
   if (!rows.length) return;
-  const fields = ["signal_date", "date", "probability_up", "predicted_return", "actual_return", "signal", "correct",
+  const fields = ["signal_date", "date", "fold", "threshold", "probability_up", "predicted_return", "actual_return", "signal", "correct",
     "net_return", "benchmark_return", "strategy_equity", "benchmark_equity", "drawdown"];
   const equity = new Map((state.report.equity || []).map((row) => [row.date, row]));
   const csvCell = (value) => `"${String(value ?? "").replace(/"/g, '""')}"`;
@@ -143,7 +144,7 @@ async function loadComparison() {
     const first = a.report, second = b.report;
     const sameData = first.dataset_sha256 && first.dataset_sha256 === second.dataset_sha256;
     const sameDates = first.equity.length === second.equity.length && first.equity.every((row, index) => row.date === second.equity[index].date);
-    const configKeys = ["threshold", "cost_bps", "slippage_bps", "seed"];
+    const configKeys = ["threshold", "threshold_mode", "evaluation", "folds", "cost_bps", "slippage_bps", "seed"];
     const changed = configKeys.filter((key) => first.config[key] !== second.config[key]);
     $("compare-a-title").textContent = `A · ${modelLabel(first.config.model)}`;
     $("compare-b-title").textContent = `B · ${modelLabel(second.config.model)}`;
@@ -157,14 +158,16 @@ async function loadComparison() {
       ["年化夏普", number(first.metrics.sharpe), number(second.metrics.sharpe)],
       ["模拟交易次数", number(first.metrics.trades, 0), number(second.metrics.trades, 0)],
       ["初始资金", number(first.config.initial_capital, 0), number(second.config.initial_capital, 0)],
-      ["入场阈值", percent(first.config.threshold, 0), percent(second.config.threshold, 0)],
+      ["最后一折有效阈值", percent(first.latest.threshold ?? first.config.threshold, 0), percent(second.latest.threshold ?? second.config.threshold, 0)],
+      ["评估方式", first.config.evaluation || "holdout", second.config.evaluation || "holdout"],
+      ["阈值方式", first.config.threshold_mode || "manual", second.config.threshold_mode || "manual"],
       ["单边手续费 / 滑点", `${first.config.cost_bps} / ${first.config.slippage_bps} bps`, `${second.config.cost_bps} / ${second.config.slippage_bps} bps`],
       ["模型种子", first.config.seed, second.config.seed]
     ];
     $("compare-metrics").innerHTML = items.map((item) => `<tr>${item.map((cell) => `<td>${escapeHTML(cell)}</td>`).join("")}</tr>`).join("");
     $("comparison-result").hidden = false;
     if (sameData && sameDates) {
-      $("compare-message").textContent = `同一份数据、相同测试日期。${changed.length ? "两次实验的部分参数不同，请结合下表解释差异。" : "阈值、交易成本与随机种子一致，可以观察模型选择带来的结果差异。"} 默认样本为合成行情，历史表现不能保证未来结果。`;
+      $("compare-message").textContent = `同一份数据、相同测试日期。${changed.length ? "两次实验的部分参数不同，请结合下表解释差异。" : first.config.threshold_mode === "validation" ? "阈值选择规则、备用值、成本与种子一致；实际阈值可能随模型和折数变化，详见各自候选表。" : "固定阈值、交易成本与随机种子一致，可以观察模型选择带来的结果差异。"} 历史表现不能保证未来结果。`;
       research.comparisonData = [{ date: first.predictions[0]?.signal_date || "起点", a: 1, b: 1 },
         ...first.equity.map((row, index) => ({ date: row.date, a: row.strategy / first.config.initial_capital,
           b: second.equity[index].strategy / second.config.initial_capital }))];

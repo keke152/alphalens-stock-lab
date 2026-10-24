@@ -27,7 +27,8 @@ API 与界面由同一个 FastAPI 服务提供。默认只监听本机；当前�
 | GET | `/api/runs` | 查看历史任务摘要 |
 | GET | `/api/runs/{id}` | 查看任务状态；完成后包含研究报告 |
 | GET | `/api/runs/{id}/export?format=json` | 导出完整报告 JSON |
-| GET | `/api/runs/{id}/export?format=csv` | 导出逐日结果 CSV |
+| GET | `/api/runs/{id}/export?format=csv` | 导出逐日结果 CSV，含折号与有效阈值 |
+| GET | `/api/runs/{id}/export?format=html` | 导出可离线打开和打印的研究报告 |
 | GET | `/api/runs/{id}/model` | 下载真实训练任务生成的 joblib 模型文件 |
 | GET | `/api/documents` | 获取文档标题和下载地址 |
 | GET | `/api/documents/{name}` | 下载对应 Markdown 文档 |
@@ -59,6 +60,9 @@ API 与界面由同一个 FastAPI 服务提供。默认只监听本机；当前�
 | `slippage_bps` | 2 | 0–100 | 每边滑点，单位基点 |
 | `initial_capital` | 100000 | 1000–1000000000 | 归一化回测的初始资金 |
 | `seed` | 42 | 0–2147483647 | 模型随机种子 |
+| `evaluation` | `holdout` | `holdout` / `walk_forward` | 单次留出或扩展窗口 |
+| `folds` | 3 | 3–5 | 扩展窗口折数；单次留出时实际折数为 1 |
+| `threshold_mode` | `manual` | `manual` / `validation` | 手动阈值或仅验证集选择 |
 
 1 个基点（bps）等于 0.01%。默认每边合计 7 bps，一次买卖成本约为 14 bps。实现使用买卖两侧价格与费用的乘除公式，见数据与回测说明；没有简单固定减去 0.14%，也不是特定市场完整费率。
 
@@ -136,6 +140,8 @@ Invoke-WebRequest "http://127.0.0.1:8010/api/runs/替换为实际任务id/export
 ```
 
 这些命令用于运行项目和复现研究结果；本文不将它们描述为已经执行过的自动化检查。
+
+v1.2 CLI 可增加 `--evaluation walk_forward --folds 3 --threshold-mode validation --html report.html`。新 JSON 的 `evaluation.folds` 保存全部时间边界及候选表；`latest.threshold` 和模型文件的 `effective_threshold` 为实际采用值，可能不同于配置中的备用 `threshold`。
 
 ## 6. 配置原则
 

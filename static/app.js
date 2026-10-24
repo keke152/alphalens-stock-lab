@@ -109,10 +109,12 @@ function updateModelHelp() {
 }
 
 function applyConfig(config = {}) {
-  const fields = { model: "model-select", threshold: "threshold", cost_bps: "cost-bps", slippage_bps: "slippage-bps", initial_capital: "initial-capital-input", seed: "seed-input" };
+  config = { evaluation: "holdout", folds: 3, threshold_mode: "manual", ...config };
+  const fields = { model: "model-select", threshold: "threshold", cost_bps: "cost-bps", slippage_bps: "slippage-bps", initial_capital: "initial-capital-input", seed: "seed-input", evaluation: "evaluation-select", folds: "folds-input", threshold_mode: "threshold-mode" };
   for (const [key, id] of Object.entries(fields)) if (config[key] !== undefined && config[key] !== null) $(id).value = config[key];
   updateThreshold();
   updateModelHelp();
+  updateEvaluationControls();
   $("config-dirty").hidden = true;
 }
 
@@ -233,9 +235,7 @@ function watchRun(run, token) {
 async function submitRun(event) {
   event.preventDefault();
   if (state.busy || !$("run-form").reportValidity()) return;
-  const config = { dataset_id: $("dataset-select").value, model: $("model-select").value,
-    threshold: Number($("threshold").value), cost_bps: Number($("cost-bps").value), slippage_bps: Number($("slippage-bps").value),
-    initial_capital: Number($("initial-capital-input").value), seed: Number($("seed-input").value) };
+  const config = formConfig();
   showError("");
   setBusy(true);
   try {
@@ -277,7 +277,7 @@ function renderReport(run) {
   $("latest-signal").classList.toggle("wait", !active);
   writeMetric("predicted-return", latest.predicted_return, true);
   $("reference-close").textContent = `参考收盘价 ${number(latest.reference_close)}`;
-  $("prediction-context").textContent = `上涨概率${active ? "达到" : "未达到"} ${percent(config.threshold, 0)} 入场阈值。模型只使用截至 ${shortDate(latest.model_train_end)} 的训练集拟合。`;
+  $("prediction-context").textContent = `上涨概率${active ? "达到" : "未达到"} ${percent(latest.threshold ?? config.threshold, 0)} 入场阈值。模型只使用截至 ${shortDate(latest.model_train_end)} 的训练集拟合。`;
   $("feature-subtitle").textContent = config.model === "logistic" ? "标准化系数绝对值 · 归一化占比" : "树模型特征重要性 · 归一化占比";
   const features = [...(report.features || [])].sort((a, b) => b.importance - a.importance).slice(0, 6);
   const maximum = Math.max(...features.map((feature) => Number(feature.importance) || 0), .001);
@@ -288,9 +288,10 @@ function renderReport(run) {
     $(`${key}-rows`).textContent = `${number(split.rows, 0)} 个信号样本`;
     $(`split-${key}-bar`).style.flex = Math.max(1, split.rows || 1);
   }
+  $("split-description").textContent = config.evaluation === "walk_forward" ? "这里展示最后一折；完整时间边界与逐折结果见稳健性分析。" : "按时间约 60% / 20% / 20% 切分，两个边界各隔离 1 行。";
   $("gap-label").textContent = `GAP ${report.split?.gap ?? 1}`;
   const detailItems = [["分类 / 回归模型", report.model?.name || modelLabel(config.model)], ["历史特征数", number(report.model?.feature_count ?? report.features?.length, 0)],
-    ["入场概率阈值", percent(config.threshold, 0)], ["随机种子", String(config.seed ?? "—")], ["验证集准确率", percent(report.validation_metrics?.accuracy, 1)],
+    ["最新有效阈值", percent(latest.threshold ?? config.threshold, 0)], ["随机种子", String(config.seed ?? "—")], ["验证集准确率", percent(report.validation_metrics?.accuracy, 1)],
     ["验证集 AUC", number(report.validation_metrics?.auc, 3)], ["测试集精确率", percent(metric.precision, 1)], ["测试集召回率", percent(metric.recall, 1)],
     ["收益预测 MAE", percent(metric.return_mae, 3)], ["策略年化夏普", number(metric.sharpe, 2)], ["单边手续费 / 滑点", `${number(config.cost_bps, 1)} / ${number(config.slippage_bps, 1)} bps`], ["交易日占比", percent(metric.exposure, 1)]];
   $("model-details-grid").innerHTML = detailItems.map(([label, value]) => `<div class="detail-item"><span>${escapeHTML(label)}</span><strong>${escapeHTML(value)}</strong></div>`).join("");
@@ -299,11 +300,13 @@ function renderReport(run) {
   $("report-id").textContent = `${run.id.startsWith("bundled-") ? "随项目附带的真实计算报告" : "实验 " + run.id.slice(0, 12)} · ${modelLabel(config.model)} · Seed ${config.seed ?? "—"}`;
   setDownload("export-csv", `/api/runs/${encodeURIComponent(run.id)}/export?format=csv`);
   setDownload("export-json", `/api/runs/${encodeURIComponent(run.id)}/export?format=json`);
+  setDownload("export-html", `/api/runs/${encodeURIComponent(run.id)}/export?format=html`);
   $("export-model").hidden = !run.has_model;
   if (run.has_model) setDownload("export-model", `/api/runs/${encodeURIComponent(run.id)}/model`);
   resetPredictionFilters();
   renderPredictions();
   renderMonthlyReturns();
+  renderRobustness();
   research.comparisonCache.set(run.id, run);
   $("config-dirty").hidden = true;
   setView(state.view);
@@ -332,6 +335,7 @@ function setView(view) {
   if (view === "compare") { renderCompareOptions(); loadComparison(); }
   const titles = { overview: ["研究概览", "让每一次预测，都有据可循", "用机器学习观察趋势，用样本外回测检验想法。"], backtest: ["策略回测", "好的假设，经得起历史检验", "沿着时间回看每一次信号，理解收益、成本与风险。"], model: ["模型解释", "打开模型，看见预测的依据", "查看特征、数据切分与评估指标，建立可解释的研究过程。"] };
   titles.compare = ["实验对比", "换一个模型，让结果回答", "在相同数据上比较两次实验，理解准确率、成本与风险。"] ;
+  titles.robustness = ["稳健性分析", "向前一步，再检验一次", "沿时间评估模型，观察阈值、交易成本与输入质量。"] ;
   const title = titles[view] || titles.overview;
   $("view-name").textContent = title[0];
   $("page-title").innerHTML = `${escapeHTML(title[1])}<span>.</span>`;
@@ -341,7 +345,7 @@ function setView(view) {
     button.classList.toggle("active", active);
     if (active) button.setAttribute("aria-current", "page"); else button.removeAttribute("aria-current");
   });
-  for (const section of $("report-content").querySelectorAll(".section-overview,.section-backtest,.section-model")) section.hidden = !section.classList.contains(`section-${view}`);
+  for (const section of $("report-content").querySelectorAll(".section-overview,.section-backtest,.section-model,.section-robustness")) section.hidden = !section.classList.contains(`section-${view}`);
   requestAnimationFrame(drawCharts);
 }
 
@@ -506,4 +510,5 @@ window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer
 window.addEventListener("pagehide", stopWatching);
 updateThreshold();
 bindResearchControls();
+bindRobustnessControls();
 initialize();

@@ -23,11 +23,12 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from . import __version__, storage
 from .data import generate_demo, parse_csv
-from .engine import run_experiment
+from .engine import DEFAULT_CONFIG, run_experiment
+from .reporting import render_html_report
 
 LOGGER = logging.getLogger("alphalens")
 MAX_UPLOAD = 8 * 1024 * 1024
-DEFAULTS = dict(model="random_forest", threshold=0.55, cost_bps=5.0, slippage_bps=2.0, initial_capital=100000.0, seed=42)
+DEFAULTS = DEFAULT_CONFIG.copy()
 SUBMIT_LOCK = threading.Lock()
 
 
@@ -40,6 +41,9 @@ class RunRequest(BaseModel):
     slippage_bps: float = Field(default=2, ge=0, le=100)
     initial_capital: float = Field(default=100000, ge=1000, le=1_000_000_000)
     seed: int = Field(default=42, ge=0, le=2_147_483_647)
+    evaluation: Literal["holdout", "walk_forward"] = "holdout"
+    folds: int = Field(default=3, ge=3, le=5)
+    threshold_mode: Literal["manual", "validation"] = "manual"
 
 
 def seed_data() -> None:
@@ -215,13 +219,16 @@ def completed_run(run_id: str) -> dict:
 
 
 @app.get("/api/runs/{run_id}/export")
-def export_run(run_id: str, format: Literal["json", "csv"] = "json"):
+def export_run(run_id: str, format: Literal["json", "csv", "html"] = "json"):
     run = completed_run(run_id)
     if format == "json":
         return FileResponse(run["report_path"], media_type="application/json", filename=f"alphalens-{run_id}.json")
     report = json.loads(Path(run["report_path"]).read_text(encoding="utf-8"))
+    if format == "html":
+        return Response(render_html_report(report, run_id), media_type="text/html",
+                        headers={"Content-Disposition": f'attachment; filename="alphalens-{run_id}.html"'})
     buffer = io.StringIO(newline="")
-    fields = ["signal_date", "date", "probability_up", "predicted_return", "actual_return", "signal", "correct",
+    fields = ["signal_date", "date", "fold", "threshold", "probability_up", "predicted_return", "actual_return", "signal", "correct",
               "net_return", "benchmark_return", "strategy_equity", "benchmark_equity", "drawdown"]
     writer = csv.DictWriter(buffer, fieldnames=fields, extrasaction="ignore")
     writer.writeheader()
