@@ -114,7 +114,7 @@ alphalens-stock-lab/
 python -m unittest discover -s tests -v
 ```
 
-本次本机运行 24 项通过；用例覆盖因果特征、每折独立标准化、验证集阈值选择、成本公式、模型保存、HTML 转义及真实 HTTP 训练导出。浏览器检查与适用范围见 [验证记录](docs/09-validation.md)。
+本次本机运行 25 项通过；用例覆盖因果特征、每折独立标准化、验证集阈值选择、成本公式、模型保存、HTML 转义、跨平台数据指纹及真实 HTTP 训练导出。浏览器检查与适用范围见 [验证记录](docs/09-validation.md)。
 
 ## 研究边界
 
