@@ -60,7 +60,7 @@ class ApiTests(unittest.TestCase):
 
     def test_health_bootstrap_and_script_mime(self):
         with self.get('/health') as response:
-            self.assertEqual(json.load(response)['version'], '1.2.0')
+            self.assertEqual(json.load(response)['version'], '1.3.0')
         with self.get('/api/bootstrap') as response:
             bootstrap = json.load(response)
             self.assertEqual(bootstrap['defaults']['evaluation'], 'holdout')
@@ -112,3 +112,79 @@ class ApiTests(unittest.TestCase):
         with self.assertRaises(urllib.error.HTTPError) as error:
             self.get('/api/runs/not-found/export?format=html')
         self.assertEqual(error.exception.code, 404)
+
+    def test_tools_analysis_cutoff_and_unavailable_dimensions(self):
+        with self.get('/api/datasets/demo-a/analysis?as_of=2026-01-01') as response:
+            result = json.load(response)
+        self.assertLessEqual(result['as_of'], '2026-01-01')
+        self.assertIsNone(result['score']['overall_score'])
+        self.assertEqual(result['score']['coverage'], .25)
+        self.assertTrue(all(row['date'] <= '2026-01-01' for row in result['series']))
+        with self.assertRaises(urllib.error.HTTPError) as error:
+            self.get('/api/datasets/demo-a/analysis?as_of=bad-date')
+        self.assertEqual(error.exception.code, 422)
+
+    def test_tools_watchlist_dedup_acknowledge_and_monitor(self):
+        def request(method, path, body):
+            req = urllib.request.Request(self.base + path, data=json.dumps(body).encode(), method=method,
+                                         headers={'Content-Type': 'application/json'})
+            with self.client.open(req, timeout=10) as response:
+                return json.load(response)
+        request('PUT', '/api/watchlist', {'dataset_id': 'demo-a', 'cost_price': 1,
+                                           'cost_date': '2025-01-01', 'rules': {'enabled': ['cost']}})
+        with self.post('/api/watchlist/scan', {}) as response:
+            first = json.load(response)
+        with self.post('/api/watchlist/scan', {}) as response:
+            second = json.load(response)
+        self.assertEqual(first['new_alerts'], 1)
+        self.assertEqual(second['new_alerts'], 0)
+        alert_id = first['alerts'][0]['id']
+        request('PATCH', '/api/alerts/' + alert_id, {'acknowledged': True})
+        monitor = request('PUT', '/api/monitor', {'enabled': True, 'interval_seconds': 30})
+        self.assertTrue(monitor['enabled'])
+        request('PUT', '/api/monitor', {'enabled': False, 'interval_seconds': 60})
+        with self.get('/api/research-tools') as response:
+            workspace = json.load(response)
+        self.assertTrue(next(row for row in workspace['alerts'] if row['id'] == alert_id)['acknowledged'])
+        self.assertFalse(workspace['monitor']['enabled'])
+        self.assertEqual(len(workspace['watchlist']), 1)
+        with self.get('/api/alerts-export') as response:
+            self.assertIn('参考成本', response.read().decode('utf-8-sig'))
+
+    def test_tools_scanner_does_not_pass_missing_benchmark(self):
+        with self.post('/api/scans', {'as_of': '2026-10-21'}) as response:
+            result = json.load(response)
+        self.assertEqual(len(result['results']), 3)
+        for row in result['results']:
+            self.assertIsNone(row['conditions'][4]['passed'])
+            self.assertFalse(row['matched'])
+            self.assertIn('streak', row['event'])
+
+    def test_tools_review_export_filters_future_trades(self):
+        with self.get('/api/research-tools/export?dataset_id=demo-a&as_of=2026-10-20&format=json') as response:
+            review = json.load(response)
+        self.assertEqual(review['as_of'], '2026-10-20')
+        self.assertTrue(all(row['trade_date'] <= '2026-10-20' for row in review['paper']['trades']))
+        self.assertIsNone(review['analysis']['score']['overall_score'])
+        with self.get('/api/research-tools/export?dataset_id=demo-a&format=html') as response:
+            html = response.read().decode()
+        self.assertIn('研究日报', html)
+        self.assertIn('未接入，不计分', html)
+        self.assertIn('@media print', html)
+        self.assertNotIn('<script', html)
+
+    def test_tools_paper_tplusone_and_ledger_export(self):
+        with self.post('/api/paper/trades', {'dataset_id': 'demo-b', 'side': 'BUY', 'quantity': 10, 'trade_date': '2026-10-20'}) as response:
+            self.assertEqual(response.status, 201)
+        with self.assertRaises(urllib.error.HTTPError) as error:
+            self.post('/api/paper/trades', {'dataset_id': 'demo-b', 'side': 'SELL', 'quantity': 1, 'trade_date': '2026-10-20'})
+        self.assertEqual(error.exception.code, 422)
+        with self.post('/api/paper/trades', {'dataset_id': 'demo-b', 'side': 'SELL', 'quantity': 5, 'trade_date': '2026-10-21'}) as response:
+            self.assertEqual(json.load(response)['quantity'], 5)
+        with self.get('/api/paper') as response:
+            account = json.load(response)
+        self.assertEqual(len(account['trades']), 2)
+        self.assertEqual(account['positions'][0]['quantity'], 5)
+        with self.get('/api/paper/export') as response:
+            rows = list(csv.DictReader(io.StringIO(response.read().decode('utf-8-sig'))))
+        self.assertEqual(len(rows), 2)

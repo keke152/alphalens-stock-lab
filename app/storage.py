@@ -40,6 +40,21 @@ def initialize() -> None:
                 status TEXT NOT NULL, created_at TEXT NOT NULL, finished_at TEXT,
                 config TEXT NOT NULL, report_path TEXT, model_path TEXT, error TEXT
             );
+            CREATE TABLE IF NOT EXISTS watchlist (
+                dataset_id TEXT PRIMARY KEY, cost_price REAL, cost_date TEXT,
+                rules TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS alerts (
+                id TEXT PRIMARY KEY, dataset_id TEXT NOT NULL, dataset_name TEXT NOT NULL,
+                as_of TEXT NOT NULL, rule TEXT NOT NULL, title TEXT NOT NULL,
+                detail TEXT NOT NULL, acknowledged INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS workspace_settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS paper_trades (
+                id TEXT PRIMARY KEY, dataset_id TEXT NOT NULL, side TEXT NOT NULL,
+                quantity INTEGER NOT NULL, price REAL NOT NULL, fee REAL NOT NULL,
+                trade_date TEXT NOT NULL, realized_pnl REAL NOT NULL, created_at TEXT NOT NULL
+            );
         """)
         db.execute("UPDATE runs SET status='failed', error=?, finished_at=? WHERE status IN ('running','queued')",
                    ("服务曾中断，任务未完成。请重新运行研究。", now()))
@@ -110,3 +125,15 @@ def get_run(run_id: str) -> dict | None:
 def pending_count() -> int:
     with connect() as db:
         return db.execute("SELECT COUNT(*) FROM runs WHERE status IN ('queued','running')").fetchone()[0]
+
+
+def get_setting(key: str, default: dict) -> dict:
+    with connect() as db:
+        row = db.execute('SELECT value FROM workspace_settings WHERE key=?', (key,)).fetchone()
+    return json.loads(row['value']) if row else default.copy()
+
+
+def set_setting(key: str, value: dict) -> None:
+    with connect() as db:
+        db.execute('INSERT INTO workspace_settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value',
+                   (key, json.dumps(value, ensure_ascii=False, allow_nan=False)))

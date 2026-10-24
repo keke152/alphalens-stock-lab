@@ -67,6 +67,7 @@ function setDownload(id, url) {
 }
 
 function updateDataset() {
+  syncToolDatasets();
   const dataset = state.datasets.find((item) => item.id === $("dataset-select").value);
   if (!dataset) return;
   $("dataset-name").textContent = dataset.name;
@@ -329,13 +330,19 @@ function renderPredictions() {
 
 function setView(view) {
   state.view = view;
+  const toolsMode = view === "workbench";
+  $("tool-workspace").hidden = !toolsMode;
+  document.querySelector(".config-column").hidden = toolsMode;
+  document.querySelector(".dashboard-layout").classList.toggle("tool-mode", toolsMode);
+  if (toolsMode) loadTools();
   $("comparison-workspace").hidden = view !== "compare";
-  $("report-content").hidden = view === "compare" || !state.report;
-  $("empty-state").hidden = view === "compare" || Boolean(state.report) || state.busy;
+  $("report-content").hidden = view === "compare" || toolsMode || !state.report;
+  $("empty-state").hidden = view === "compare" || toolsMode || Boolean(state.report) || state.busy;
   if (view === "compare") { renderCompareOptions(); loadComparison(); }
   const titles = { overview: ["研究概览", "让每一次预测，都有据可循", "用机器学习观察趋势，用样本外回测检验想法。"], backtest: ["策略回测", "好的假设，经得起历史检验", "沿着时间回看每一次信号，理解收益、成本与风险。"], model: ["模型解释", "打开模型，看见预测的依据", "查看特征、数据切分与评估指标，建立可解释的研究过程。"] };
   titles.compare = ["实验对比", "换一个模型，让结果回答", "在相同数据上比较两次实验，理解准确率、成本与风险。"] ;
   titles.robustness = ["稳健性分析", "向前一步，再检验一次", "沿时间评估模型，观察阈值、交易成本与输入质量。"] ;
+  titles.workbench = ["研究工具", "从趋势，到可检验的观察", "技术分析、自选预警、策略扫描与模拟持仓，一起留下研究依据。"] ;
   const title = titles[view] || titles.overview;
   $("view-name").textContent = title[0];
   $("page-title").innerHTML = `${escapeHTML(title[1])}<span>.</span>`;
@@ -357,6 +364,7 @@ function compactNumber(value) {
 }
 
 function drawCharts() {
+  if (state.view === "workbench") { drawToolCharts(); return; }
   if (state.view === "compare") { drawComparisonChart(); return; }
   if (!state.report || $("report-content").hidden) return;
   drawPriceChart();
@@ -484,7 +492,8 @@ async function initialize() {
     renderDatasets(); applyConfig(bootstrap.defaults); renderHistory(); renderCompareOptions();
     const latest = state.runs.find((run) => run.status === "completed") || state.runs.find((run) => ["queued", "running"].includes(run.status));
     if (latest) await openRun(latest.id, true);
-    if (new URLSearchParams(location.search).get("view") === "compare") setView("compare");
+    const requestedView = new URLSearchParams(location.search).get("view");
+    if (["compare", "workbench"].includes(requestedView)) setView(requestedView);
   } catch (error) {
     $("dataset-select").innerHTML = '<option value="">未能连接本地服务</option>';
     showError(error.message);
@@ -511,4 +520,5 @@ window.addEventListener("pagehide", stopWatching);
 updateThreshold();
 bindResearchControls();
 bindRobustnessControls();
+bindToolControls();
 initialize();

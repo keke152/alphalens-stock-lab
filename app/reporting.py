@@ -94,3 +94,28 @@ def render_html_report(report: dict, run_id: str = "") -> str:
 <h2>最近 30 条样本外预测</h2>{predictions}<p>完整逐日记录保存在 JSON / CSV 导出中。</p>
 <h2>实验参数</h2>{parameters}<h2>研究假设</h2><ul>{notes}</ul>
 <footer><p>实验 ID：{text(run_id)} · 应用版本：{text(report.get("app_version"))}</p><p>数据 SHA256：<code>{text(report.get("dataset_sha256"))}</code></p><p class="muted">独立 HTML，可离线打开；使用浏览器打印功能保存为 PDF。</p></footer></main></body></html>'''
+
+
+def render_daily_review(review: dict) -> str:
+    snapshot, account, workspace = review['analysis'], review['paper'], review['workspace']
+    latest = snapshot['latest']
+    indicator_table = table(['指标', '值'], [[key, number(latest.get(key))] for key in
+                            ['close', 'ma5', 'ma10', 'ma20', 'ma60', 'rsi14', 'dif', 'dea', 'macd', 'k', 'd', 'j', 'boll_upper', 'boll_lower', 'atr14', 'volume_ratio']])
+    dimensions = table(['维度', '权重', '分数 / 状态'], [[row['name'], number(row['weight'], True),
+                        row['score'] if row['status'] == 'available' else '未接入，不计分'] for row in snapshot['score']['dimensions']])
+    alerts = table(['行情日', '数据集', '提醒', '依据', '已读'], [[row['as_of'], row['dataset_name'], row['title'], row['detail'],
+                    '是' if row['acknowledged'] else '否'] for row in workspace['alerts']])
+    watch = table(['数据集', '行情日', '收盘', '参考成本收益'], [[row['dataset_name'], row['snapshot']['as_of'],
+                   number(row['snapshot']['close']), number(row['snapshot'].get('cost_return'), True)] for row in workspace['watchlist']])
+    positions = table(['数据集', '行情日', '持有 / 可卖', '平均成本', '浮动盈亏', '仓位', '风险提示'], [
+        [row['dataset_name'], row['quote_date'], f'{row["quantity"]} / {row["sellable"]}', number(row['average_cost']),
+         number(row['unrealized_pnl']), number(row['weight'], True), '；'.join(row['flags']) or '未触发参考线'] for row in account['positions']])
+    risk = table(['参数', '值'], list(account['risk'].items()))
+    assumptions = ''.join(f'<li>{text(note)}</li>' for note in review['notes'] + account['assumptions'])
+    return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AlphaLens 研究日报 · {text(review['as_of'])}</title><style>body{{background:#eef3f8;color:#203b58;font:14px/1.8 system-ui,"Microsoft YaHei",sans-serif;margin:0}}main{{max-width:1000px;margin:35px auto;background:white;padding:35px;border-radius:16px}}h1{{margin:5px 0}}h2{{margin-top:32px}}.eyebrow{{letter-spacing:3px;color:#087f73;font-size:11px}}p,small{{color:#637a91}}table{{border-collapse:collapse;width:100%;font-size:12px}}th,td{{text-align:left;padding:10px;border-bottom:1px solid #dce7ef;vertical-align:top}}th{{background:#f4f8fb}}.scroll{{overflow:auto}}.stats{{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}}.stats div{{background:#f4f8fb;border:1px solid #dce7ef;border-radius:8px;padding:18px;min-width:150px}}strong{{display:block;font-size:24px}}code{{word-break:break-all}}@media(max-width:650px){{main{{padding:20px;margin:0}}}}@media print{{body{{background:white}}main{{margin:0;padding:0;max-width:none}}tr{{break-inside:avoid}}h2{{break-after:avoid}}.scroll{{overflow:visible}}}}</style></head><body><main>
+<span class="eyebrow">ALPHALENS / SNAPSHOT REVIEW</span><h1>研究日报 · {text(review['as_of'])}</h1><p>{text(snapshot['dataset']['name'])} · {text(snapshot['dataset']['source'])} · 生成时间 {text(review['generated_at'])}</p>
+<div class="stats"><div><small>技术规则分</small><strong>{text(snapshot['score']['value'])} / 100</strong></div><div><small>模拟总资产</small><strong>{number(account['equity'])}</strong></div><div><small>模拟总仓位</small><strong>{number(account['exposure'], True)}</strong></div><div><small>模拟当前回撤</small><strong>{number(account['drawdown'], True)}</strong></div></div>
+<h2>技术快照与数据覆盖</h2><p>综合评分未启用；当前只计算技术维度，缺失的资金面、基本面、消息面和情绪面不作为零分计入。</p>{dimensions}{indicator_table}
+<h2>自选观察清单</h2>{watch}<h2>截至该日已记录的站内预警</h2>{alerts}
+<h2>模拟持仓与风险</h2>{positions}<p>模拟现金 {number(account['cash'])}，已实现盈亏 {number(account['realized_pnl'])}。新增买入限制：{text('；'.join(account['risk_status']['reasons']) or '未触发系统暂停，仍需检查仓位与现金')}</p>
+<h2>本次采用的模拟风控参数</h2>{risk}<h2>数据与执行说明</h2><ul>{assumptions}</ul><p>行情 SHA256：<code>{text(snapshot['dataset']['sha256'])}</code></p><p>此报告为本地快照，可离线打开并使用浏览器打印为 PDF。</p></main></body></html>'''

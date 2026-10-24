@@ -6,12 +6,14 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="AlphaLens 本地 AI 股票趋势研究平台：时序训练、样本外回测与模型解释。">
   <title>AlphaLens · AI 股票研究室</title>
-  <link rel="stylesheet" href="/static/styles.css?v=1.2">
-  <link rel="stylesheet" href="/static/enhancements.css?v=1.2">
-  <script defer src="/static/research.js?v=1.2"></script>
-  <link rel="stylesheet" href="/static/robustness.css?v=1.2">
-  <script defer src="/static/robustness.js?v=1.2"></script>
-  <script defer src="/static/app.js?v=1.2"></script>
+  <link rel="stylesheet" href="/static/styles.css?v=1.3">
+  <link rel="stylesheet" href="/static/enhancements.css?v=1.3">
+  <script defer src="/static/research.js?v=1.3"></script>
+  <link rel="stylesheet" href="/static/robustness.css?v=1.3">
+  <script defer src="/static/robustness.js?v=1.3"></script>
+  <link rel="stylesheet" href="/static/tools.css?v=1.3">
+  <script defer src="/static/tools.js?v=1.3"></script>
+  <script defer src="/static/app.js?v=1.3"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳转到研究内容</a>
@@ -24,6 +26,7 @@
       <button class="nav-item" data-view="model"><span class="nav-icon">⌘</span>模型解释</button>
       <button class="nav-item" data-view="compare"><span class="nav-icon">⇄</span>实验对比<span class="nav-new">NEW</span></button>
       <button class="nav-item" data-view="robustness"><span class="nav-icon">◎</span>稳健性分析<span class="nav-new">NEW</span></button>
+      <button class="nav-item" data-view="workbench"><span class="nav-icon">◫</span>研究工具<span class="nav-new">NEW</span></button>
       <button class="nav-item" id="docs-button"><span class="nav-icon">▤</span>项目文档<span class="nav-external">↗</span></button>
     </nav>
     <div class="sidebar-section-heading"><span class="sidebar-label">RECENT EXPERIMENTS</span><button class="icon-button" id="refresh-history" title="刷新实验记录" aria-label="刷新实验记录">↻</button></div>
@@ -32,7 +35,7 @@
   </aside>
 
   <main id="main" class="workspace">
-    <header class="topbar"><div class="breadcrumb">工作空间<span>/</span><strong id="view-name">研究概览</strong></div><div class="topbar-right"><span class="version-pill">v1.2</span><span class="research-badge">RESEARCH ONLY</span></div></header>
+    <header class="topbar"><div class="breadcrumb">工作空间<span>/</span><strong id="view-name">研究概览</strong></div><div class="topbar-right"><span class="version-pill">v1.3</span><span class="research-badge">RESEARCH ONLY</span></div></header>
     <div class="page-content">
       <section class="page-heading"><div><p class="eyebrow">FROM DATA TO DECISION</p><h1 id="page-title">让每一次预测，都有据可循<span>.</span></h1><p class="page-description" id="page-description">用机器学习观察趋势，用样本外回测检验想法。</p></div><button class="secondary-button" id="upload-button"><span>＋</span>导入行情 CSV</button></section>
       <div class="notice"><span class="notice-icon">i</span><p><strong id="source-notice">默认数据为合成行情。</strong> 模型结果用于技术研究与项目演示，不构成投资建议。</p><span class="notice-tag">时序切分 · 成本计入</span></div>
@@ -55,6 +58,35 @@
               <div class="comparison-chart-heading"><h3>同起点的样本外净值</h3><div class="chart-legend"><span><i class="legend-dot teal"></i>实验 A</span><span><i class="legend-dot blue"></i>实验 B</span></div></div><div class="chart-container" id="compare-chart" aria-label="两次实验归一化净值"></div><p class="panel-footnote">净值从 1 起算。仅在数据指纹和完整测试日期一致时叠加；不同成本或阈值会影响比较结果。</p></div>
             </section>
           </section>
+          <section id="tool-workspace" hidden>
+            <div class="tool-toolbar panel"><div><span class="eyebrow">RESEARCH TOOLKIT</span><h2>把分析变成可追溯的观察</h2><p>本地日线快照 · 手动模拟记账 · 站内预警</p></div><div class="tool-snapshot-controls"><label>分析数据集<select id="tool-dataset" aria-label="研究工具数据集"></select></label><label>历史截止日<input type="date" id="tool-asof" aria-label="历史截止日"></label><button class="secondary-button" id="tool-refresh">读取快照 ↻</button></div></div>
+            <div class="tool-tabs" role="group" aria-label="研究工具分类"><button data-tool="technical" class="active">01 技术分析</button><button data-tool="watchlist">02 自选预警</button><button data-tool="scanner">03 策略扫描</button><button data-tool="portfolio">04 模拟持仓</button></div>
+            <div class="tool-review-actions"><a class="secondary-button" id="export-daily-review" aria-disabled="true">下载研究日报 HTML ↓</a><a class="text-button" id="export-review-json" aria-disabled="true">日报 JSON ↓</a></div><p id="tools-status" class="tool-status" role="status">正在读取本地快照…</p>
+            <div data-tool-panel="technical">
+              <div class="tool-metrics"><article><small>TECHNICAL / 技术规则分</small><strong id="technical-score">—</strong><p id="technical-score-label">非模型上涨概率</p></article><article><small>RSI 14 / 简单平均</small><strong id="tool-rsi">—</strong><p>观察动量区间</p></article><article><small>MACD / DIF − DEA × 2</small><strong id="tool-macd">—</strong><p id="tool-dif-dea">—</p></article><article><small>ATR 14 / 波动</small><strong id="tool-atr">—</strong><p>最近 14 期真实波幅均值</p></article></div>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>价格的每一根刻度</h3><p id="technical-date">已有日线 K 线 · MA5 / MA20 / MA60</p></div><div class="segmented-control"><button type="button" data-candles="30">30 日</button><button type="button" data-candles="90" class="active">90 日</button></div></div><div id="candlestick-chart" class="tool-candlestick" aria-label="历史 OHLC K线"></div><p class="panel-footnote">青色为空心上涨、蓝灰色为实心非上涨，以当日收盘相对开盘判断；均线仅使用过去记录。悬停查看日线数值。</p></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>多一个角度，读懂波动</h3><p>MACD、RSI、KDJ、布林带可切换查看。</p></div><select id="indicator-select" aria-label="技术指标图表"><option value="macd">MACD · DIF / DEA / 2×差值</option><option value="rsi">RSI 14</option><option value="kdj">KDJ · 9 / 3 / 3</option><option value="boll">布林带 · 20 / 2</option></select></div><div id="indicator-chart" class="chart-container" aria-label="技术指标历史曲线"></div></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>分数的证据，与数据的缺口</h3><p>技术分由五项透明规则组成；综合评分需覆盖全部维度。</p></div><span class="tiny-pill" id="score-coverage">数据覆盖 —</span></div><div id="score-components" class="score-components"></div><div id="score-dimensions" class="source-dimensions"></div><p class="panel-footnote">技术面 25%、资金面 30%、基本面 10%、消息面 20%、情绪面 15%。当前仅计算技术面；综合评分为空，缺失维度不按零分计入。</p></section>
+            </div>
+            <div data-tool-panel="watchlist" hidden>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>你的观察清单</h3><p>为已有数据集配置成本参考与七类预警规则。</p></div><button class="secondary-button" id="add-watch">＋ 当前数据加入自选</button></div><div class="tool-actions"><button class="primary-button" id="scan-watch">立即扫描</button><label class="tool-inline-check"><input type="checkbox" id="monitor-enabled">后台检查本地快照</label><select id="monitor-interval" aria-label="后台检查间隔"><option value="30">每 30 秒</option><option value="60" selected>每 60 秒</option><option value="300">每 5 分钟</option></select><button class="secondary-button" id="save-monitor">保存检查设置</button></div><p id="monitor-status" class="tool-caption"></p><div class="table-scroll"><table><thead><tr><th>自选数据集</th><th>行情截至</th><th>收盘价</th><th>参考成本收益</th><th>启用规则</th><th>操作</th></tr></thead><tbody id="watchlist-body"></tbody></table></div><p class="panel-footnote">自动检查只在本地服务运行期间生效，重复快照预警自动去重；不会刷新外部行情。关闭网页不影响服务内的检查线程。</p></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>每一次提醒，都留下依据</h3><p>成本盈亏、收盘涨跌、量能、均线交叉、RSI、跳空、持有区间回撤。</p></div><a class="text-button" href="/api/alerts-export">导出预警 CSV ↓</a></div><div class="tool-actions"><label class="tool-inline-check"><input type="checkbox" id="alerts-unread">只看未读</label><span id="alerts-count" class="muted"></span></div><div id="alerts-list" class="alerts-list"></div></section>
+            </div>
+            <div data-tool-panel="scanner" hidden>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>让条件，逐条接受检查</h3><p>参考新高动量策略与涨幅事件，扫描当前已导入的数据集。</p></div><span class="tiny-pill">RULE SCANNER</span></div><form id="scan-form" class="tool-form-grid"><label>新高回看记录数<input id="scan-lookback" type="number" value="250" min="20" max="500" required></label><label>最低量比<input id="scan-volume" type="number" value="1.5" min="1" max="10" step="0.1" required></label><label>RSI 上限<input id="scan-rsi" type="number" value="85" min="1" max="100" required></label><label>涨幅事件阈值<select id="scan-event"><option value="0.05">5%</option><option value="0.10" selected>10%</option><option value="0.20">20%</option><option value="0.30">30%</option></select></label><label class="wide-field">参考指数数据集（可选）<select id="scan-benchmark"><option value="">未提供 · 对应条件显示未知</option></select></label><button class="primary-button" type="submit" id="run-scan">扫描全部本地数据 ↗</button></form><p class="panel-footnote">截止日沿用上方日期。未提供同日参考指数时，不把指数条件算作通过；新高按指定记录数计算，不等于上市历史新高。</p></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>新高动量 · 条件明细</h3><p id="scanner-summary">尚未扫描。</p></div></div><div id="strategy-results" class="strategy-results"></div></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>连续涨幅事件</h3><p>记录满足自定义收盘涨幅阈值的连续次数。</p></div></div><div class="table-scroll"><table><thead><tr><th>数据集</th><th>截至</th><th>当期涨跌</th><th>事件阈值</th><th>连续次数</th></tr></thead><tbody id="event-results"></tbody></table></div><p class="panel-footnote">这不是交易所涨停板识别，不含封单、排队成交、板块涨跌幅规则或次日晋级预测。</p></section>
+            </div>
+            <div data-tool-panel="portfolio" hidden>
+              <div class="tool-metrics"><article><small>PAPER EQUITY / 模拟资产</small><strong id="paper-equity">—</strong><p id="paper-return">初始虚拟资金 100000</p></article><article><small>CASH / 可用虚拟现金</small><strong id="paper-cash">—</strong><p>已扣模拟费用</p></article><article><small>EXPOSURE / 总仓位</small><strong id="paper-exposure">—</strong><p id="paper-position-cap">—</p></article><article><small>DRAWDOWN / 当前回撤</small><strong id="paper-drawdown">—</strong><p id="paper-date">—</p></article></div>
+              <div id="paper-risk-notice" class="tool-risk-notice" role="status"></div>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>手动记录一次模拟成交</h3><p id="paper-fill-note">按所选数据和记录日收盘价，结合配置滑点与费用记账。</p></div><span class="tiny-pill">SIMULATION</span></div><form id="paper-trade-form" class="tool-form-grid"><label>方向<select id="paper-side"><option value="BUY">模拟买入</option><option value="SELL">模拟卖出</option></select></label><label>整数份额<input id="paper-quantity" type="number" min="1" max="10000000" step="1" value="100" required></label><label>成交记录日<input id="paper-trade-date" type="date" required></label><button type="submit" class="primary-button" id="record-paper-trade">录入模拟成交</button></form><p class="panel-footnote">使用虚拟资金；卖出仅允许更早记录日买入的份额。每笔按时间顺序保存，记录日必须在所选数据中存在。</p></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>持仓，与它承担的风险</h3><p>FIFO 成本含买入费用；按截止日前最后一条收盘估值。</p></div><button class="secondary-button" id="refresh-paper">刷新估值 ↻</button></div><div class="table-scroll"><table><thead><tr><th>数据集 / 行情日</th><th>持有 / 可卖</th><th>平均成本</th><th>最新收盘</th><th>浮动盈亏</th><th>仓位</th><th>风险提示</th></tr></thead><tbody id="paper-positions"></tbody></table></div><div id="paper-equity-chart" class="chart-container" aria-label="模拟资产历史曲线"></div></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>把仓位约束写进系统</h3><p>买入前检查现金、仓位、持仓数和系统风险；风险提醒不会自动清仓。</p></div></div><form id="paper-risk-form" class="tool-form-grid"></form><p class="panel-footnote">连续亏损达到指定记录日数时，单标的上限减半。资产首次跌破回撤线后暂停指定记录日数；当日亏损上限只约束当前记录日新增买入。执行假设见使用文档。</p></section>
+              <section class="panel tools-panel"><div class="panel-heading"><div><h3>一份可以复盘的模拟日志</h3><p>保存方向、日期、成交价、费用及已实现盈亏。</p></div><a class="text-button" href="/api/paper/export">导出账本 CSV ↓</a></div><div class="table-scroll"><table><thead><tr><th>日期</th><th>数据集</th><th>方向</th><th>份额</th><th>成交价</th><th>费用</th><th>已实现盈亏</th></tr></thead><tbody id="paper-journal"></tbody></table></div><ul id="paper-assumptions" class="tools-assumptions"></ul></section>
+            </div>
+          </section>
+
           <div id="report-content" hidden>
             <section class="metric-grid section-overview section-backtest">
               <article class="metric-card"><div class="metric-label">策略累计收益<span class="metric-symbol">↗</span></div><strong id="metric-return">—</strong><small id="metric-return-detail">样本外 · 已扣交易成本</small><div class="metric-bottom-line teal"></div></article>
@@ -82,7 +114,7 @@
 
             <section class="panel notes-panel section-backtest section-model" hidden><div class="panel-heading"><div><h3>研究边界与实验说明</h3><p>读懂结果，也了解结果的适用范围</p></div></div><ul id="report-notes"></ul></section>
             <section class="section-robustness" hidden>
-              <div class="panel robustness-panel" id="robustness-legacy"><div class="panel-heading"><div><h3>开始一份更完整的研究</h3><p>当前历史报告生成于旧版。选择评估方式并重新训练，即可查看逐折结果、阈值候选、成本分析与数据质量。</p></div><span class="tiny-pill">v1.2</span></div></div>
+              <div class="panel robustness-panel" id="robustness-legacy"><div class="panel-heading"><div><h3>开始一份更完整的研究</h3><p>当前历史报告生成于旧版。选择评估方式并重新训练，即可查看逐折结果、阈值候选、成本分析与数据质量。</p></div><span class="tiny-pill">v1.3</span></div></div>
               <div id="robustness-results" hidden>
                 <div class="robustness-summary"><article><small>EVALUATION / 时间评估</small><strong id="evaluation-summary">—</strong><p id="evaluation-range">—</p></article><article><small>BRIER SCORE / 越低越好</small><strong id="brier-score">—</strong><p>描述分数与实际标签的误差；不代表已完成校准。</p></article><article><small>DATA QUALITY / 输入检查</small><strong id="data-quality-summary">—</strong><p>只作提示，不自动删改数据。</p></article></div>
                 <section class="panel robustness-panel"><div class="panel-heading"><div><h3>每一折，都沿时间向前</h3><p>各折独立训练与验证，测试结果连续拼接，资金跨折延续。</p></div><span class="tiny-pill">WALK FORWARD</span></div><div class="table-scroll"><table class="robustness-folds"><thead><tr><th>折</th><th>训练信号日 / 行数</th><th>验证信号日 / 行数</th><th>测试交易日 / 行数</th><th>阈值</th><th>准确率</th><th>该折收益</th><th>最大回撤</th></tr></thead><tbody id="fold-results"></tbody></table></div><p class="panel-footnote">训练 / 验证 / 测试的边界各隔离 1 行。逐折收益各自从 1 计算；主回测净值不重置。后续折可使用当时已经发生的历史数据。</p></section>
@@ -105,6 +137,8 @@
 
   <dialog id="upload-dialog"><form id="upload-form"><div class="dialog-heading"><div><span class="eyebrow">IMPORT DATA</span><h2>导入你的行情数据</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭导入窗口">×</button></div><p>上传按交易日记录的 OHLCV CSV。字段名为 <code>date, open, high, low, close, volume</code>，至少 <span id="min-rows">300</span> 行。</p><label class="field-label" for="dataset-upload-name">数据集名称 <span>可选</span></label><input id="dataset-upload-name" type="text" maxlength="80" placeholder="例如：我的研究样本"><label class="upload-zone" for="csv-file"><span class="upload-icon">↥</span><strong id="upload-file-label">点击选择 CSV 文件</strong><small>UTF-8 编码 · 最大 <span id="max-upload">8</span> MB</small><input id="csv-file" name="file" type="file" accept=".csv,text/csv" required></label><p class="field-help">请使用已获授权的数据；真实股票宜使用复权行情，避免拆股、分红造成的价格跳变。</p><div id="upload-error" class="error-banner" hidden role="alert"></div><button class="primary-button" type="submit" id="upload-submit">导入数据集 <span>↗</span></button></form></dialog>
   <dialog id="docs-dialog" class="docs-dialog"><div class="dialog-heading"><div><span class="eyebrow">PROJECT HANDBOOK</span><h2>项目说明与演示指南</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭文档窗口">×</button></div><p class="muted">从第一次运行，到解释每一个研究结果。</p><div id="docs-list" class="docs-list"></div><div class="method-callout"><span>i</span><p>默认演示数据由程序生成，不对应任何真实证券。真实行情的预测效果需独立评估；回测结果不代表未来收益。</p></div></dialog>
+  <dialog id="watch-dialog"><form id="watch-form"><div class="dialog-heading"><div><span class="eyebrow">WATCHLIST RULES</span><h2>自选与预警设置</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭自选设置">×</button></div><p id="watch-dataset-name"></p><input id="watch-dataset-id" type="hidden"><div class="tool-form-grid"><label>参考成本（可留空）<input id="watch-cost" type="number" min="0.000001" max="1000000000" step="any"></label><label>成本起始日<input id="watch-cost-date" type="date"></label><label>成本盈利阈值 %<input data-watch-field="profit" type="number" min="0.1" max="200" step="0.1" required></label><label>成本亏损阈值 %<input data-watch-field="loss" type="number" min="0.1" max="90" step="0.1" required></label><label>收盘涨跌提醒 %<input data-watch-field="change" type="number" min="0.1" max="100" step="0.1" required></label><label>跳空提醒 %<input data-watch-field="gap" type="number" min="0.1" max="100" step="0.1" required></label><label>放量上限（倍）<input data-watch-field="volume_high" type="number" min="1.01" max="20" step="0.01" required></label><label>缩量下限（倍）<input data-watch-field="volume_low" type="number" min="0" max="0.99" step="0.01" required></label><label>RSI 上限<input data-watch-field="rsi_high" type="number" min="50" max="100" required></label><label>RSI 下限<input data-watch-field="rsi_low" type="number" min="0" max="49" required></label><label>移动止盈激活幅度 %<input data-watch-field="trailing_activation" type="number" min="0.1" max="200" step="0.1" required></label><label>峰值回撤提醒 %<input data-watch-field="trailing_drawdown" type="number" min="0.1" max="90" step="0.1" required></label></div><fieldset class="rule-checkboxes"><legend>启用规则</legend><label><input type="checkbox" data-watch-rule="cost">成本盈亏</label><label><input type="checkbox" data-watch-rule="change">收盘涨跌</label><label><input type="checkbox" data-watch-rule="volume">成交量异常</label><label><input type="checkbox" data-watch-rule="ma_cross">均线交叉</label><label><input type="checkbox" data-watch-rule="rsi">RSI 区间</label><label><input type="checkbox" data-watch-rule="gap">开盘跳空</label><label><input type="checkbox" data-watch-rule="trailing">持有区间回撤</label></fieldset><p id="watch-form-error" class="error-banner" hidden></p><button class="primary-button" type="submit" id="save-watch-button">保存自选与规则</button></form></dialog>
+
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

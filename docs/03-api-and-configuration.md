@@ -182,3 +182,44 @@ v1.1 修复了部分 Windows 环境将 JavaScript 静态文件返回为 `text/pl
 ### 可以公网部署吗
 
 当前默认部署是本机使用。公网部署需要补充鉴权、上传限制、反向代理、HTTPS、日志与资源管理等工程能力，见 [扩展路线](05-roadmap.md)。
+
+## 8. v1.3 研究工具接口
+
+| 方法 | 路径 | 用途 |
+| --- | --- | --- |
+| GET | `/api/datasets/{id}/analysis?as_of=YYYY-MM-DD` | 技术指标、历史序列、规则分和数据覆盖 |
+| GET | `/api/research-tools?as_of=YYYY-MM-DD` | 自选、预警、监控与来源能力 |
+| PUT | `/api/watchlist` | 添加或替换某数据集的参考成本与规则 |
+| DELETE | `/api/watchlist/{dataset_id}` | 移出自选，保留预警历史 |
+| POST | `/api/watchlist/scan` | 检查快照，创建去重后的站内提醒 |
+| PATCH | `/api/alerts/{id}` | 修改已读状态 |
+| GET | `/api/alerts-export` | 导出最近200条提醒CSV |
+| PUT | `/api/monitor` | 设置服务内快照检查线程 |
+| POST | `/api/scans` | 新高动量条件与涨幅事件扫描 |
+| GET | `/api/paper?as_of=YYYY-MM-DD` | 虚拟现金、持仓、风险、历史与最近200笔成交 |
+| PUT | `/api/paper/risk` | 替换当前模拟风控参数 |
+| POST | `/api/paper/trades` | 手动录入虚拟买卖，检查时间、数量、仓位与现金 |
+| GET | `/api/paper/export` | 导出完整虚拟成交账本CSV |
+| GET | `/api/research-tools/export?dataset_id=ID&format=html` | 研究日报HTML；也支持JSON与as_of |
+
+示例请求体：
+
+```json
+{"dataset_id":"demo-a","cost_price":80,"cost_date":"2026-09-01","rules":{"enabled":["cost","volume","ma_cross","rsi","gap","change","trailing"],"loss":0.03}}
+```
+
+```json
+{"enabled":true,"interval_seconds":60}
+```
+
+```json
+{"as_of":"2026-10-21","lookback":250,"volume_multiple":1.5,"rsi_limit":85,"event_threshold":0.1,"benchmark_dataset_id":"demo-b"}
+```
+
+```json
+{"dataset_id":"demo-a","side":"BUY","quantity":10,"trade_date":"2026-10-20","client_id":"c17746e0-f772-4cee-a164-80f72c1d5379"}
+```
+
+技术分析的 `as_of` 为自然日上界，使用此前最近记录。模拟成交的 `trade_date` 必须在所选数据集中精确存在，且不早于账本最后一笔记录。`client_id`可选；同一ID与参数的重试不重复入账，参数不同则拒绝。卖出只消耗更早记录日买入的份额。
+
+自选与模拟风控的全部字段及范围见 `/docs` 中对应请求Schema，操作和公式见 [v1.3说明](10-v1.3-toolkit.md)。新增数据保存在原SQLite内的 `watchlist`、`alerts`、`workspace_settings` 和 `paper_trades` 表，启动时自动创建，无需清空旧实验。

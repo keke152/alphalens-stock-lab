@@ -25,6 +25,8 @@ from . import __version__, storage
 from .data import canonical_csv, generate_demo, parse_csv
 from .engine import DEFAULT_CONFIG, run_experiment
 from .reporting import render_html_report
+from .tools_api import router as tools_router
+from .watching import Monitor
 
 LOGGER = logging.getLogger("alphalens")
 MAX_UPLOAD = 8 * 1024 * 1024
@@ -73,8 +75,13 @@ async def lifespan(app: FastAPI):
     storage.initialize()
     seed_data()
     app.state.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="research")
-    yield
-    app.state.executor.shutdown(wait=True, cancel_futures=True)
+    app.state.monitor = Monitor()
+    app.state.monitor.start()
+    try:
+        yield
+    finally:
+        app.state.monitor.close()
+        app.state.executor.shutdown(wait=True, cancel_futures=True)
 
 
 app = FastAPI(title="AlphaLens AI 股票研究室", version=__version__, lifespan=lifespan,
@@ -276,5 +283,6 @@ def favicon():
     return Response(status_code=204)
 
 
+app.include_router(tools_router)
 app.mount("/static", StaticFiles(directory=storage.ROOT / "static"), name="assets")
 app.mount("/", StaticFiles(directory=storage.ROOT / "static", html=True), name="interface")

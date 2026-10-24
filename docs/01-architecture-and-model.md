@@ -21,6 +21,10 @@ flowchart LR
 | 评估计算 | `app/evaluation.py` | 时间窗口、验证阈值、统一回测与诊断 |
 | 离线报告 | `app/reporting.py` | 转义用户文本，生成独立可打印 HTML |
 | 研究引擎 | `app/engine.py` | 特征、时间切分、训练、指标、回测、模型保存 |
+| 技术分析 | `app/technical.py` | 因果日线指标、技术规则分、六条件扫描 |
+| 自选与监控 | `app/watching.py` | 七类规则、去重事件、可停止后台线程 |
+| 模拟账本 | `app/paper.py` | FIFO、可卖数量、现金与仓位检查、资产历史 |
+| 工具接口 | `app/tools_api.py` | 技术、自选、扫描、模拟账本与日报 API |
 | HTTP 服务 | `app/main.py` | 上传、后台任务、报告、模型、文档和静态页面接口 |
 | 本地存储 | `app/storage.py` | SQLite 数据集及任务元数据、报告和模型路径 |
 | 命令行 | `app/cli.py` | 生成行情、从 CSV 训练并保存报告 |
